@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.home_page-container {
+  position: absolute;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid aquamarine;
+}
+
+.page-logo {
+  width: 10%;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.user_manage {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.date-time {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+/* ---------------------Menu-Start--------------------------------- */
+
+.menu {
+  font-size: 1.5rem;
+  width: 45%;
+}
+
+.menu_list {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.menu .parent {
+  padding: 5px 10px;
+  margin: 15px 10px;
+  width: 90px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.menu .parent_box:hover {
+  color: aquamarine;
+  text-shadow: 3px 3px 9px aquamarine;
+  transition: all 0.5s;
+}
+
+.menu .parent_box:hover>.child_box {
+  font-size: 15px;
+  z-index: 2;
+  display: block;
+  position: absolute;
+  background-color: white;
+  margin: 0px 0px;
+  width: 193px;
+  border-bottom: 5px solid aquamarine;
+  box-shadow: 5px 5px 11px 1px #888888;
+  border-radius: 5px;
+  transition: all 0.5s;
+  animation: growDown 500ms ease-in-out;
+  transform-origin: top center;
+}
+
+.menu .child_box {
+  display: none;
+}
+
+.menu .child_contain:hover {
+  background-color: rgba(0, 203, 179, 0.773);
+  transition: all 0.5s;
+}
+
+.menu .child {
+  text-shadow: none;
+  color: black;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.menu_button {
+  display: none;
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0)
+  }
+
+  80% {
+    transform: scaleY(1.1)
+  }
+
+  100% {
+    transform: scaleY(1)
+  }
+}
+
+/* ---------------------Menu-End--------------------------------- */
+
+/* ---------------------Loading-Start--------------------------------- */
+.loading {
+
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  position: fixed;
+  top: 30%;
+  left: 47%;
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m:
+    conic-gradient(#0000 10%, #000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+/* ---------------------Loading-End--------------------------------- */
