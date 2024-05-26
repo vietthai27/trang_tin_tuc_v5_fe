@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 
 const initialState = {
     userData: {
@@ -27,6 +26,7 @@ const userLoginSlice = createSlice({
             state.loading = false
             localStorage.setItem("Username", state.userData.username)
             localStorage.setItem("User token", action.payload.data)
+            localStorage.setItem("Is login", true)
             state.loginState = true
         },
         userLoginFail: (state) => {

@@ -1,25 +1,33 @@
 import { Button, Modal } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserLogin from '../UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
+import UserManageList from '../UserManageList/UserManageList';
+import { setLoginState } from '../UserLogin/reducer';
 
 function UserManage() {
 
-    const dispatch = useDispatch()
 
     const modalLogin = useSelector(state => state.userManage.modalLogin)
     const modalSignup = useSelector(state => state.userManage.modalSignup)
     const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
-    const currentUsername = localStorage.getItem("Username")
     const loginState = useSelector(state => state.userLogin.loginState)
+
+    useEffect(() => {
+        if (localStorage.getItem("User token") === null) {
+            dispatch(setLoginState(false))
+        } else dispatch(setLoginState(true))
+    },[loginState])
+
+    const dispatch = useDispatch()
 
     return (
         <div className='user_manage'>
-            {loginState === false ? (
+            {!loginState ? (
                 <div className='user_login'>
                     <p>Chưa có tài khoản ? </p>
                     <Button
@@ -30,12 +38,7 @@ function UserManage() {
                         Đăng nhập
                     </Button>
                 </div>) : (<div style={{ "justify-content": "end" }} className='user_login'>
-                    <Button
-                        className='login-btn'
-                        variant="contained"
-                        startIcon={<AccountCircleIcon />}>
-                        Xin chào {currentUsername}
-                    </Button>
+                    <UserManageList />
                 </div>)}
             <Modal
                 open={modalLogin}

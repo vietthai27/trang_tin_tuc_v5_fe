@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModalLogin, openmodalForgetpass, openmodalSignup } from '../UserManage/reducer';
 import { changePassword, changeUsername } from './reducer';
 import { toast } from 'react-toastify';
-import { getMenuDataAction } from './action';
+import { userLoginAction } from './action';
 
 
 
@@ -27,7 +27,7 @@ function UserLogin() {
         } else if (userData.password === ""|| userData.password === null) {
             toast.warn("Chưa nhập mật khẩu")
         } else {
-            dispatch(getMenuDataAction(userData))
+            dispatch(userLoginAction(userData))
         }
     }
 

@@ -1,3 +1,3 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const getMenuDataAction = createAction('userLogin/userLoginRequest')
+export const userLoginAction = createAction('userLogin/userLoginRequest')

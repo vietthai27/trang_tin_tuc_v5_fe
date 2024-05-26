@@ -1,33 +1,34 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import routes from './Routes';
 import '../src/style.css'
-import Loading from './Component/Loading/Loading';
-import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { apiCheckToken, apiUser, host } from './ultil';
 import { setLoginState } from './Component/UserLogin/reducer';
+import { useDispatch } from 'react-redux';
 
 function App() {
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     checkToken()
   }, [])
 
+  const dispatch = useDispatch()
+
   const checkToken = async () => {
-    const currentSession = localStorage.getItem("User token")
-    if (currentSession !== null) {
+    if (localStorage.getItem("Is login") === "true") {
       await axios.post(
-        host + apiUser + apiCheckToken + "?token=" + localStorage.getItem("User token")).
-        then().catch(err => toast.error(err.response.data.message));
-      localStorage.removeItem("Username")
-      localStorage.removeItem("User token")
-      dispatch(setLoginState(false))
-    } else return
+        host + apiUser + apiCheckToken + "?token=" + localStorage.getItem("User token")).then().catch(err => {
+          localStorage.removeItem("Username")
+          localStorage.removeItem("User token")
+          localStorage.removeItem("Is login")
+          dispatch(setLoginState(false))
+          toast.error(err.response.data.message);
+        })
+
+    };
   }
 
   return (
@@ -44,10 +45,6 @@ function App() {
           })
         }
       </Routes>
-      {/* {
-        loadingMenu === true || loadingLogin === true ?
-          (<Loading />) : (null)
-      } */}
       <ToastContainer />
     </div>
   );

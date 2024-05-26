@@ -39,6 +39,9 @@ a {
 }
 
 .date-time {
+  margin: 15px;
+  border-left: 2px solid;
+  border-right: 2px solid;
   width: 25%;
   display: flex;
   justify-content: center;
