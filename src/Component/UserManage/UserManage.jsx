@@ -1,10 +1,10 @@
 import { Button, Modal } from '@mui/material';
 import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import UserLogin from './UserLogin/UserLogin';
+import UserLogin from '../UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
-import UserSignup from './UserSignup/UserSignup';
-import UserForgetPass from './UserForgetPass/UserForgetPass';
+import UserSignup from '../UserSignup/UserSignup';
+import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
 
 function UserManage() {
@@ -19,7 +19,7 @@ function UserManage() {
 
     return (
         <div className='user_manage'>
-            {currentToken === '' && currentUsername === '' ? (
+            {currentToken === null && currentUsername === null ? (
                 <div className='user_login'>
                     <p>Chưa có tài khoản ? </p>
                     <Button
@@ -29,8 +29,8 @@ function UserManage() {
                         startIcon={<AccountCircleIcon />}>
                         Đăng nhập
                     </Button>
-                </div>) : (<div style={{"justify-content": "end"}} className='user_login'>
-                    <Button 
+                </div>) : (<div style={{ "justify-content": "end" }} className='user_login'>
+                    <Button
                         className='login-btn'
                         variant="contained"
                         startIcon={<AccountCircleIcon />}>

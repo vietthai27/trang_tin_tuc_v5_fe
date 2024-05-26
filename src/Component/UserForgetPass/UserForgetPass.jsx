@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from '@mui/material';
 import React from 'react';
-import { boxStyleLogin } from '../../../../StyleConfig';
-import { openModalLogin } from '../reducer';
+import { boxStyleLogin } from '../../StyleConfig';
+import { openModalLogin } from '../UserManage/reducer';
 import { useDispatch } from 'react-redux';
 
 function UserForgetPass() {

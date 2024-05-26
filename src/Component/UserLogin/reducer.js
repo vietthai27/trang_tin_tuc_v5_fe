@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 
 const initialState = {
     userData: {
@@ -29,7 +28,7 @@ const userLoginSlice = createSlice({
             localStorage.setItem("User token", action.payload.data)
             state.loginState = true
         },
-        userLoginFail: (state,action) => {
+        userLoginFail: (state) => {
             state.loading = false
         }
     }

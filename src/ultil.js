@@ -1,3 +1,7 @@
 export const apiMenu = '/danhmuc'
 export const apiUser = '/user'
-export const hostRender = 'https://trangtintuc-v4-be.onrender.com'
+
+// Render hosting-----------------------------------------------
+//export const host = 'https://trangtintuc-v4-be.onrender.com'
+// Local hosting------------------------------------------------
+export const host = 'http://localhost:8080'

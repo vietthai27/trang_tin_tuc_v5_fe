@@ -1,8 +1,8 @@
 import { Box, Button, TextField } from '@mui/material';
 import React, { useEffect } from 'react';
-import { boxStyleLogin } from '../../../../StyleConfig';
+import { boxStyleLogin } from '../../StyleConfig';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModalLogin, openmodalForgetpass, openmodalSignup } from '../reducer';
+import { closeModalLogin, openmodalForgetpass, openmodalSignup } from '../UserManage/reducer';
 import { changePassword, changeUsername } from './reducer';
 import { toast } from 'react-toastify';
 import { getMenuDataAction } from './action';
@@ -19,7 +19,7 @@ function UserLogin() {
         if (loginState === true) {
             dispatch(closeModalLogin())
         }
-    },[loginState])
+    },[loginState, dispatch])
 
     const handleLogin = () => {
         if (userData.username === ""|| userData.username === null) {

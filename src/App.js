@@ -10,7 +10,6 @@ function App() {
 
   const loadingMenu = useSelector(state => state.menu.loading)
   const loadingLogin = useSelector(state => state.userLogin.loading)
-  console.log(loadingLogin);
 
   return (
     <div className="App">

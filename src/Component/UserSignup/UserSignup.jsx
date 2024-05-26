@@ -1,8 +1,8 @@
 import React from 'react';
-import { boxStyleLogin } from '../../../../StyleConfig';
+import { boxStyleLogin } from '../../StyleConfig';
 import { Box, Button, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux'
-import { openModalLogin } from '../reducer';
+import { openModalLogin } from '../UserManage/reducer';
 
 function UserSignup() {
 
