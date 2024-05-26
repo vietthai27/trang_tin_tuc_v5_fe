@@ -15,11 +15,11 @@ function UserManage() {
     const modalSignup = useSelector(state => state.userManage.modalSignup)
     const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
     const currentUsername = localStorage.getItem("Username")
-    const currentToken = localStorage.getItem("User token")
+    const loginState = useSelector(state => state.userLogin.loginState)
 
     return (
         <div className='user_manage'>
-            {currentToken === null && currentUsername === null ? (
+            {loginState === false ? (
                 <div className='user_login'>
                     <p>Chưa có tài khoản ? </p>
                     <Button

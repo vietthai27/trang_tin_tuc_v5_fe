@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
 const initialState = {
     userData: {
@@ -30,6 +31,9 @@ const userLoginSlice = createSlice({
         },
         userLoginFail: (state) => {
             state.loading = false
+        },
+        setLoginState: (state, action) => {
+            state.loginState = action.payload
         }
     }
 })
@@ -41,7 +45,8 @@ export const {
     changePassword,
     userLoginRequest,
     userLoginSuccess,
-    userLoginFail
+    userLoginFail,
+    setLoginState
 } = userLoginSlice.actions
 
 export default userLoginReducer
