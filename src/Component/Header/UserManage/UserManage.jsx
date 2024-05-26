@@ -3,55 +3,43 @@ import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserLogin from './UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModalSignUp, closeModalLogin, openModalLogin, closeModalForgetpass } from './action';
 import UserSignup from './UserSignup/UserSignup';
 import UserForgetPass from './UserForgetPass/UserForgetPass';
+import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
 
 function UserManage() {
 
     const dispatch = useDispatch()
 
-    const modalLogin = useSelector(state =>
-        state.userManageReducer.modalLogin
-    )
-
-    const modalSignup = useSelector(state =>
-        state.userManageReducer.modalSignup
-    )
-
-    const modalForgetpass = useSelector(state =>
-        state.userManageReducer.modalForgetpass
-    )
-
-    const handleOpenLogin = () => {
-        dispatch(openModalLogin)
-    }
-
-    const handleCloseLogin = () => {
-        dispatch(closeModalLogin)
-    }
-
-    const handleCloseSignup = () => {
-        dispatch(closeModalSignUp)
-    }
-
-    const handleCloseForgetpass = () => {
-        dispatch(closeModalForgetpass)
-    }
+    const modalLogin = useSelector(state => state.userManage.modalLogin)
+    const modalSignup = useSelector(state => state.userManage.modalSignup)
+    const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
+    const currentUsername = localStorage.getItem("Username")
+    const currentToken = localStorage.getItem("User token")
 
     return (
         <div className='user_manage'>
-            <p>Chưa có tài khoản ? </p>
-            <Button
-                onClick={() => handleOpenLogin()}
-                className='login-btn'
-                variant="contained"
-                startIcon={<AccountCircleIcon />}>
-                Đăng nhập
-            </Button>
+            {currentToken === '' && currentUsername === '' ? (
+                <div className='user_login'>
+                    <p>Chưa có tài khoản ? </p>
+                    <Button
+                        onClick={() => { dispatch(openModalLogin()) }}
+                        className='login-btn'
+                        variant="contained"
+                        startIcon={<AccountCircleIcon />}>
+                        Đăng nhập
+                    </Button>
+                </div>) : (<div style={{"justify-content": "end"}} className='user_login'>
+                    <Button 
+                        className='login-btn'
+                        variant="contained"
+                        startIcon={<AccountCircleIcon />}>
+                        Xin chào {currentUsername}
+                    </Button>
+                </div>)}
             <Modal
                 open={modalLogin}
-                onClose={() => handleCloseLogin()}
+                onClose={() => { dispatch(closeModalLogin()) }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -59,7 +47,7 @@ function UserManage() {
             </Modal>
             <Modal
                 open={modalSignup}
-                onClose={() => handleCloseSignup()}
+                onClose={() => { dispatch(closemodalSignup()) }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -67,7 +55,7 @@ function UserManage() {
             </Modal>
             <Modal
                 open={modalForgetpass}
-                onClose={() => handleCloseForgetpass()}
+                onClose={() => { dispatch(closemodalForgetpass()) }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >

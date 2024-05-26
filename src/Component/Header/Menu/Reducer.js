@@ -1,22 +1,30 @@
-import * as types from "./Constant";
+import { createSlice } from "@reduxjs/toolkit"
 
-const initalState = {
+const initialState = {
     danhMucBaiBao: [],
     loading: false,
-    error: null
+    error: null,
 }
 
-const menuReducer = (state = initalState, action) => {
-    switch (action.type) {
-        case types.GET_MENU_DATA:
-            return { ...state, loading: true }
-        case types.GET_MENU_DATA_SUCCESS: 
-            return { ...state, loading: false, danhMucBaiBao: action.payload.data }
-        case types.GET_MENU_DATA_FAIL:
-            return { ...state, loading: false, error: action.payload }
-        default:
-            return { ...state }
+const menuSlice = createSlice({
+    name: 'menu',
+    initialState,
+    reducers: {
+        getMenuData: (state) => {
+            state.loading = true
+        },
+        getMenuDataSuccess: (state, action) => {
+            state.loading = false
+            state.danhMucBaiBao = action.payload.data
+        },
+        getMenuDataFail: (state) => {
+            state.loading = false
+        }
     }
-}
+})
+
+const menuReducer = menuSlice.reducer
+
+export const { getMenuData, getMenuDataSuccess, getMenuDataFail } = menuSlice.actions
 
 export default menuReducer

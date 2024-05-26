@@ -1,19 +1,22 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import * as types from "./Constant";
-import { menuDataFetch } from "./Api";
-import { getMenuDataFail, getMenuDataSuccess } from "./Action";
+import { menuDataFetch } from "./api";
+
+import { toast } from "react-toastify";
+import { getMenuDataFail, getMenuDataSuccess } from "./reducer";
+
 
 function* workGetMenuData() {
     try {
         const menuData = yield call(menuDataFetch)
         yield put(getMenuDataSuccess(menuData))
     } catch (error) {
-        yield put(getMenuDataFail(error))
+        toast.error("Lỗi kết nối đến server !!!")
+        yield put(getMenuDataFail)
     }
 }
 
 function* menuSaga() {
-    yield takeLatest(types.GET_MENU_DATA, workGetMenuData)
+    yield takeLatest('menu/getMenuData', workGetMenuData)
 
 }
 

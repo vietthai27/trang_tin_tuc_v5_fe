@@ -1,8 +1,13 @@
 import { Box, Button, TextField } from '@mui/material';
 import React from 'react';
 import { boxStyleLogin } from '../../../../StyleConfig';
+import { openModalLogin } from '../reducer';
+import { useDispatch } from 'react-redux';
 
 function UserForgetPass() {
+
+    const dispatch = useDispatch()
+
     return (
         <Box sx={boxStyleLogin}>
             <h1>Quên mật khẩu</h1>
@@ -20,11 +25,12 @@ function UserForgetPass() {
                 variant="standard"
             //onChange={(e) => { userData.email = e.target.value }}
             />
-            <Button 
+            <Button
                 //onClick={() => { handelResetPass() }} 
                 className='button'
                 variant="contained"
             >Reset mật khẩu</Button>
+            <Button onClick={() => { dispatch(openModalLogin()) }}>Đăng nhập</Button>
         </Box>
     );
 }

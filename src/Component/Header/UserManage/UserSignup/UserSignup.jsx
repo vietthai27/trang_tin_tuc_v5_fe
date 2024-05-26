@@ -1,16 +1,13 @@
 import React from 'react';
 import { boxStyleLogin } from '../../../../StyleConfig';
 import { Box, Button, TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { openModalLogin } from '../action';
+import { useDispatch } from 'react-redux'
+import { openModalLogin } from '../reducer';
 
 function UserSignup() {
 
     const dispatch = useDispatch()
 
-    const handleOpenLogin = () => {
-        dispatch(openModalLogin)
-    }
     return (
         <Box sx={boxStyleLogin}>
             <h1>Đăng ký</h1>
@@ -48,7 +45,7 @@ function UserSignup() {
                 variant="contained"
             //onClick={() => { handelDangKy() }}
             >Đăng ký</Button>
-            Đã có tài khoản ? <Button onClick={() => handleOpenLogin()}>Đăng nhập</Button>
+            Đã có tài khoản ? <Button onClick={() => {dispatch(openModalLogin())}}>Đăng nhập</Button>
         </Box>
     );
 }

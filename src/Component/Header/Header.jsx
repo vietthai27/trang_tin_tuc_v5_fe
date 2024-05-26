@@ -1,8 +1,8 @@
 import React from 'react';
-import Logo from './Logo';
-import Menu from './Menu';
+import Logo from './Logo/Logo';
+import Menu from './Menu/Menu';
 import UserManage from './UserManage/UserManage';
-import DateTime from './DateTime';
+import DateTime from './DateTime/DateTime';
 
 function Header() {
     return (

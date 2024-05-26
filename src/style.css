@@ -28,8 +28,14 @@ a {
 .user_manage {
   width: 20%;
   display: flex;
+}
+
+.user_login {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
+  padding: 0 25px;
 }
 
 .date-time {
@@ -133,6 +139,7 @@ a {
   backdrop-filter: blur(17.5px);
   -webkit-backdrop-filter: blur(17.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 10000;
 }
 
 /* HTML: <div class="loader"></div> */

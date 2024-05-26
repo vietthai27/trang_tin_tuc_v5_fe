@@ -1,9 +1,6 @@
 import axios from "axios"
-import { apiUser, host } from "../../../../ultil"
+import { apiUser, hostRender } from "../../../../ultil"
 
-
-export const userLogin = async (userData) => {
-    try {
-        return await axios.post(host + apiUser + '/permit/login', userData)
-    } catch (e) { return e.response }
+export const userLoginFetch = async (userData) => {
+     return await axios.post(hostRender + apiUser + '/permit/login', userData)
 }

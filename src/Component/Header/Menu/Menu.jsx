@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMenuData } from './Action';
 import { Link } from 'react-router-dom';
+import { getMenuDataAction } from './action';
+
+
 
 function Menu() {
 
     const dispatch = useDispatch()
-    const { danhMucBaiBao } = useSelector((reduxData) => reduxData.menuReducer)
+    const danhMucBaiBao = useSelector(state => state.menu.danhMucBaiBao)
 
     useEffect(() => {
-        dispatch(getMenuData())
+        dispatch(getMenuDataAction())
     }, [dispatch])
 
     return (

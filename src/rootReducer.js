@@ -1,6 +1,12 @@
-import { combineReducers } from "redux";
-import menuReducer from "./Component/Header/Menu/Reducer";
-import userManageReducer from "./Component/Header/UserManage/reducer";
-import userReducer from "./Component/Header/UserManage/UserLogin/reducer";
 
-export const rootReducer = combineReducers({ menuReducer, userManageReducer, userReducer })
+import menuReducer from './Component/Header/Menu/reducer';
+import userLoginReducer from './Component/Header/UserManage/UserLogin/reducer';
+import userManageReducer from './Component/Header/UserManage/reducer';
+
+import { combineSlices } from "@reduxjs/toolkit";
+
+export const rootReducer = combineSlices({
+    userManage: userManageReducer,
+    menu: menuReducer,
+    userLogin: userLoginReducer
+})

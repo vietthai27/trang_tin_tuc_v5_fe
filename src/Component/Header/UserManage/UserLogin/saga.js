@@ -1,23 +1,22 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import * as types from "./constant";
-import { userLogin } from "./api";
-import { userLoginFail } from "./action";
+import { userLoginFetch } from "./api";
+import { userLoginFail, userLoginSuccess } from "./reducer";
 import { toast } from "react-toastify";
 
-function* workUserLogin(payload) {
-
-    const response = yield call(userLogin(payload))
-    if (response.status === 500) {
-        toast.warn(response.data.message)
-        yield put(userLoginFail(response.data.message))
+function* workUserLogin({ payload }) {
+    try {
+        const response = yield call(userLoginFetch, payload)
+        yield put(userLoginSuccess(response))
+        toast.success("Đăng nhập thành công")
+    } catch (e) {
+        toast.warn(e.response.data.message);
+        yield put(userLoginFail())
     }
+}
 
+function* userLoginSaga() {
+    yield takeLatest('userLogin/userLoginRequest', workUserLogin)
 
 }
 
-function* userSaga() {
-    yield takeLatest(types.USER_LOGIN_REQUEST, workUserLogin)
-
-}
-
-export default userSaga
+export default userLoginSaga

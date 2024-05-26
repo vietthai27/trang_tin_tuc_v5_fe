@@ -1,6 +1,6 @@
-import * as types from "./constant";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initalState = {
+const initialState = {
     modalLogin: false,
     modalSignup: false,
     modalForgetpass: false,
@@ -11,46 +11,55 @@ const initalState = {
         email: '',
         passwordRetype: ''
     }
-
 }
 
-const userManageReducer = (state = initalState, action) => {
-    switch (action.type) {
-        case types.OPEN_MODAL_LOGIN:
-            return { modalLogin: true }
-        case types.CLOSE_MODAL_LOGIN:
-            return { modalLogin: false }
-        case types.OPEN_MODAL_SIGNUP:
-            return { modalSignup: true }
-        case types.CLOSE_MODAL_SIGNUP:
-            return { modalSignup: false }
-        case types.OPEN_MODAL_FORGETPASS:
-            return { modalForgetpass: true }
-        case types.CLOSE_MODAL_FORGETPASS:
-            return { modalForgetpass: false }
-        case types.OPEN_MODAL_RESETPASS:
-            return { modalResetpass: true }
-        case types.CLOSE_MODAL_RESETPASS:
-            return { modalResetpass: false }
-        case types.CHANGE_USERNAME:
-            return {
-                ...state, userData: { ...state.userData, username: action.payload }
-            }
-        case types.CHANGE_PASSWORD:
-            return {
-                ...state, userData: { ...state.userData, password: action.payload }
-            }
-        case types.CHANGE_EMAIL:
-            return {
-                ...state, userData: { ...state.userData, email: action.payload }
-            }
-        case types.CHANGE_PASSWORD_RETYPE:
-            return {
-                ...state, userData: { ...state.userData, passwordRetype: action.payload }
-            }
-        default:
-            return { ...state }
+const userManageSlice = createSlice({
+    name: 'userManage',
+    initialState,
+    reducers: {
+        openModalLogin: (state) => {
+            state.modalSignup = false
+            state.modalForgetpass = false
+            state.modalLogin = true       
+        },
+        closeModalLogin: (state) => {
+            state.modalLogin = false
+        },
+        openmodalSignup: (state) => {
+            state.modalLogin = false
+            state.modalSignup = true
+        },
+        closemodalSignup: (state) => {
+            state.modalSignup = false
+        },
+        openmodalForgetpass: (state) => {
+            state.modalLogin = false
+            state.modalForgetpass = true
+        },
+        closemodalForgetpass: (state) => {
+            state.modalForgetpass = false
+        },
+        openmodalResetpass: (state) => {
+            state.modalResetpass = true
+        },
+        closemodalResetpass: (state) => {
+            state.modalResetpass = false
+        },
+
     }
-}
+})
+
+const userManageReducer = userManageSlice.reducer
+
+export const {
+    openModalLogin,
+    closeModalLogin,
+    openmodalSignup,
+    closemodalSignup,
+    openmodalForgetpass,
+    closemodalForgetpass,
+    openmodalResetpass,
+    closemodalResetpass,
+} = userManageSlice.actions
 
 export default userManageReducer

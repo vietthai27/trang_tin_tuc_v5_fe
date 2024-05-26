@@ -1,6 +1,6 @@
 import axios from "axios"
-import { apiMenu, host } from "../../../ultil"
+import { apiMenu, hostRender } from "../../../ultil"
 
 export const menuDataFetch = async () => {
-    return await axios.get(host + apiMenu + '/get/getAllDanhMucBaiBao')
+    return await axios.get(hostRender + apiMenu + '/get/getAllDanhMucBaiBao')
 }

@@ -1,23 +1,48 @@
-import * as types from "./constant";
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
-const initalState = {
-    token: "",
-    loginError: null
+const initialState = {
+    userData: {
+        username: '',
+        password: '',
+    },
+    loading:false,
+    loginState:false
 }
 
-const userReducer = (state = initalState, action) => {
-    switch (action.type) {
-        case types.USER_LOGIN_REQUEST:
-            return { loading: true }
-        case types.USER_LOGIN_SUCCESS:
-            console.log("sdf");
-            break
-        case types.USER_LOGIN_FAIL:
-            console.log(action.payload);
-            return null
-        default:
-            return { ...state }
+const userLoginSlice = createSlice({
+    name: 'userLogin',
+    initialState,
+    reducers: {
+        changeUsername: (state, action) => {
+            state.userData.username = action.payload
+        },
+        changePassword: (state, action) => {
+            state.userData.password = action.payload
+        },
+        userLoginRequest: (state) => {
+            state.loading = true
+        },
+        userLoginSuccess: (state, action) => {
+            state.loading = false
+            localStorage.setItem("Username", state.userData.username)
+            localStorage.setItem("User token", action.payload.data)
+            state.loginState = true
+        },
+        userLoginFail: (state,action) => {
+            state.loading = false
+        }
     }
-}
+})
 
-export default userReducer
+const userLoginReducer = userLoginSlice.reducer
+
+export const {
+    changeUsername,
+    changePassword,
+    userLoginRequest,
+    userLoginSuccess,
+    userLoginFail
+} = userLoginSlice.actions
+
+export default userLoginReducer

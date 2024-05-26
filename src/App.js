@@ -1,14 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import routes from './Routes';
 import '../src/style.css'
-import Loading from './Component/Loading';
+import Loading from './Component/Loading/Loading';
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  const { loading } = useSelector((reduxData) => reduxData.menuReducer)
+  const loadingMenu = useSelector(state => state.menu.loading)
+  const loadingLogin = useSelector(state => state.userLogin.loading)
+  console.log(loadingLogin);
 
   return (
     <div className="App">
@@ -25,7 +27,8 @@ function App() {
         }
       </Routes>
       {
-        loading === true ? (<Loading />) : (null)
+        loadingMenu === true || loadingLogin === true ? 
+        (<Loading />) : (null)
       }
       <ToastContainer />
     </div>
