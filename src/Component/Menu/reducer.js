@@ -2,24 +2,17 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     danhMucBaiBao: [],
-    loading: false,
-    error: null,
 }
 
 const menuSlice = createSlice({
     name: 'menu',
     initialState,
     reducers: {
-        getMenuData: (state) => {
-            state.loading = true
-        },
+        getMenuData: (state) => { },
         getMenuDataSuccess: (state, action) => {
-            state.loading = false
             state.danhMucBaiBao = action.payload.data
         },
-        getMenuDataFail: (state) => {
-            state.loading = false
-        }
+        getMenuDataFail: (state) => { }
     }
 })
 

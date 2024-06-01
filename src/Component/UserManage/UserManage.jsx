@@ -1,5 +1,5 @@
 import { Button, Modal } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserLogin from '../UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,21 +7,13 @@ import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
 import UserManageList from '../UserManageList/UserManageList';
-import { setLoginState } from '../UserLogin/reducer';
 
 function UserManage() {
-
 
     const modalLogin = useSelector(state => state.userManage.modalLogin)
     const modalSignup = useSelector(state => state.userManage.modalSignup)
     const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
-    const loginState = useSelector(state => state.userLogin.loginState)
-
-    useEffect(() => {
-        if (localStorage.getItem("User token") === null) {
-            dispatch(setLoginState(false))
-        } else dispatch(setLoginState(true))
-    },[loginState])
+    const loginState = useSelector(state => state.app.loginState)
 
     const dispatch = useDispatch()
 
@@ -29,7 +21,7 @@ function UserManage() {
         <div className='user_manage'>
             {!loginState ? (
                 <div className='user_login'>
-                    <p>Chưa có tài khoản ? </p>
+                    {/* <p>Chưa có tài khoản ? </p> */}
                     <Button
                         onClick={() => { dispatch(openModalLogin()) }}
                         className='login-btn'

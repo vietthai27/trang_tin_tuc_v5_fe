@@ -12,8 +12,8 @@ import ListIcon from '@mui/icons-material/List';
 import PasswordIcon from '@mui/icons-material/Password';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { toast } from 'react-toastify';
-import { setLoginState } from '../UserLogin/reducer';
 import { useDispatch } from 'react-redux';
+import { setLoginState } from '../../rootReducer';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -75,8 +75,8 @@ function UserManageList() {
           localStorage.removeItem("Username")
           localStorage.removeItem("User token")
           localStorage.removeItem("Is login")
-          dispatch(setLoginState(false))
           toast.success("Đăng xuất thành công");
+          dispatch(setLoginState(false))
           handleClose()
     }
 

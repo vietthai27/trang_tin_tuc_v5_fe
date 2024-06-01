@@ -5,8 +5,6 @@ const initialState = {
         username: '',
         password: '',
     },
-    loading:false,
-    loginState:false
 }
 
 const userLoginSlice = createSlice({
@@ -20,21 +18,13 @@ const userLoginSlice = createSlice({
             state.userData.password = action.payload
         },
         userLoginRequest: (state) => {
-            state.loading = true
         },
         userLoginSuccess: (state, action) => {
-            state.loading = false
             localStorage.setItem("Username", state.userData.username)
             localStorage.setItem("User token", action.payload.data)
-            localStorage.setItem("Is login", true)
-            state.loginState = true
         },
         userLoginFail: (state) => {
-            state.loading = false
         },
-        setLoginState: (state, action) => {
-            state.loginState = action.payload
-        }
     }
 })
 
@@ -45,8 +35,7 @@ export const {
     changePassword,
     userLoginRequest,
     userLoginSuccess,
-    userLoginFail,
-    setLoginState
+    userLoginFail
 } = userLoginSlice.actions
 
 export default userLoginReducer
