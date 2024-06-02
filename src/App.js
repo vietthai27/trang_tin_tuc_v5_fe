@@ -4,14 +4,16 @@ import '../src/style.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoginState } from './rootReducer';
 import { checkTokenAction } from './ultil';
+import Loading from './Component/Loading/Loading';
+
 function App() {
 
   const dispatch = useDispatch()
 
-  //const loading = useSelector(state => state.app.loginState)
+  const loading = useSelector(state => state.app.loading);
 
   useEffect(() => {
     const currentSession = localStorage.getItem("User token")
@@ -20,7 +22,7 @@ function App() {
     } else {
       dispatch(checkTokenAction(currentSession))
     }
-  })
+  }, [])
 
   return (
     <div className="App">
@@ -37,9 +39,9 @@ function App() {
         }
       </Routes>
       <ToastContainer />
-      {/* {
-        loading === true ? (<Loading/>) : null 
-      } */}
+      {
+        loading === true ? (<Loading />) : null
+      }
     </div>
   );
 }

@@ -3,6 +3,7 @@ import menuReducer from './Component/Menu/reducer';
 import userLoginReducer from './Component/UserLogin/reducer';
 import userManageReducer from './Component/UserManage/reducer';
 import { combineSlices, createSlice } from "@reduxjs/toolkit";
+import userSignupReducer from './Component/UserSignup/reducer';
 
 const initialState = {
     loginState: false,
@@ -14,10 +15,9 @@ const appSlice = createSlice({
     initialState,
     reducers: {
         checkTokenRequest: (state, action) => {
-            state.loading = true
+          
         },
         checkTokenSuccess: (state, action) => {
-            state.loading = false
             state.loginState = true
         },
         checkTokenFail: (state, action) => {
@@ -26,7 +26,6 @@ const appSlice = createSlice({
             }
             localStorage.removeItem("Username")
             localStorage.removeItem("User token")
-            state.loading = false
         },
         setLoginState: (state, action) => {
             state.loginState = action.payload
@@ -49,5 +48,6 @@ export const rootReducer = combineSlices({
     app: appReducer,
     userManage: userManageReducer,
     menu: menuReducer,
-    userLogin: userLoginReducer
+    userLogin: userLoginReducer,
+    userSignup: userSignupReducer
 })

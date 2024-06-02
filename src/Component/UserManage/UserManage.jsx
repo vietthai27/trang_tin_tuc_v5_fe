@@ -7,6 +7,8 @@ import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
 import UserManageList from '../UserManageList/UserManageList';
+import UserSignupModal from '../UserSignup/UserSignupModal';
+import { setUserSignupValidate } from '../UserSignup/reducer';
 
 function UserManage() {
 
@@ -14,6 +16,7 @@ function UserManage() {
     const modalSignup = useSelector(state => state.userManage.modalSignup)
     const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
     const loginState = useSelector(state => state.app.loginState)
+    const userSignupValidate = useSelector(state => state.userSignup.userSignupValidate)
 
     const dispatch = useDispatch()
 
@@ -55,6 +58,14 @@ function UserManage() {
                 aria-describedby="modal-modal-description"
             >
                 <UserForgetPass />
+            </Modal>
+            <Modal
+                open={userSignupValidate}
+                //onClose={() => { dispatch(setUserSignupValidate(false)) }}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <UserSignupModal/>
             </Modal>
         </div>
     );

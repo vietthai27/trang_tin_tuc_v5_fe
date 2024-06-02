@@ -3,6 +3,7 @@ import menuSaga from "./Component/Menu/saga";
 import userLoginSaga from "./Component/UserLogin/saga";
 import { checkTokenFail, checkTokenSuccess } from "./rootReducer";
 import { checkTokenApi } from "./ultil";
+import userSignupSaga from "./Component/UserSignup/saga";
 
 function* workCheckToken({ payload }) {
     try {
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     yield all([
         appSaga(),
         menuSaga(),
-        userLoginSaga()
+        userLoginSaga(),
+        userSignupSaga()
     ]);
 }

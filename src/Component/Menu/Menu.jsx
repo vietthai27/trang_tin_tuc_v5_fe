@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 import { getMenuDataAction } from './action';
 
 
-
 function Menu() {
 
     const dispatch = useDispatch()
     const danhMucBaiBao = useSelector(state => state.menu.danhMucBaiBao)
 
     useEffect(() => {
+        
         dispatch(getMenuDataAction())
+        
     }, [dispatch])
 
     return (
