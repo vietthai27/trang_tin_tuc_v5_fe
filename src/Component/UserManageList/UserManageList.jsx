@@ -14,6 +14,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setLoginState } from '../../rootReducer';
+import { openmodalResetpass } from '../UserManage/reducer';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -65,19 +66,24 @@ function UserManageList() {
     };
     const handleClose = () => {
         setAnchorEl(null);
+
     };
+
+    const handelChangePass = () => {
+        handleClose()
+        dispatch(openmodalResetpass())
+    }
 
     const dispatch = useDispatch()
 
     const currentUsername = localStorage.getItem("Username")
 
     const handelLogout = () => {
-          localStorage.removeItem("Username")
-          localStorage.removeItem("User token")
-          localStorage.removeItem("Is login")
-          toast.success("Đăng xuất thành công");
-          dispatch(setLoginState(false))
-          handleClose()
+        localStorage.removeItem("Username")
+        localStorage.removeItem("User token")
+        toast.success("Đăng xuất thành công");
+        dispatch(setLoginState(false))
+        handleClose()
     }
 
     return (
@@ -116,7 +122,7 @@ function UserManageList() {
                     Quản lý danh mục bài báo
                 </MenuItem>
                 <Divider sx={{ my: 0.5 }} />
-                <MenuItem onClick={handleClose} disableRipple>
+                <MenuItem onClick={() => handelChangePass()} disableRipple>
                     <PasswordIcon />
                     Đổi mật khẩu
                 </MenuItem>

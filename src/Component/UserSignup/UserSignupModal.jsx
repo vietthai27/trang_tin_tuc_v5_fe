@@ -1,7 +1,7 @@
 import React from 'react';
 import { boxStyleLogin } from '../../StyleConfig';
 import { Box, Button, TextField } from '@mui/material';
-import { changeValidateCodeSignup } from './reducer';
+import { changeValidateCodeSignup, setUserSignupValidate } from './reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSignupAction } from './action';
 import { toast } from 'react-toastify';
@@ -33,6 +33,13 @@ const handleSignup = () => {
                 variant="contained"
                onClick={() => { handleSignup() }}
             >Gửi mã</Button>
+            <Button
+                style={{ margin: "0 20px" }}
+                className='button'
+                variant="contained"
+                color='error'
+               onClick={() => { dispatch(setUserSignupValidate(false)) }}
+            >Hủy</Button>
         </Box>
     );
 }

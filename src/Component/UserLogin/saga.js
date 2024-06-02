@@ -15,6 +15,7 @@ function* workUserLogin({ payload }) {
         yield put(closeModalLogin())
         toast.success("Đăng nhập thành công")
     } catch (e) {
+        yield put(setLoading(false))
         toast.warn(e.response.data.message);
         yield put(userLoginFail())
     }

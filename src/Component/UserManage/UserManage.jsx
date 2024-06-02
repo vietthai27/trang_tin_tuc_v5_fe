@@ -5,16 +5,16 @@ import UserLogin from '../UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
-import { closeModalLogin, closemodalForgetpass, closemodalSignup, openModalLogin } from './reducer';
+import { closeModalLogin, closemodalForgetpass, closemodalResetpass, closemodalSignup, openModalLogin } from './reducer';
 import UserManageList from '../UserManageList/UserManageList';
-import UserSignupModal from '../UserSignup/UserSignupModal';
-import { setUserSignupValidate } from '../UserSignup/reducer';
+import UserSignupModal from '../UserSignup/UserSignupModal';import UserResetPass from '../UserForgetPass/UserResetPass';
 
 function UserManage() {
 
     const modalLogin = useSelector(state => state.userManage.modalLogin)
     const modalSignup = useSelector(state => state.userManage.modalSignup)
     const modalForgetpass = useSelector(state => state.userManage.modalForgetpass)
+    const modalResetpass = useSelector(state => state.userManage.modalResetpass)
     const loginState = useSelector(state => state.app.loginState)
     const userSignupValidate = useSelector(state => state.userSignup.userSignupValidate)
 
@@ -65,7 +65,15 @@ function UserManage() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <UserSignupModal/>
+                <UserSignupModal />
+            </Modal>
+            <Modal
+                open={modalResetpass}
+                onClose={() => { dispatch(closemodalResetpass()) }}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <UserResetPass />
             </Modal>
         </div>
     );
