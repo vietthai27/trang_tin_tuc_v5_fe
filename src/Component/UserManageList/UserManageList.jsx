@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setLoginState } from '../../rootReducer';
 import { openmodalResetpass } from '../UserManage/reducer';
+import { useNavigate } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -61,6 +62,13 @@ function UserManageList() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate()
+
+    const handleOpenUserList = () => {
+        setAnchorEl(null);
+        navigate("/userList")
+    };
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -109,7 +117,7 @@ function UserManageList() {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose} disableRipple>
+                <MenuItem onClick={handleOpenUserList} disableRipple>
                     <SupervisedUserCircleIcon />
                     Quản lý người dùng
                 </MenuItem>

@@ -5,6 +5,7 @@ import userManageReducer from './Component/UserManage/reducer';
 import { combineSlices, createSlice } from "@reduxjs/toolkit";
 import userSignupReducer from './Component/UserSignup/reducer';
 import { userForgetPassReducer } from './Component/UserForgetPass/reducer';
+import userListReducer from './Pages/UserListPage/redux';
 
 const initialState = {
     loginState: false,
@@ -16,7 +17,7 @@ const appSlice = createSlice({
     initialState,
     reducers: {
         checkTokenRequest: (state, action) => {
-          
+
         },
         checkTokenSuccess: (state, action) => {
             state.loginState = true
@@ -51,5 +52,6 @@ export const rootReducer = combineSlices({
     menu: menuReducer,
     userLogin: userLoginReducer,
     userSignup: userSignupReducer,
-    userForgetPass: userForgetPassReducer
+    userForgetPass: userForgetPassReducer,
+    userList: userListReducer
 })

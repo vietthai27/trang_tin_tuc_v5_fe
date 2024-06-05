@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoginState } from './rootReducer';
 import { checkTokenAction } from './ultil';
 import Loading from './Component/Loading/Loading';
+import Header from './Component/Header/Header';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       <Routes >
         {
           routes.map((element, index) => {

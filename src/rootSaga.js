@@ -5,6 +5,7 @@ import { checkTokenFail, checkTokenSuccess } from "./rootReducer";
 import { checkTokenApi } from "./ultil";
 import userSignupSaga from "./Component/UserSignup/saga";
 import userChangePassSaga from "./Component/UserForgetPass/saga";
+import userListSaga from "./Pages/UserListPage/saga";
 
 function* workCheckToken({ payload }) {
     try {
@@ -26,6 +27,7 @@ export default function* rootSaga() {
         menuSaga(),
         userLoginSaga(),
         userSignupSaga(),
-        userChangePassSaga()
+        userChangePassSaga(),
+        userListSaga()
     ]);
 }
