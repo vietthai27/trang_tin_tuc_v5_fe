@@ -1,8 +1,14 @@
 import axios from "axios"
 import { apiUser, host } from "../../ultil"
 
-export const getAllUserApi = async (params) => {
-    return axios.get(host + apiUser + `/auth/getAllUser?pageSize=${params.pageSize}&pageNum=${params.pageNum}`,
+export const deleteUserApi = async (params) => {
+    return axios.delete(host + apiUser + `/auth/deleteUserById/${params}`,
+        { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
+    )
+}
+
+export const searchUserApi = async (params) => {
+    return axios.get(host + apiUser + `/auth/searchAllUser?search=${params.search}&pageSize=${params.pageSize}&pageNum=${params.pageNum - 1}`,
         { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
     )
 }

@@ -17,15 +17,16 @@ const appSlice = createSlice({
     initialState,
     reducers: {
         checkTokenRequest: (state, action) => {
-
+            state.loading = true
         },
         checkTokenSuccess: (state, action) => {
+            state.loading = false
             state.loginState = true
         },
         checkTokenFail: (state, action) => {
-            if (action.payload.response.status === 403) {
-                toast.warning(action.payload.response.data.message)
-            }
+            state.loading = false
+
+
             localStorage.removeItem("Username")
             localStorage.removeItem("User token")
         },

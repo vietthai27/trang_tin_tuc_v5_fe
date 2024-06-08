@@ -50,6 +50,15 @@ a {
   gap: 10px;
 }
 
+.user-list-page {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
 
 
 /* ---------------------Menu-Start--------------------------------- */
