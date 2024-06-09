@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify';
+
 import menuReducer from './Component/Menu/reducer';
 import userLoginReducer from './Component/UserLogin/reducer';
 import userManageReducer from './Component/UserManage/reducer';
@@ -17,16 +17,11 @@ const appSlice = createSlice({
     initialState,
     reducers: {
         checkTokenRequest: (state, action) => {
-            state.loading = true
         },
         checkTokenSuccess: (state, action) => {
-            state.loading = false
             state.loginState = true
         },
         checkTokenFail: (state, action) => {
-            state.loading = false
-
-
             localStorage.removeItem("Username")
             localStorage.removeItem("User token")
         },

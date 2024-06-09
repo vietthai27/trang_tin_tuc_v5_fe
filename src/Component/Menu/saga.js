@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { toast } from "react-toastify";
 import { getMenuDataFail, getMenuDataSuccess } from "./reducer";
 import { menuDataApi } from "./api";
 import { setLoading } from "../../rootReducer";
@@ -8,11 +7,10 @@ import { setLoading } from "../../rootReducer";
 function* workGetMenuData() {
     try {
         yield put(setLoading(true))
-        const menuData = yield call(menuDataApi)
-        yield put(setLoading(false))
-        yield put(getMenuDataSuccess(menuData))    
+        const menuData = yield call(menuDataApi)   
+        yield put(getMenuDataSuccess(menuData))  
+        yield put(setLoading(false))  
     } catch (error) {
-        toast.error("Lỗi kết nối đến server !!!")
         yield put(getMenuDataFail)
     }
 }

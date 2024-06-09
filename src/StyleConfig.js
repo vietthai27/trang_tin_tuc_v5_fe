@@ -1,24 +1,24 @@
 import { InputBase, TableCell, TableRow, alpha, styled, tableCellClasses } from "@mui/material";
 
 export const boxStyleLogin = {
-    width:"250px",
-    margin: "10% auto",
-    backgroundColor: "white",
-    boxShadow: 10,
-    display: "flex",
-    flexDirection: "column",
-    height: "400px",
-    justifyContent: "space-evenly",
-    padding: "1rem 3rem",
-    borderRadius: "15px"
+  width: "250px",
+  margin: "10% auto",
+  backgroundColor: "white",
+  boxShadow: 10,
+  display: "flex",
+  flexDirection: "column",
+  height: "400px",
+  justifyContent: "space-evenly",
+  padding: "1rem 3rem",
+  borderRadius: "15px"
 }
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
-    fontSize:17,
-    fontWeight:700
+    fontSize: 17,
+    fontWeight: 700
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -74,4 +74,11 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-  
+
+export const menuButton = {
+  height: "100%",
+  fontSize: "18px",
+  fontWeight: "700",
+  color: "black"
+}
+

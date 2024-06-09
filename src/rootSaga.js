@@ -9,13 +9,10 @@ import userListSaga from "./Pages/UserListPage/saga";
 
 function* workCheckToken({ payload }) {
     try {
-
         const tokenState = yield call(checkTokenApi, payload)
         yield put(checkTokenSuccess(tokenState))
     } catch (error) {
-
         yield put(checkTokenFail(error))
-
     }
 }
 

@@ -106,7 +106,7 @@ function UserManageList() {
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
                 startIcon={<AccountCircleIcon />}>
-                Xin chào {currentUsername}
+                <p className='greeting'>Xin chào {currentUsername}</p>
             </Button>
             <StyledMenu
                 id="demo-customized-menu"
