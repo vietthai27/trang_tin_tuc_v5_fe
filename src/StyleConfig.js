@@ -75,10 +75,4 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const menuButton = {
-  height: "100%",
-  fontSize: "18px",
-  fontWeight: "700",
-  color: "black"
-}
 
