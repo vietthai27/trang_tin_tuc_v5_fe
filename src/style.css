@@ -20,6 +20,10 @@ a {
   border-bottom: 2px solid aquamarine;
 }
 
+.menu-mobile {
+  display: none;
+}
+
 .page-logo {
   width: 170px;
   padding: 0 20px;
@@ -74,71 +78,64 @@ a {
   height: 100%;
 }
 
-.menu-item {
+.menu-desktop-item {
   height: 100%;
   color: #000 !important;
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-.menu-item-child {
-  width: 200px;
-  font-size: 16px !important;
-  padding: 10px !important;
+.menu-mobile-item-container {
+  padding: 10px;
+
 }
 
-.menu-mobile {
-  display: none;
+.menu-mobile-item-child-container {
+  padding: 10px;
+  border-bottom: 1px solid aquamarine;
 }
 
-.menu-mobile-icon {
-  display: none !important;
+.menu-mobile-item {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  display: block;
+
 }
 
-/* ---------------------Mobile-Start--------------------------------- */
+.menu-mobile-item-child {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
 
-@media only screen and (max-width: 600px) {
+}
+
+@media only screen and (max-width:1100px) {
+  .header {
+    flex-wrap: wrap;
+  }
 
   .page-logo {
-    padding: 0 10px;
-  }
-  
-  .user_login {
-    padding: 0 10px;
-  }
-
-  .greeting {
-    display: none;
-  }
-
-  .menu-mobile {
-    top: 70px;
-    position: fixed;
-    flex-direction: column;
-    margin: 0;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    box-shadow: 0px 0px 10px 0px grey;
-    border-radius: 10px;
-    width: 50%;
-    z-index: 100;
-    background-color: white;
-    left: 25%;
+    width: 50% !important;
+    padding: 0 25% !important;
+    object-fit: none;
+    height: 50px;
   }
 
   .menu-desktop {
-    display: none;
+    display: none !important;
   }
 
-  .menu-mobile-icon {
-    display: block !important;
+  .menu-mobile {
+    display: block;
+    padding: 10px;
   }
 
+  .user_login {
+    padding: 5px 10px !important;
+  }
 }
-
-/* ---------------------Mobile-Start--------------------------------- */
 
 /* ---------------------Loading-Start--------------------------------- */
 .loading {

@@ -8,7 +8,6 @@ function Header() {
         <div className='header'>
             <Logo />
             <Menu />
-            {/* <DateTime/> */}
             <UserManage />
         </div>
     );
