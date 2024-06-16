@@ -8,8 +8,6 @@ import { toast } from 'react-toastify';
 import { userLoginAction } from './action';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-
-
 function UserLogin() {
 
     const dispatch = useDispatch()
@@ -44,7 +42,7 @@ function UserLogin() {
                 type={showPassword ? 'text' : 'password'}
                 variant="standard"
                 onChange={(e) => { dispatch(changePassword(e.target.value)) }}
-                InputProps={{ // <-- This is where the toggle button is added.
+                InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
                         <IconButton

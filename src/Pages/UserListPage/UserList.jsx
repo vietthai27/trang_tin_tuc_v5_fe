@@ -55,7 +55,7 @@ function UserList() {
                     <SearchIcon />
                 </IconButton>
             </Paper>
-            <TableContainer sx={{ maxWidth: "700px" }} component={Paper}>
+            <TableContainer sx={{ maxWidth: "700px", height:"378px" }} component={Paper}>
                 <Table aria-label="customized table">
                     <TableHead>
                         <TableRow>
@@ -108,7 +108,6 @@ function UserList() {
                         ))}
                     </TableBody>
                 </Table>
-
             </TableContainer>
             <Stack spacing={2}>
                 <Pagination

@@ -9,38 +9,48 @@ import userListReducer from './Pages/UserListPage/redux';
 
 const initialState = {
     loginState: false,
-    loading: false
+    loading: false,
+    username: '',
+    userRoles: []
 }
 
 const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        checkTokenRequest: (state, action) => {
-        },
-        checkTokenSuccess: (state, action) => {
-            state.loginState = true
-        },
-        checkTokenFail: (state, action) => {
-            localStorage.removeItem("Username")
-            localStorage.removeItem("User token")
+        setUsername: (state, action) => {
+            state.username = action.payload
         },
         setLoginState: (state, action) => {
             state.loginState = action.payload
         },
         setLoading: (state, action) => {
             state.loading = action.payload
-        }
+        },
+        checkUserSessionRequest:( state, action) => {
+        },
+        checkUserSessionSuccess:( state, action) => {
+            state.loginState = true
+            state.username = action.payload.username
+            state.userRoles = action.payload.roles
+        },
+        checkUserSessionFail:( state, action) => {
+        },
+        
     }
 })
 
 const appReducer = appSlice.reducer
 
-export const { checkTokenRequest,
-    checkTokenSuccess,
-    checkTokenFail,
+export const {
+    setUsername,
     setLoginState,
-    setLoading } = appSlice.actions
+    setLoading,
+    checkUserSessionFail,
+    checkUserSessionRequest,
+    checkUserSessionSuccess
+
+} = appSlice.actions
 
 export const rootReducer = combineSlices({
     app: appReducer,

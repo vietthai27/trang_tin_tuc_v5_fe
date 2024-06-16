@@ -8,8 +8,8 @@ export const deleteUserApi = async (params) => {
 }
 
 export const searchUserApi = async (params) => {
-    return axios.get(host + apiUser + `/auth/searchAllUser?search=${params.search}&pageSize=${params.pageSize}&pageNum=${params.pageNum - 1}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
+    return axios.get(host + apiUser + `/auth/searchUser?search=${params.search}&pageSize=${params.pageSize}&pageNum=${params.pageNum - 1}`,
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
 }
 

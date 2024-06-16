@@ -20,8 +20,7 @@ const userLoginSlice = createSlice({
         userLoginRequest: (state) => {
         },
         userLoginSuccess: (state, action) => {
-            localStorage.setItem("Username", action.payload.data.username)
-            localStorage.setItem("User token", action.payload.data.jwttoken)
+            localStorage.setItem("token", action.payload.data)
         },
         userLoginFail: (state) => {
         },

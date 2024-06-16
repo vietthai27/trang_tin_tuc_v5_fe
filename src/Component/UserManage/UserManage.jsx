@@ -24,7 +24,6 @@ function UserManage() {
         <div className='user_manage'>
             {!loginState ? (
                 <div className='user_login'>
-                    {/* <p>Chưa có tài khoản ? </p> */}
                     <Button
                         onClick={() => { dispatch(openModalLogin()) }}
                         className='login-btn'
@@ -61,7 +60,6 @@ function UserManage() {
             </Modal>
             <Modal
                 open={userSignupValidate}
-                //onClose={() => { dispatch(setUserSignupValidate(false)) }}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >

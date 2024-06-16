@@ -4,24 +4,29 @@
   font-family: monospace !important;
 }
 
-a {
-  text-decoration: none;
+.app-header {
+  position: absolute;
+  top: 0;
+  height: 70px;
+  width: 100%;
+
 }
 
-.home_page-container {
-  position: absolute;
+.app-body {
+  position: fixed;
+  top: 72px;
+  height: 100%;
   width: 100%;
+  overflow: scroll;
 }
 
 .header {
+  height: 70px;
+  background-color: white;
   justify-content: flex-start;
   width: 100%;
   display: flex;
   border-bottom: 2px solid aquamarine;
-}
-
-.menu-mobile {
-  display: none;
 }
 
 .page-logo {
@@ -43,19 +48,8 @@ a {
   padding: 0 25px;
 }
 
-.date-time {
-  margin: 15px;
-  border-left: 2px solid;
-  border-right: 2px solid;
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
 .user-list-page {
-  margin: 20px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,12 +58,6 @@ a {
 }
 
 .menu-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-desktop {
   margin: 0 20px;
   align-items: center;
   display: flex;
@@ -78,63 +66,18 @@ a {
   height: 100%;
 }
 
-.menu-desktop-item {
+.menu-item {
   height: 100%;
   color: #000 !important;
   font-size: 18px !important;
   font-weight: 700 !important;
 }
 
-.menu-mobile-item-container {
-  padding: 10px;
-
-}
-
-.menu-mobile-item-child-container {
-  padding: 10px;
-  border-bottom: 1px solid aquamarine;
-}
-
-.menu-mobile-item {
-  padding: 20px;
-  font-size: 20px;
-  font-weight: 700;
-  display: block;
-
-}
-
-.menu-mobile-item-child {
-  padding: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  display: block;
-
-}
-
-@media only screen and (max-width:1100px) {
-  .header {
-    flex-wrap: wrap;
-  }
-
-  .page-logo {
-    width: 50% !important;
-    padding: 0 25% !important;
-    object-fit: none;
-    height: 50px;
-  }
-
-  .menu-desktop {
-    display: none !important;
-  }
-
-  .menu-mobile {
-    display: block;
-    padding: 10px;
-  }
-
-  .user_login {
-    padding: 5px 10px !important;
-  }
+.menu-item-child {
+  width: 150px;
+  padding: 15px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
 }
 
 /* ---------------------Loading-Start--------------------------------- */

@@ -12,7 +12,7 @@ import ListIcon from '@mui/icons-material/List';
 import PasswordIcon from '@mui/icons-material/Password';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoginState } from '../../rootReducer';
 import { openmodalResetpass } from '../UserManage/reducer';
 import { useNavigate } from 'react-router-dom';
@@ -84,11 +84,10 @@ function UserManageList() {
 
     const dispatch = useDispatch()
 
-    const currentUsername = localStorage.getItem("Username")
+    const currentUsername = useSelector(state => state.app.username)
 
     const handelLogout = () => {
-        localStorage.removeItem("Username")
-        localStorage.removeItem("User token")
+        localStorage.removeItem("token")
         toast.success("Đăng xuất thành công");
         dispatch(setLoginState(false))
         handleClose()

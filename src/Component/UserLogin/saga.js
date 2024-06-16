@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { userLoginFail, userLoginSuccess } from "./reducer";
 import { toast } from "react-toastify";
-import { setLoading, setLoginState } from "../../rootReducer";
+import { setLoading, setLoginState, setUsername } from "../../rootReducer";
 import { closeModalLogin } from "../UserManage/reducer";
 import { userLoginApi } from "./api";
 
@@ -10,6 +10,7 @@ function* workUserLogin({ payload }) {
         yield put(setLoading(true))
         const response = yield call(userLoginApi, payload)
         yield put(setLoading(false))
+        yield put(setUsername(payload.username))
         yield put(userLoginSuccess(response))
         yield put(setLoginState(true))
         yield put(closeModalLogin())

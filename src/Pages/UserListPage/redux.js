@@ -41,13 +41,13 @@ const userListSlice = createSlice({
         },
         searchUserFail: () => { },
         setModerRoleRequest: () => { },
-        setModerRoleSuccess: () => { toast.success("Đặt quyền MODER thành công") },
+        setModerRoleSuccess: () => {  },
         setModerRoleFail: () => { },
         deleteModerRoleRequest: () => { },
-        deleteModerRoleSuccess: () => { toast.success("Hủy quyền MODER thành công") },
+        deleteModerRoleSuccess: () => { },
         deleteModerRoleFail: () => { },
         deleteUserRequest: () => { },
-        deleteUserSuccess: () => { toast.success("Xóa người dùng thành công") },
+        deleteUserSuccess: () => {  },
         deleteUserFail: () => { },
     }
 })
