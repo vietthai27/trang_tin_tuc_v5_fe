@@ -3,7 +3,7 @@ import { apiUser, host } from "../../ultil"
 
 export const deleteUserApi = async (params) => {
     return axios.delete(host + apiUser + `/auth/deleteUserById/${params}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
 }
 
@@ -14,13 +14,13 @@ export const searchUserApi = async (params) => {
 }
 
 export const setModerRoleApi = async (params) => {
-    return axios.put(host + apiUser + `/auth/setModerRole/${params}`,{},
-        { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
+    return axios.put(host + apiUser + `/auth/setUserModerRole/${params}`,{},
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
 }
 
 export const deleteModerRoleApi = async (params) => {
-    return axios.delete(host + apiUser + `/auth/deleteUserModer/${params}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem("User token")}` } }
+    return axios.put(host + apiUser + `/auth/unsetUserModerRole/${params}`,{},
+        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
 }

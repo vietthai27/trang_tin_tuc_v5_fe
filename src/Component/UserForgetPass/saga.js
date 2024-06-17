@@ -1,18 +1,18 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { setLoading, setLoginState } from "../../rootReducer";
+import { endLoading, setLoginState, startLoading } from "../../rootReducer";
 import { userForgetPassApi, userResetPassApi } from "./api";
 import { userForgetPassFail, userForgetPassSuccess, userResetPassFail, userResetPassSuccess } from "./reducer";
 import { closemodalResetpass, openModalLogin } from "../UserManage/reducer";
 
 function* workUserForgetPass({ payload }) {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const response = yield call(userForgetPassApi, payload)
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userForgetPassSuccess(response))
         yield put(openModalLogin())
     } catch (e) {
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userForgetPassFail(e))
     }
 }
@@ -23,15 +23,15 @@ function* userForgetPassSaga() {
 
 function* workUserResetPass({ payload }) {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const response = yield call(userResetPassApi, payload)
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userResetPassSuccess(response))
         yield put(closemodalResetpass())
         yield put(setLoginState(false))
         yield put(openModalLogin())
     } catch (e) {
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userResetPassFail(e))
     }
 }

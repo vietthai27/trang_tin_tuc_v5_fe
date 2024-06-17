@@ -11,7 +11,8 @@ const initialState = {
     loginState: false,
     loading: false,
     username: '',
-    userRoles: []
+    userRoles: [],
+    loadingCount: 0
 }
 
 const appSlice = createSlice({
@@ -36,6 +37,12 @@ const appSlice = createSlice({
         },
         checkUserSessionFail:( state, action) => {
         },
+        startLoading: (state) => {
+            state.loadingCount = state.loadingCount + 1
+        },
+        endLoading: (state) => {
+            state.loadingCount = state.loadingCount - 1
+        }
         
     }
 })
@@ -48,7 +55,9 @@ export const {
     setLoading,
     checkUserSessionFail,
     checkUserSessionRequest,
-    checkUserSessionSuccess
+    checkUserSessionSuccess,
+    endLoading,
+    startLoading
 
 } = appSlice.actions
 

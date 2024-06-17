@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  checkUserSessionRequest, setLoginState } from './rootReducer';
 import Header from './Component/Header/Header';
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
-import { jwtDecode } from "jwt-decode";
+import Loading from './Component/Loading/Loading'
 
 function App() {
 
   const dispatch = useDispatch()
+
+  const loadingCount = useSelector(state => state.app.loadingCount)
 
   useEffect(() => {
     const currentSession = localStorage.getItem("token")
@@ -21,7 +23,7 @@ function App() {
     } else {
       dispatch(checkUserSessionRequest(currentSession))
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="app">
@@ -57,6 +59,7 @@ function App() {
         </Routes>
       </div>
       <ToastContainer />
+      {loadingCount === 0 ? null :  <Loading/> }
     </div >
   );
 }

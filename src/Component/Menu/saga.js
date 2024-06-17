@@ -1,15 +1,15 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { getMenuDataFail, getMenuDataSuccess } from "./reducer";
 import { menuDataApi } from "./api";
-import { setLoading } from "../../rootReducer";
+import { endLoading, startLoading } from "../../rootReducer";
 
 
 function* workGetMenuData() {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const menuData = yield call(menuDataApi)   
         yield put(getMenuDataSuccess(menuData))  
-        yield put(setLoading(false))  
+        yield put(endLoading())  
     } catch (error) {
         yield put(getMenuDataFail)
     }

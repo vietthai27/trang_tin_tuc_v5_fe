@@ -1,22 +1,22 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { userLoginFail, userLoginSuccess } from "./reducer";
 import { toast } from "react-toastify";
-import { setLoading, setLoginState, setUsername } from "../../rootReducer";
+import { endLoading, setLoginState, setUsername, startLoading } from "../../rootReducer";
 import { closeModalLogin } from "../UserManage/reducer";
 import { userLoginApi } from "./api";
 
 function* workUserLogin({ payload }) {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const response = yield call(userLoginApi, payload)
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(setUsername(payload.username))
         yield put(userLoginSuccess(response))
         yield put(setLoginState(true))
         yield put(closeModalLogin())
         toast.success("Đăng nhập thành công")
     } catch (e) {
-        yield put(setLoading(false))
+        yield put(endLoading())
         toast.warn(e.response.data.message);
         yield put(userLoginFail())
     }

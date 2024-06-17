@@ -8,11 +8,11 @@ const menuSlice = createSlice({
     name: 'menu',
     initialState,
     reducers: {
-        getMenuData: (state) => { },
+        getMenuData: () => { },
         getMenuDataSuccess: (state, action) => {
             state.danhMucBaiBao = action.payload.data
         },
-        getMenuDataFail: (state) => { }
+        getMenuDataFail: () => { }
     }
 })
 

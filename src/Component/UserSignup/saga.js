@@ -1,19 +1,19 @@
 import { all, call, put, takeLatest } from "redux-saga/effects"
 import { userSignupRequestApi, userSignupValidateApi } from "./api"
 import { setUserSignupValidate, userSignupRequestFail, userSignupRequestSuccess, userSignupValidateFail, userSignupValidateSuccess } from "./reducer"
-import { setLoading } from "../../rootReducer"
+import { endLoading, startLoading } from "../../rootReducer"
 import { closemodalSignup, openModalLogin } from "../UserManage/reducer"
 
 function* workUserSignupValidate({ payload }) {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const response = yield call(userSignupValidateApi, payload)
         yield put(setUserSignupValidate(false))
         yield put(userSignupValidateSuccess(response))
         yield put(openModalLogin())
-        yield put(setLoading(false))
+        yield put(endLoading())
     } catch (e) {
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userSignupValidateFail(e))
     }
 }
@@ -24,14 +24,14 @@ function* userSignupValidateSaga() {
 
 function* workUserSignupRequest({ payload }) {
     try {
-        yield put(setLoading(true))
+        yield put(startLoading())
         const response = yield call(userSignupRequestApi, payload)
         yield put(userSignupRequestSuccess(response))   
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(closemodalSignup())
         yield put(setUserSignupValidate(true))
     } catch (e) {
-        yield put(setLoading(false))
+        yield put(endLoading())
         yield put(userSignupRequestFail(e))
     }
 }

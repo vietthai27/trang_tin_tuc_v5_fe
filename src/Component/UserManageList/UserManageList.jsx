@@ -91,6 +91,7 @@ function UserManageList() {
         toast.success("Đăng xuất thành công");
         dispatch(setLoginState(false))
         handleClose()
+        navigate("/")
     }
 
     return (

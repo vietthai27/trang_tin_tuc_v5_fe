@@ -16,9 +16,9 @@ function MenuBaiBao() {
     }, [dispatch])
 
     return (
-            <div
-                className='menu-container'>
-                {danhMucBaiBao.map((item) => (
+        <div
+            className='menu-container'>
+            {danhMucBaiBao.map((item) => (
                     <PopupState variant="popover" popupId="demo-popup-menu">
                         {(popupState) => (
                             <React.Fragment>
@@ -40,7 +40,7 @@ function MenuBaiBao() {
                         )}
                     </PopupState>
                 ))}
-            </div>
+        </div>
     );
 }
 

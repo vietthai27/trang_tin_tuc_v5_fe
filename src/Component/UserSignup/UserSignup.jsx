@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { boxStyleLogin } from '../../StyleConfig';
-import { Box, Button, IconButton, Input, InputAdornment, Modal, TextField } from '@mui/material';
+import { Box, Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux'
 import { openModalLogin } from '../UserManage/reducer';
-import { changeEmailSignup, changePasswordSignup, changeRetypePasswordSignup, changeUsernameSignup, setUserSignupValidate } from './reducer';
+import { changeEmailSignup, changePasswordSignup, changeRetypePasswordSignup, changeUsernameSignup } from './reducer';
 import { toast } from 'react-toastify';
 import validator from 'validator';
-import { userSignupAction, userSignupRequestAction } from './action';
+import { userSignupRequestAction } from './action';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 function UserSignup() {
