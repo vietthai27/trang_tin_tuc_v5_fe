@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { routes, protectedRoutes } from './Routes';
+import { routes, protectedRoutesAdmin, protectedRoutesModer } from './Routes';
 import '../src/style.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -43,9 +43,22 @@ function App() {
               )
             })
           }
-          <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedRoute role={"ADMIN"} />}>
           {
-            protectedRoutes.map((element, index) => {
+            protectedRoutesAdmin.map((element, index) => {
+              return (
+                <Route
+                  path={element.path}
+                  element={element.element}
+                  key={index}
+                />
+              )
+            })
+          }
+          </Route>
+          <Route element={<ProtectedRoute role={"MODER"} />}>
+          {
+            protectedRoutesModer.map((element, index) => {
               return (
                 <Route
                   path={element.path}

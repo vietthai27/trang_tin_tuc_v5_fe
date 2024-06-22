@@ -6,6 +6,9 @@ import { combineSlices, createSlice } from "@reduxjs/toolkit";
 import userSignupReducer from './Component/UserSignup/reducer';
 import { userForgetPassReducer } from './Component/UserForgetPass/reducer';
 import userListReducer from './Pages/UserListPage/redux';
+import menuListReducer from './Pages/MenuListPage/redux';
+import subMenuListReducer from './Pages/SubMenuListPage/redux';
+
 
 const initialState = {
     loginState: false,
@@ -57,7 +60,7 @@ export const {
     checkUserSessionRequest,
     checkUserSessionSuccess,
     endLoading,
-    startLoading
+    startLoading,
 
 } = appSlice.actions
 
@@ -68,5 +71,7 @@ export const rootReducer = combineSlices({
     userLogin: userLoginReducer,
     userSignup: userSignupReducer,
     userForgetPass: userForgetPassReducer,
-    userList: userListReducer
+    userList: userListReducer,
+    menuList: menuListReducer,
+    subMenuList: subMenuListReducer
 })

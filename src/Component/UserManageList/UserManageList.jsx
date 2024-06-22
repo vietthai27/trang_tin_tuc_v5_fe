@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoginState } from '../../rootReducer';
 import { openmodalResetpass } from '../UserManage/reducer';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -69,6 +70,16 @@ function UserManageList() {
         navigate("/userList")
     };
 
+    const handleOpenMenuList = () => {
+        setAnchorEl(null);
+        navigate("/menuList")
+    };
+
+    const handleOpenNewsList = () => {
+        setAnchorEl(null);
+        navigate("/newsPaperList")
+    };
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -94,6 +105,29 @@ function UserManageList() {
         navigate("/")
     }
 
+    const [hasAdmin, setHasAdmin] = React.useState(false)
+    const [hasModer, setHasModer] = React.useState(false)
+
+    const setRole = () => {
+        const token = localStorage.getItem('token')
+        if (token) {
+            const decodeToken = jwtDecode(token)
+            const isAdmin = decodeToken.roles.find((item) => (item.authority === "ADMIN"))
+            if (isAdmin) {
+                setHasAdmin(true)
+            }
+            const isModer = decodeToken.roles.find((item) => (item.authority === "MODER"))
+            if (isModer) {
+                setHasModer(true)
+            }
+        }
+    }
+
+    React.useEffect(() => {
+        setRole()
+    },[])
+
+
     return (
         <div>
             <Button
@@ -117,18 +151,20 @@ function UserManageList() {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleOpenUserList} disableRipple>
+                {hasAdmin ? <MenuItem onClick={handleOpenUserList} disableRipple>
                     <SupervisedUserCircleIcon />
                     Quản lý người dùng
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                    <NewspaperIcon />
-                    Quản lý bài báo
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
+                </MenuItem> : null}
+
+                {hasAdmin ? <MenuItem onClick={handleOpenMenuList} disableRipple>
                     <ListIcon />
                     Quản lý danh mục bài báo
-                </MenuItem>
+                </MenuItem> : null}
+
+                {hasModer ? <MenuItem onClick={handleOpenNewsList} disableRipple>
+                    <NewspaperIcon />
+                    Quản lý bài báo
+                </MenuItem> : null}
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={() => handelChangePass()} disableRipple>
                     <PasswordIcon />
@@ -139,6 +175,7 @@ function UserManageList() {
                     Đăng xuất
                 </MenuItem>
             </StyledMenu>
+
         </div>
     );
 }

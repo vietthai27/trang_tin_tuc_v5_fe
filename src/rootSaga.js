@@ -7,6 +7,8 @@ import userListSaga from "./Pages/UserListPage/saga";
 import { checkUserSessionFail, checkUserSessionRequest, checkUserSessionSuccess } from "./rootReducer";
 import { checkUserSessionApi } from "./ultil";
 import { toast } from "react-toastify";
+import menuListSaga from "./Pages/MenuListPage/saga";
+import subMenuListSaga from "./Pages/SubMenuListPage/saga";
 
 function* checkUserSessionWorker({ payload }) {
     try {
@@ -32,6 +34,8 @@ export default function* rootSaga() {
         userLoginSaga(),
         userSignupSaga(),
         userChangePassSaga(),
-        userListSaga()
+        userListSaga(),
+        menuListSaga(),
+        subMenuListSaga()
     ]);
 }

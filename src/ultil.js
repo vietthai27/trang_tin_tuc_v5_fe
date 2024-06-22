@@ -12,6 +12,7 @@ export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 
 export const apiMenu = '/danhmuc'
 export const apiUser = '/user'
+export const apiSubMenu = '/danhmuccon'
 export const apiCheckToken = '/permit/tokenIsExpired'
 
 export const checkUserSessionApi = async (token) => {

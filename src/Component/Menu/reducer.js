@@ -10,7 +10,7 @@ const menuSlice = createSlice({
     reducers: {
         getMenuData: () => { },
         getMenuDataSuccess: (state, action) => {
-            state.danhMucBaiBao = action.payload.data
+            state.danhMucBaiBao = action.payload
         },
         getMenuDataFail: () => { }
     }

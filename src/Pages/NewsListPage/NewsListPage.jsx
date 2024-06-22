@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonAddDisabledIcon from '@mui/icons-material/PersonAddDisabled';
 
-function UserList() {
+function NewsListPage() {
 
     const dispatch = useDispatch()
     const userListData = useSelector(state => state.userList.userListData)
@@ -40,7 +40,7 @@ function UserList() {
 
     return (
         <div className='user-list-page'>
-            <h1>Quản lý người dùng</h1>
+            <h1>Quản lý bài báo</h1>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
@@ -127,4 +127,4 @@ function UserList() {
     );
 }
 
-export default UserList;
+export default NewsListPage;

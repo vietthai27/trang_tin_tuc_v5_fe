@@ -7,8 +7,9 @@ import { endLoading, startLoading } from "../../rootReducer";
 function* workGetMenuData() {
     try {
         yield put(startLoading())
-        const menuData = yield call(menuDataApi)   
-        yield put(getMenuDataSuccess(menuData))  
+        const menuData = yield call(menuDataApi) 
+        console.log();  
+        yield put(getMenuDataSuccess(menuData.data.content))  
         yield put(endLoading())  
     } catch (error) {
         yield put(getMenuDataFail)
