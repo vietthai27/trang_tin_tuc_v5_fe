@@ -9,6 +9,8 @@ import { checkUserSessionApi } from "./ultil";
 import { toast } from "react-toastify";
 import menuListSaga from "./Pages/MenuListPage/saga";
 import subMenuListSaga from "./Pages/SubMenuListPage/saga";
+import newsListSaga from "./Pages/NewsListPage/saga";
+import newsDetailSaga from "./Pages/NewsDetailPage/saga";
 
 function* checkUserSessionWorker({ payload }) {
     try {
@@ -36,6 +38,8 @@ export default function* rootSaga() {
         userChangePassSaga(),
         userListSaga(),
         menuListSaga(),
-        subMenuListSaga()
+        subMenuListSaga(),
+        newsListSaga(),
+        newsDetailSaga()
     ]);
 }

@@ -8,6 +8,8 @@ import { userForgetPassReducer } from './Component/UserForgetPass/reducer';
 import userListReducer from './Pages/UserListPage/redux';
 import menuListReducer from './Pages/MenuListPage/redux';
 import subMenuListReducer from './Pages/SubMenuListPage/redux';
+import newsListReducer from './Pages/NewsListPage/redux';
+import newsDetailReducer from './Pages/NewsDetailPage/redux';
 
 
 const initialState = {
@@ -73,5 +75,7 @@ export const rootReducer = combineSlices({
     userForgetPass: userForgetPassReducer,
     userList: userListReducer,
     menuList: menuListReducer,
-    subMenuList: subMenuListReducer
+    subMenuList: subMenuListReducer,
+    newsList: newsListReducer,
+    newsDetail: newsDetailReducer
 })

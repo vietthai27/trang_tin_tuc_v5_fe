@@ -15,9 +15,10 @@
 .app-body {
   position: fixed;
   top: 72px;
-  height: 100%;
+  height: calc(100vh - 70px);
   width: 100%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .header {
@@ -79,6 +80,35 @@
   font-size: 16px !important;
   font-weight: 500 !important;
 }
+
+.news-list-modify-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.news-list-modify-container h1 {
+  text-align: center;
+  width: 100%;
+  margin: 20px ;
+}
+
+.news-list-modify-flex {
+  align-items: center;
+  width: 50%;
+  gap: 20px;
+  margin: 20px auto;
+  justify-content: space-between;
+  display: flex;
+}
+
+.user-list-page-name {
+  width : 450px;
+  overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 /* ---------------------Loading-Start--------------------------------- */
 .loading {

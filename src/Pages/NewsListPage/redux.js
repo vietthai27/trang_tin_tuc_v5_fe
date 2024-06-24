@@ -1,76 +1,121 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    userListData: [],
-    userListDataPaging: [],
+    newsListData: [],
+    newsListDataPaging: [],
     pageNum: 1,
     pageSize: 5,
-    search: ''
+    search: '',
+    idCha: 1,
+    idCon: 0,
+    subMenu: [],
+    addContent: '',
+    tenBaiBao: '',
+    tieuDe: '',
+    thumbnail: '',
 }
 
-const addHasModerRole = (userListData) => {
-    return userListData.map(item => ({
-        ...item,
-        hasModerRole: item.listRoles.some(role => role.roleName === 'MODER')
-    }));
-};
 
-const userListSlice = createSlice({
-    name: "userList",
+const newsListSlice = createSlice({
+    name: "newsList",
     initialState,
     reducers: {
-        getAllUserRequest: () => { },
-        getAllUserSuccess: (state, action) => {
-            state.userListDataPaging = action.payload
-            const userList = addHasModerRole(action.payload.content)
-            state.userListData = userList
+        searchNewsRequest: () => { },
+        searchNewsSuccess: (state, action) => {
+            state.newsListDataPaging = action.payload
+            state.newsListData = action.payload.content
+        },
+        searchNewsFail: () => { },
+        changePageNum: (state, action) => {
+            state.pageNum = action.payload
         },
         changeSearch: (state, action) => {
             state.search = action.payload
         },
-        changePageNum: (state, action) => {
-            state.pageNum = action.payload
+        changeIdCha: (state, action) => {
+            state.idCha = action.payload
         },
-        getAllUserFail: () => { },
-        searchUserRequest: () => { },
-        searchUserSuccess: (state, action) => {
-            state.userListDataPaging = action.payload
-            const userList = addHasModerRole(action.payload.content)
-            state.userListData = userList
+        changeIdCon: (state, action) => {
+            state.idCon = action.payload
         },
-        searchUserFail: () => { },
-        setModerRoleRequest: () => { },
-        setModerRoleSuccess: () => {  },
-        setModerRoleFail: () => { },
-        deleteModerRoleRequest: () => { },
-        deleteModerRoleSuccess: () => { },
-        deleteModerRoleFail: () => { },
-        deleteUserRequest: () => { },
-        deleteUserSuccess: () => {  },
-        deleteUserFail: () => { },
+        getSubMenuRequeset: (state, action) => {
+
+        },
+        getSubMenuSuccess: (state, action) => {
+            state.subMenu = action.payload
+        },
+        getSubMenuFail: (state, action) => {
+
+        },
+        changeAddContent: (state, action) => {
+            state.addContent = action.payload
+        },
+        addNewsRequest: (state, action) => {
+
+        },
+        addNewsSuccess: (state, action) => {
+
+        },
+        addNewsFail: (state, action) => {
+
+        },
+        editNewsRequest: (state, action) => {
+
+        },
+        editNewsSuccess: (state, action) => {
+
+        },
+        editNewsFail: (state, action) => {
+
+        },
+        deleteNewsRequest: (state, action) => {
+
+        },
+        deleteNewsSuccess: (state, action) => {
+
+        },
+        deleteNewsFail: (state, action) => {
+
+        },
+        changeTenBaiBao: (state, action) => {
+            state.tenBaiBao = action.payload
+        },
+        changeTieuDe: (state, action) => {
+            state.tieuDe = action.payload
+        },
+        changeThumbnail: (state, action) => {
+            state.thumbnail = action.payload
+        },
     }
 })
 
 export const {
-    getAllUserFail,
-    getAllUserRequest,
-    getAllUserSuccess,
-    setModerRoleFail,
-    setModerRoleRequest,
-    setModerRoleSuccess,
-    deleteModerRoleFail,
-    deleteModerRoleRequest,
-    deleteModerRoleSuccess,
-    searchUserFail,
-    searchUserRequest,
-    searchUserSuccess,
-    changeSearch,
+    searchNewsFail,
+    searchNewsRequest,
+    searchNewsSuccess,
     changePageNum,
-    deleteUserRequest,
-    deleteUserFail,
-    deleteUserSuccess
-} = userListSlice.actions
+    changeSearch,
+    changeIdCha,
+    changeIdCon,
+    getSubMenuFail,
+    getSubMenuRequeset,
+    getSubMenuSuccess,
+    changeAddContent,
+    addNewsFail,
+    addNewsRequest,
+    addNewsSuccess,
+    changeTenBaiBao,
+    changeThumbnail,
+    changeTieuDe,
+    editNewsFail,
+    editNewsRequest,
+    editNewsSuccess,
+    deleteNewsFail,
+    deleteNewsRequest,
+    deleteNewsSuccess
+    
+} = newsListSlice.actions
 
-const userListReducer = userListSlice.reducer
+const newsListReducer = newsListSlice.reducer
 
-export default userListReducer
+export default newsListReducer

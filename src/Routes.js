@@ -1,5 +1,8 @@
 import HomePage from "./Pages/HomePage/HomePage";
 import MenuListPage from "./Pages/MenuListPage/MenuListPage";
+import NewsDetailPage from "./Pages/NewsDetailPage/NewsDetailPage";
+import AddNewsListPage from "./Pages/NewsListPage/AddNewsListPage";
+import EditNewsListPage from "./Pages/NewsListPage/EditNewsListPage";
 import NewsListPage from "./Pages/NewsListPage/NewsListPage";
 import NotAuthorizePage from "./Pages/NotAuthorizePage/NotAuthorizePage";
 import SubMenuListPage from "./Pages/SubMenuListPage/SubMenuListPage";
@@ -14,6 +17,10 @@ export const routes = [
         path: "/notAuthorize",
         element: <NotAuthorizePage />
     },
+    {
+        path: "/newsDetail",
+        element: <NewsDetailPage />
+    }
 ]
 
 export const protectedRoutesAdmin = [
@@ -37,5 +44,13 @@ export const protectedRoutesModer = [
     {
         path: "/newsPaperList",
         element: <NewsListPage/>
+    },
+    {
+        path: "/addNewsPaperList",
+        element: <AddNewsListPage/>
+    },
+    {
+        path: "/editNewsPaperList/:id",
+        element: <EditNewsListPage/>
     },
 ]
