@@ -9,6 +9,7 @@ import {  checkUserSessionRequest, setLoginState } from './rootReducer';
 import Header from './Component/Header/Header';
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
 import Loading from './Component/Loading/Loading'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

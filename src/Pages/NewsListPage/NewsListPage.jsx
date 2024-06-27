@@ -64,7 +64,7 @@ function NewsListPage() {
                     <SearchIcon />
                 </IconButton>
             </Paper>
-            <TableContainer sx={{ maxWidth: "1000px", height: "378px" }} component={Paper}>
+            <TableContainer sx={{ maxWidth: "1000px", height: "390px" }} component={Paper}>
                 <Table aria-label="customized table">
                     <TableHead>
                         <TableRow>

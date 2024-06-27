@@ -4,6 +4,10 @@
   font-family: monospace !important;
 }
 
+p {
+  margin-bottom: 0 !important;
+}
+
 .app-header {
   position: absolute;
   top: 0;
@@ -31,7 +35,7 @@
 }
 
 .page-logo {
-  width: 180px;
+  width: 210px;
   padding: 0 20px;
   cursor: pointer;
 }
@@ -89,7 +93,7 @@
 .news-list-modify-container h1 {
   text-align: center;
   width: 100%;
-  margin: 20px ;
+  margin: 20px;
 }
 
 .news-list-modify-flex {
@@ -102,11 +106,33 @@
 }
 
 .user-list-page-name {
-  width : 450px;
-  overflow:hidden;
-  display:inline-block;
+  width: 450px;
+  overflow: hidden;
+  display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.news-carousel-container {
+  width: 800px;
+  margin: auto;
+}
+
+.news-carousel-container img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.news-carousel-container h1{
+  margin: 20px 0;
+}
+
+.carousel-caption {
+  right: 0 !important;
+  left: 0 !important;
+  background-color: #00000091;
 }
 
 
@@ -164,6 +190,7 @@
   height: 9px;
   width: 9px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 0px;
   background-color: #B9C1C3;

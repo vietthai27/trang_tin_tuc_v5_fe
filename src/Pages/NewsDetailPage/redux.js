@@ -2,26 +2,26 @@ import { createSlice } from "@reduxjs/toolkit"
 import { changeTenBaiBao } from "../NewsListPage/redux"
 
 const initialState = {
-    newsDetail:{
-        danhMucChaId:0,
+    newsDetail: {
+        danhMucChaId: 0,
 
-        danhMucConId:0,
+        danhMucConId: 0,
 
-        id:0,
- 
-        noiDung:'',
-         
-        tacGia:'',
-         
-        tenBaiBao:'',
-        
+        id: 0,
 
-        
-        thumbnail:'',
-         
-        tieuDe:'',
-       
-    }
+        noiDung: '',
+
+        tacGia: '',
+
+        tenBaiBao: '',
+
+        thumbnail: '',
+
+        tieuDe: '',
+
+    },
+
+    newCarousel: []
 }
 
 
@@ -29,46 +29,58 @@ const newsDetailSlice = createSlice({
     name: "newsDetail",
     initialState,
     reducers: {
-        newsDetailRequest:() => {
+        newsDetailRequest: () => {
 
         },
-        newsDetailSuccess:(state, action) => {
+        newsDetailSuccess: (state, action) => {
             state.newsDetail = action.payload
         },
-        newsDetailFail:() => {
+        newsDetailFail: () => {
 
         },
-        changeTenBaiBaoEdit:(state, action) => {
+        changeTenBaiBaoEdit: (state, action) => {
             state.newsDetail.tenBaiBao = action.payload
         },
-        changeThumbnailEdit:(state, action) => {
+        changeThumbnailEdit: (state, action) => {
             state.newsDetail.thumbnail = action.payload
         },
-        changeNoiDungEdit:(state,action) => {
+        changeNoiDungEdit: (state, action) => {
             state.newsDetail.noiDung = action.payload
         },
-        changeTieuDeEdit:(state, action) => {
+        changeTieuDeEdit: (state, action) => {
             state.newsDetail.tieuDe = action.payload
         },
-        changIdChaEdit:(state, action) => {
+        changIdChaEdit: (state, action) => {
             state.newsDetail.danhMucChaId = action.payload
         },
-        changeIdConEdit:(state, action) => {
+        changeIdConEdit: (state, action) => {
             state.newsDetail.danhMucConId = action.payload
+        },
+        requestNewsCarousel: (state, action) => {
+
+        },
+        requestNewsCarouselSuccess: (state, action) => {
+            state.newCarousel = action.payload
+        },
+        requestNewsCarouselFail: (state, action) => {
+
         }
     }
 })
 
 export const {
-  newsDetailFail,
-  newsDetailRequest,
-  newsDetailSuccess,
-  changeTenBaiBaoEdit,
-  changeNoiDungEdit,
-  changeThumbnailEdit,
-  changeTieuDeEdit,
-  changIdChaEdit,
-  changeIdConEdit
+    newsDetailFail,
+    newsDetailRequest,
+    newsDetailSuccess,
+    changeTenBaiBaoEdit,
+    changeNoiDungEdit,
+    changeThumbnailEdit,
+    changeTieuDeEdit,
+    changIdChaEdit,
+    changeIdConEdit,
+    requestNewsCarousel,
+    requestNewsCarouselFail,
+    requestNewsCarouselSuccess
 } = newsDetailSlice.actions
 
 const newsDetailReducer = newsDetailSlice.reducer

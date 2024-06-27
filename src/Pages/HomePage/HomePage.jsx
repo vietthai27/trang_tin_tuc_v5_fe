@@ -1,8 +1,9 @@
 import React from 'react';
+import NewsCarosel from '../../Component/NewsCarousel/NewsCrousel';
 function HomePage() {
     return (
         <div className='home_page-container'>
-            home
+            <NewsCarosel/>
         </div>
     );
 }
