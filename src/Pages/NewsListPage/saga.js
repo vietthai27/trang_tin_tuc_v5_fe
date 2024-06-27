@@ -40,8 +40,9 @@ function* getSubMenuWatcher() {
 function* addNewsWorker({ payload }) {
     try {
         yield put(startLoading())
-        yield call(addNewsApi, payload)
-        yield put(addNewsSuccess())
+        yield call(addNewsApi, payload.addParam)
+        const res = yield call(searchNewsApi, payload.searchParam)
+        yield put(addNewsSuccess(res.data))
         yield put(endLoading())
         toast.success("Thêm bài báo thành công")
 
@@ -58,8 +59,9 @@ function* addNewsWatcher() {
 function* editNewsWorker({ payload }) {
     try {
         yield put(startLoading())
-        yield call(editNewsApi, payload)
-        yield put(editNewsSuccess())
+        yield call(editNewsApi, payload.editParam)
+        const res = yield call(searchNewsApi, payload.searchParams)
+        yield put(editNewsSuccess(res.data))
         yield put(endLoading())
         toast.success("Sửa bài báo thành công")
 

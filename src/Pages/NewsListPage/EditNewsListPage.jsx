@@ -2,7 +2,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@m
 import JoditEditor from 'jodit-react';
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editNewsRequest, getSubMenuRequeset, searchNewsRequest } from './redux';
+import { editNewsRequest, getSubMenuRequeset } from './redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { changIdChaEdit, changeIdConEdit, changeNoiDungEdit, changeTenBaiBaoEdit, changeThumbnailEdit, changeTieuDeEdit, newsDetailRequest } from '../NewsDetailPage/redux';
 
@@ -27,7 +27,6 @@ const EditNewsListPage = () => {
 
     useEffect(() => {
         dispatch(newsDetailRequest(id))
-
     }, [])
 
     useEffect(() => {
@@ -57,8 +56,8 @@ const EditNewsListPage = () => {
     }
 
     const handelEditBaiBao = () => {
-        dispatch(editNewsRequest(editBaiBaoParam))
-        dispatch(searchNewsRequest(newsSearchParams))
+        dispatch(editNewsRequest({editParam:editBaiBaoParam,searchParams:newsSearchParams}))
+        //dispatch(searchNewsRequest(newsSearchParams))
         navigate("/newsPaperList")
     }
 

@@ -54,7 +54,8 @@ const newsListSlice = createSlice({
 
         },
         addNewsSuccess: (state, action) => {
-
+            state.newsListDataPaging = action.payload
+            state.newsListData = action.payload.content
         },
         addNewsFail: (state, action) => {
 
@@ -63,7 +64,8 @@ const newsListSlice = createSlice({
 
         },
         editNewsSuccess: (state, action) => {
-
+            state.newsListDataPaging = action.payload
+            state.newsListData = action.payload.content
         },
         editNewsFail: (state, action) => {
 

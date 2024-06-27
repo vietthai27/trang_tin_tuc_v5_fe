@@ -50,8 +50,8 @@ const AddNewsListPage = () => {
     }
 
     const handelAddBaiBao = () => {
-        dispatch(addNewsRequest(addBaiBaoParam))
-        dispatch(searchNewsRequest(newsSearchParams))
+        dispatch(addNewsRequest({addParam:addBaiBaoParam,searchParam:newsSearchParams}))
+        //dispatch(searchNewsRequest(newsSearchParams))
         navigate("/newsPaperList")
     }
 
