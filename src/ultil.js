@@ -1,9 +1,9 @@
 import axios from "axios";
 
 // Render hosting-----------------------------------------------
-//export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
+export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 // Local hosting------------------------------------------------
-export const host = 'http://localhost:8080'
+//export const host = 'http://localhost:8080'
 // network hosting______________________________________________
 //export const host = 'http://192.168.0.86:8080'
 
