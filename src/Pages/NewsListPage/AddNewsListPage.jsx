@@ -103,7 +103,7 @@ const AddNewsListPage = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{ width: '50%', margin: 'auto' }}>
+            <div style={{ width: '800px', margin: 'auto' }}>
                 <JoditEditor
                     ref={editor}
                     value={addContent}

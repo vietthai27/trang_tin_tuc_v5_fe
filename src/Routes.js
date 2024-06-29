@@ -18,7 +18,7 @@ export const routes = [
         element: <NotAuthorizePage />
     },
     {
-        path: "/newsDetail",
+        path: "/newsDetail/:id",
         element: <NewsDetailPage />
     }
 ]

@@ -1,7 +1,7 @@
 import { InputBase, TableCell, TableRow, alpha, styled, tableCellClasses } from "@mui/material";
 
 export const boxStyleLogin = {
-  width: "250px",
+  width: "340px",
   margin: "10% auto",
   backgroundColor: "white",
   boxShadow: 10,
