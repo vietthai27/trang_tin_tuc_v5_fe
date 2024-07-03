@@ -3,7 +3,6 @@ import NotAuthorizePage from "../../Pages/NotAuthorizePage/NotAuthorizePage";
 import { jwtDecode } from "jwt-decode";
 
 const ProtectedRoute = (prop) => {
-    console.log(prop.role);
     const token = localStorage.getItem('token')
     if (token) {
         const decodeToken = jwtDecode(token)

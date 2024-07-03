@@ -4,6 +4,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewsRequest, changeAddContent, changeIdCha, changeIdCon, changeTenBaiBao, changeThumbnail, changeTieuDe, getSubMenuRequeset, searchNewsRequest } from './redux';
 import { useNavigate } from 'react-router-dom';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const AddNewsListPage = () => {
 
@@ -111,8 +114,8 @@ const AddNewsListPage = () => {
                 />
             </div>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'center', margin: '20px', gap:'20px' }}>
-                <Button onClick={() => { handelAddBaiBao() }} variant='contained'>Thêm bài báo</Button>
-                <Button onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
+                <Button startIcon={<AddIcon />} onClick={() => { handelAddBaiBao() }} variant='contained'>Thêm bài báo</Button>
+                <Button endIcon={<ArrowForwardIosIcon />} onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
             </div>
 
         </div>

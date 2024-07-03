@@ -16,9 +16,6 @@ function NewsDetailPage() {
         dispatch(newsDetailRequest(id))
     }, [])
 
-    console.log(data);
-
-
     return (
         <div className="news-detail-container">
             <h1>{data.tenBaiBao}</h1>

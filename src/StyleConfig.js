@@ -1,13 +1,13 @@
 import { InputBase, TableCell, TableRow, alpha, styled, tableCellClasses } from "@mui/material";
 
 export const boxStyleLogin = {
-  width: "340px",
+  width: "315px",
   margin: "10% auto",
   backgroundColor: "white",
   boxShadow: 10,
   display: "flex",
   flexDirection: "column",
-  height: "400px",
+  height: "450px",
   justifyContent: "space-evenly",
   padding: "1rem 3rem",
   borderRadius: "15px"

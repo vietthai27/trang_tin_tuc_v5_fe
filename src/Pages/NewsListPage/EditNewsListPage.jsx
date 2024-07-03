@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editNewsRequest, getSubMenuRequeset } from './redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { changIdChaEdit, changeIdConEdit, changeNoiDungEdit, changeTenBaiBaoEdit, changeThumbnailEdit, changeTieuDeEdit, newsDetailRequest } from '../NewsDetailPage/redux';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const EditNewsListPage = () => {
 
@@ -56,7 +59,7 @@ const EditNewsListPage = () => {
     }
 
     const handelEditBaiBao = () => {
-        dispatch(editNewsRequest({editParam:editBaiBaoParam,searchParams:newsSearchParams}))
+        dispatch(editNewsRequest({ editParam: editBaiBaoParam, searchParams: newsSearchParams }))
         //dispatch(searchNewsRequest(newsSearchParams))
         navigate("/newsPaperList")
     }
@@ -121,9 +124,9 @@ const EditNewsListPage = () => {
                     onBlur={newContent => dispatch(changeNoiDungEdit(newContent))}
                 />
             </div>
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'center', margin: '20px', gap:'20px' }}>
-                <Button onClick={() => { handelEditBaiBao() }} variant='contained'>Sửa bài báo</Button>
-                <Button onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'center', margin: '20px', gap: '20px' }}>
+                <Button startIcon={<EditIcon />} onClick={() => { handelEditBaiBao() }} variant='contained'>Sửa bài báo</Button>
+                <Button endIcon={<ArrowForwardIosIcon />} onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
             </div>
 
         </div>
