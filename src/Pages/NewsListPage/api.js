@@ -56,3 +56,7 @@ export const getSubMenuApi = async (param) => {
     return axios.get(host + apiSubMenu + `/get/getAllDanhMucConByIdCha/${param}`
     )
 }
+
+export const getNewsBySubMenuApi = async (params) => {
+    return axios.get(host + apiNews + `/get/getAllBaiBaoByDanhMucConId/${params.id}?pageNum=${params.pageNum - 1}&pageSize=${params.pageSize}`)
+}

@@ -1,8 +1,8 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { endLoading, startLoading } from "../../rootReducer";
 import { toast } from "react-toastify";
-import { addNewsApi, deleteNewsApi, editNewsApi, getSubMenuApi, searchNewsApi } from "./api";
-import { addNewsFail, addNewsRequest, addNewsSuccess, deleteNewsFail, deleteNewsRequest, deleteNewsSuccess, editNewsFail, editNewsRequest, editNewsSuccess, getSubMenuFail, getSubMenuRequeset, getSubMenuSuccess, searchNewsFail, searchNewsRequest, searchNewsSuccess } from "./redux";
+import { addNewsApi, deleteNewsApi, editNewsApi, getNewsBySubMenuApi, getSubMenuApi, searchNewsApi } from "./api";
+import { addNewsFail, addNewsRequest, addNewsSuccess, deleteNewsFail, deleteNewsRequest, deleteNewsSuccess, editNewsFail, editNewsRequest, editNewsSuccess, getNewsBySubMenuFail, getNewsBySubMenuRequeset, getNewsBySubMenuSuccess, getSubMenuFail, getSubMenuRequeset, getSubMenuSuccess, searchNewsFail, searchNewsRequest, searchNewsSuccess } from "./redux";
 
 
 function* searchNewsWorker({ payload }) {
@@ -30,6 +30,22 @@ function* getSubMenuWorker({ payload }) {
     } catch (e) {
         yield put(endLoading())
         yield put(getSubMenuFail())
+    }
+}
+
+function* getNewsBySubMenuWatcher() {
+    yield takeLatest(getNewsBySubMenuRequeset, getNewsBySubMenuWorker)
+}
+
+function* getNewsBySubMenuWorker({ payload }) {
+    try {
+        yield put(startLoading())
+        const res = yield call(getNewsBySubMenuApi, payload)
+        yield put(getNewsBySubMenuSuccess(res.data))
+        yield put(endLoading())
+    } catch (e) {
+        yield put(endLoading())
+        yield put(getNewsBySubMenuFail())
     }
 }
 
@@ -101,7 +117,8 @@ function* newsListSaga() {
         searchNewsWatcher(),
         getSubMenuWatcher(),
         addNewsWatcher(),
-        editNewsWatcher()
+        editNewsWatcher(),
+        getNewsBySubMenuWatcher()
     ])
 }
 

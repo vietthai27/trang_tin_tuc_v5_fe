@@ -13,6 +13,9 @@ const initialState = {
     tenBaiBao: '',
     tieuDe: '',
     thumbnail: '',
+    newsListBySubMenu: [],
+    newsListBySubMenuPaging: [],
+    pageNumSubmenu:1
 }
 
 
@@ -28,6 +31,9 @@ const newsListSlice = createSlice({
         searchNewsFail: () => { },
         changePageNum: (state, action) => {
             state.pageNum = action.payload
+        },
+        changePageNumSubmenu: (state, action) => {
+            state.pageNumSubmenu = action.payload
         },
         changeSearch: (state, action) => {
             state.search = action.payload
@@ -88,6 +94,17 @@ const newsListSlice = createSlice({
         changeThumbnail: (state, action) => {
             state.thumbnail = action.payload
         },
+        getNewsBySubMenuRequeset: (state, action) => {
+
+        },
+        getNewsBySubMenuSuccess: (state, action) => {
+            state.newsListBySubMenuPaging = action.payload
+            state.newsListBySubMenu = action.payload.content
+        },
+        getNewsBySubMenuFail: (state, action) => {
+
+        },
+
     }
 })
 
@@ -114,7 +131,11 @@ export const {
     editNewsSuccess,
     deleteNewsFail,
     deleteNewsRequest,
-    deleteNewsSuccess
+    deleteNewsSuccess,
+    getNewsBySubMenuFail,
+    getNewsBySubMenuRequeset,
+    getNewsBySubMenuSuccess,
+    changePageNumSubmenu
     
 } = newsListSlice.actions
 

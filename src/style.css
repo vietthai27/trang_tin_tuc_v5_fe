@@ -192,6 +192,34 @@ p {
   margin: 0 10px;
 }
 
+.news-tab {
+  padding: 20px;
+  box-shadow: 1px 3px 7px -1px gray;
+  border-radius: 15px;
+  width: 600px;
+  cursor: pointer;
+}
+
+.news-tab-row-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+}
+
+.news-tab-row-1 img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.news-tab b {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
 /* ---------------------Loading-Start--------------------------------- */
 .loading {
   top: 0;

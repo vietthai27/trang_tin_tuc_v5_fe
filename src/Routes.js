@@ -4,6 +4,7 @@ import NewsDetailPage from "./Pages/NewsDetailPage/NewsDetailPage";
 import AddNewsListPage from "./Pages/NewsListPage/AddNewsListPage";
 import EditNewsListPage from "./Pages/NewsListPage/EditNewsListPage";
 import NewsListPage from "./Pages/NewsListPage/NewsListPage";
+import NewsSubMenuPage from "./Pages/NewsListPage/NewsSubMenuPage";
 import NotAuthorizePage from "./Pages/NotAuthorizePage/NotAuthorizePage";
 import SubMenuListPage from "./Pages/SubMenuListPage/SubMenuListPage";
 import UserList from "./Pages/UserListPage/UserList";
@@ -20,6 +21,10 @@ export const routes = [
     {
         path: "/newsDetail/:id",
         element: <NewsDetailPage />
+    },
+    {
+        path: "/newsBySubmenu/:id/:subMenu",
+        element: <NewsSubMenuPage />
     }
 ]
 

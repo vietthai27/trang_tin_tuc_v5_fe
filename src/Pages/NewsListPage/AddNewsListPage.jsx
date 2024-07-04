@@ -29,6 +29,7 @@ const AddNewsListPage = () => {
     const { tenBaiBao, tieuDe, thumbnail, } = useSelector(state => state.newsList)
     useEffect(() => {
         dispatch(getSubMenuRequeset(idCha))
+        dispatch(changeAddContent(''))
     }, [idCha])
 
     const currentUsername = useSelector(state => state.app.username)
