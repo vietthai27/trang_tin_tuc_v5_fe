@@ -7,7 +7,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import AirIcon from '@mui/icons-material/Air';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
-import { Button, Input, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 const Weather = () => {
 

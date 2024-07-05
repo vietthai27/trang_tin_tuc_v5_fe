@@ -226,6 +226,7 @@ p {
 }
 
 .weather-container {
+  background-size: cover;
   height: 330px;
   width: 420px;
   padding: 20px;
