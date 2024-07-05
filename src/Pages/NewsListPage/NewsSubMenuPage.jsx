@@ -61,10 +61,15 @@ const NewsSubMenuPage = () => {
                 <div className="news-tab" onClick={() => { navigate("/newsDetail/" + item.id) }}>
                     <div className="news-tab-row-1">
                         <img src={item.thumbnail} alt="thumbnail" />
-                        <p>Ngày đăng: {item.ngayDang}</p>
-                        <p>Lượt xem: {item.luotXem}</p>
+                        <b>{item.tenBaiBao}</b>
+
                     </div>
-                    <b>{item.tenBaiBao}</b>
+                    <div className="news-tab-row-1">
+                        <p>Ngày đăng: {item.ngayDang.substring(0, 11)}</p>
+                        <p>Lượt xem: {item.luotXem}</p>
+                        <i>Tác giả: {item.tacGia}</i>
+                    </div>
+
                 </div>
             ))}
 

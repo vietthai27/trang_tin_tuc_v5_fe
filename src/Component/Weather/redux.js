@@ -2,8 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 import { defaultLocation } from "../../ultil"
 
 const initialState = {
-    weatherData: {},
-    location: 'phu do'
+    weatherData: {
+        days:[]
+    },
+    weatherToday: {},
+    weatherNextdays: []
 }
 
 const weatherSlice = createSlice({
@@ -15,6 +18,8 @@ const weatherSlice = createSlice({
         },
         getWeatherRequestSucess: (state, action) => {
             state.weatherData = action.payload.data
+            state.weatherToday = action.payload.data.days[0]
+            state.weatherNextdays = action.payload.data.days.slice(1)
         },
         getWeatherRequestFail: () => {
 

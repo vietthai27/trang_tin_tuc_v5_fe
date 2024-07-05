@@ -20,7 +20,7 @@ const NewsCarosel = () => {
     return (
         <div className="news-carousel-container">
 
-        <h1>Bài báo mới nhất</h1>
+        <h1 className="component-title">Bài báo mới nhất</h1>
 
             <Carousel 
             prevIcon={<SkipPreviousIcon className="carousel-button"/>}

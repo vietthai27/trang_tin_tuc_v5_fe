@@ -25,6 +25,11 @@ p {
   overflow-x: hidden;
 }
 
+.home_page-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .header {
   height: 70px;
   background-color: white;
@@ -116,7 +121,6 @@ p {
 
 .news-carousel-container {
   width: 800px;
-  margin: auto;
 }
 
 .news-carousel-container img {
@@ -126,7 +130,7 @@ p {
   border-radius: 10px;
 }
 
-.news-carousel-container h1 {
+.component-title {
   margin: 20px 0;
 }
 
@@ -205,6 +209,7 @@ p {
   justify-content: space-between;
   align-items: center;
   font-size: 17px;
+  margin: 10px 0
 }
 
 .news-tab-row-1 img {
@@ -216,8 +221,73 @@ p {
 
 .news-tab b {
   display: block;
-  margin-top: 10px;
+  margin-left: 25px;
   font-size: 15px;
+}
+
+.weather-container {
+  height: 330px;
+  width: 420px;
+  padding: 20px;
+  border-radius: 15px;
+  transition: 1s;
+}
+
+.weather-container h3 {
+  text-align: center;
+  height: 55px;
+  border-radius: 15px;
+  background-color: #00000075;
+  padding: 0px 20px;
+  color: white;
+}
+
+.weather-today {
+  color: white;
+  border-radius: 15px;
+  margin-top: 15px;
+  background-color: #00000099;
+  display: flex;
+  justify-content: space-around;
+}
+
+.weather-today img {
+  width: 50px;
+  height: 50px;
+}
+
+.weather-today-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.weather-nextdays img {
+  height: 30px;
+  width: 30px;
+}
+
+.weather-nextdays {
+  padding-top: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.weather-nextdays-detail {
+  width: 60px;
+  box-shadow: 2px 2px 2px 2px grey;
+  border-radius: 15px;
+  align-items: center;
+  gap: 0px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 /* ---------------------Loading-Start--------------------------------- */
