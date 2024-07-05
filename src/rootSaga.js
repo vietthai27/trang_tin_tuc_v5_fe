@@ -12,6 +12,7 @@ import subMenuListSaga from "./Pages/SubMenuListPage/saga";
 import newsListSaga from "./Pages/NewsListPage/saga";
 import newsDetailSaga from "./Pages/NewsDetailPage/saga";
 import weatherSaga from "./Component/Weather/saga";
+import premierLeaugeSaga from "./Component/PremierLeauge/saja";
 
 function* checkUserSessionWorker({ payload }) {
     try {
@@ -42,6 +43,7 @@ export default function* rootSaga() {
         subMenuListSaga(),
         newsListSaga(),
         newsDetailSaga(),
-        weatherSaga()
+        weatherSaga(),
+        premierLeaugeSaga()
     ]);
 }

@@ -17,8 +17,6 @@ const Weather = () => {
 
     const [location, setLocation] = useState("phu do ha noi")
 
-    console.log(weatherToday.icon);
-
     useEffect(() => {
         dispatch(getWeatherRequest(location))
     }, [location])

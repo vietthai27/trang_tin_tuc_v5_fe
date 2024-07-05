@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { defaultLocation } from "../../ultil"
 
 const initialState = {
     weatherData: {
