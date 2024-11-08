@@ -8,6 +8,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import AirIcon from '@mui/icons-material/Air';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import { TextField } from "@mui/material";
+import { getFirstAndLastOfNextFiveDays } from "../../ultil";
 
 const Weather = () => {
 
@@ -15,10 +16,11 @@ const Weather = () => {
 
     const { weatherData, weatherToday, weatherNextdays } = useSelector(state => state.weather)
 
-    const [location, setLocation] = useState("phu do ha noi")
+    const [location, setLocation] = useState("ha noi")
+    const weatherDates = getFirstAndLastOfNextFiveDays()
 
     useEffect(() => {
-        dispatch(getWeatherRequest(location))
+        dispatch(getWeatherRequest({location: location, weatherDates: weatherDates}))
     }, [location])
     const onKeyPress = (e) => {
         if (e.key === "Enter") {

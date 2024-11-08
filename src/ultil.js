@@ -1,9 +1,9 @@
 import axios from "axios";
 
 // Render hosting-----------------------------------------------
-export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
+// export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 // Local hosting------------------------------------------------
-//export const host = 'http://localhost:8080'
+export const host = 'http://localhost:8080'
 // network hosting______________________________________________
 //export const host = 'http://192.168.0.86:8080'
 
@@ -20,4 +20,29 @@ export const address = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37
 
 export const checkUserSessionApi = async (token) => {
     return await axios.get(host + apiUser + `/permit/getClaimsFromToken?token=${token}`)
+}
+
+export const getNextAndPreviousFourYears = () => {
+    const currentYear = new Date().getFullYear();
+    const yearsArray = [];
+
+    for (let i = 0; i < 5; i++) {
+        const startYear = currentYear + 1 - i;
+        const endYear = currentYear - i;
+        yearsArray.push(`${endYear}-${startYear}`);
+    }
+
+    return yearsArray;
+}
+
+export const getFirstAndLastOfNextFiveDays = () => {
+    const today = new Date();
+    const firstDay = new Date();
+    firstDay.setDate(today.getDate() + 1);
+    const formattedfirstDay = firstDay.toISOString().split('T')[0];
+    const lastDay = new Date(today);
+    lastDay.setDate(today.getDate() + 6);
+    const formattedLastDay = lastDay.toISOString().split('T')[0];
+
+    return [formattedfirstDay, formattedLastDay];
 }

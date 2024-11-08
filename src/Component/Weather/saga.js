@@ -6,8 +6,11 @@ import { toast } from "react-toastify"
 
 function* workGetWeaterData({ payload }) {
     try {
+        console.log(payload + 'test paylosd');
+        
         //yield put(startLoading())
         const response = yield call(getWeatherDataApi, payload)
+        
         yield put(getWeatherRequestSucess(response))
         //yield put(endLoading())
     } catch (e) {

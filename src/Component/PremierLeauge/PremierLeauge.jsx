@@ -2,11 +2,15 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getPremierLeaugeTableRequest } from "./redux"
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { getNextAndPreviousFourYears } from "../../ultil"
 
 const PremierLeauge = () => {
 
     const dispatch = useDispatch()
-    const [seson, setSeson] = useState('2023-2024');
+    const yearList = getNextAndPreviousFourYears();
+
+
+    const [seson, setSeson] = useState(yearList[0]);
 
     const { table } = useSelector(state => state.premierLeauge)
 
@@ -28,13 +32,13 @@ const PremierLeauge = () => {
                     id="demo-simple-select"
                     label="Season"
                     onChange={handleChange}
-                    defaultValue={'2023-2024'}
+                    defaultValue={yearList[0]}
                 >
-                    <MenuItem value={'2023-2024'}>2023-2024</MenuItem>
-                    <MenuItem value={'2022-2023'}>2022-2023</MenuItem>
-                    <MenuItem value={'2021-2022'}>2021-2022</MenuItem>
-                    <MenuItem value={'2020-2021'}>2020-2021</MenuItem>
-                    <MenuItem value={'2019-2020'}>2019-2020</MenuItem>
+                    {yearList.map((year, index) => (
+                        <MenuItem key={index} value={year}>
+                            {year}
+                        </MenuItem>
+                    ))}
                 </Select>
             </FormControl>
             <TableContainer component={Paper}>
@@ -58,7 +62,11 @@ const PremierLeauge = () => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="center">{row.intRank}</TableCell>
-                                <TableCell align="left"><img style={{ width: "30px", height: "30px" }} src={row.strBadge} /> {row.strTeam}</TableCell>
+                                <TableCell align="left">
+                                    <img style={{ width: "30px", height: "30px" }} src={row.strBadge} />
+                                    &nbsp;
+                                    {row.strTeam}
+                                </TableCell>
                                 <TableCell align="center">{row.intPoints}</TableCell>
                                 <TableCell align="center">{row.intPlayed}</TableCell>
                                 <TableCell align="center">{row.intWin}</TableCell>
