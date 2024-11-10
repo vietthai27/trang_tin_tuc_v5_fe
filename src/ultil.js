@@ -3,7 +3,7 @@ import axios from "axios";
 // Render hosting-----------------------------------------------
 // export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 // Local hosting------------------------------------------------
-export const host = 'http://localhost:8080'
+export const host = 'http://3.107.187.197:8080'
 // network hosting______________________________________________
 //export const host = 'http://192.168.0.86:8080'
 // AWS hosting-----------------------------------------------
@@ -40,10 +40,10 @@ export const getNextAndPreviousFourYears = () => {
 export const getFirstAndLastOfNextFiveDays = () => {
     const today = new Date();
     const firstDay = new Date();
-    firstDay.setDate(today.getDate() + 1);
+    firstDay.setDate(today.getDate() );
     const formattedfirstDay = firstDay.toISOString().split('T')[0];
     const lastDay = new Date(today);
-    lastDay.setDate(today.getDate() + 6);
+    lastDay.setDate(today.getDate() + 5);
     const formattedLastDay = lastDay.toISOString().split('T')[0];
 
     return [formattedfirstDay, formattedLastDay];

@@ -11,9 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { toast } from "react-toastify";
 
-const SubMenuListPage = () => {
-
-    let { tenDanhMuc, idCha } = useParams();
+const SubMenuListPage = ({data}) => {
 
     const dispatch = useDispatch()
 
@@ -25,10 +23,12 @@ const SubMenuListPage = () => {
 
     const listSubMenuItem = useSelector(state => state.subMenuList.listSubMenuItem)
 
+    const subMenuTitle = useSelector(state => state.subMenuList.subMenuTitle)
+
     const itemId = useSelector(state => state.subMenuList.itemId)
 
     const subMenuSearchParams = {
-        id: idCha,
+        id: data,
         search: search,
         pageNum: pageNum,
         pageSize: pageSize
@@ -36,7 +36,7 @@ const SubMenuListPage = () => {
 
     useEffect(() => {
         dispatch(getSubMenuListRequest(subMenuSearchParams))
-    }, [pageNum])
+    }, [pageNum,data])
 
     const handleChangePage = (event, newPage) => {
         dispatch(changePageNum(newPage))
@@ -53,7 +53,7 @@ const SubMenuListPage = () => {
            toast.warn("Chưa nhập dữ liệu")
         } else {
             handleCloseAdd()
-            dispatch(addSubMenuListRequest({ idCha: idCha, listSubMenuItem: listSubMenuItem, ...subMenuSearchParams }))
+            dispatch(addSubMenuListRequest({ idCha: data, listSubMenuItem: listSubMenuItem, ...subMenuSearchParams }))
         }  
     }
 
@@ -63,7 +63,7 @@ const SubMenuListPage = () => {
             toast.warn("Chưa nhập dữ liệu")
         } else {
             handleCloseEdit()
-            dispatch(editSubMenuListRequest({ itemId: itemId, idCha: idCha, listSubMenuItem: listSubMenuItem, ...subMenuSearchParams }))
+            dispatch(editSubMenuListRequest({ itemId: itemId, idCha: data, listSubMenuItem: listSubMenuItem, ...subMenuSearchParams }))
         } 
     }
 
@@ -79,7 +79,7 @@ const SubMenuListPage = () => {
 
     return (
         <div className='user-list-page'>
-            <h1>Quản lý danh mục: {tenDanhMuc}</h1>
+            <h1>Quản lý danh mục: {subMenuTitle}</h1>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
@@ -106,9 +106,7 @@ const SubMenuListPage = () => {
                                 handleOpenAdd()
                             }}>Thêm</Button></StyledTableCell>
                             <StyledTableCell align="center">
-                                <Button color='error' variant='contained' endIcon={<ArrowForwardIosIcon />} onClick={() => {
-                                    navigate("/menuList")
-                                }}>Trở về</Button>
+                            
                             </StyledTableCell>
                         </TableRow>
                     </TableHead>

@@ -1,4 +1,5 @@
 import HomePage from "./Pages/HomePage/HomePage";
+import ManageSystemPage from "./Pages/ManageSystemPage/ManageSystemPage";
 import MenuListPage from "./Pages/MenuListPage/MenuListPage";
 import NewsDetailPage from "./Pages/NewsDetailPage/NewsDetailPage";
 import AddNewsListPage from "./Pages/NewsListPage/AddNewsListPage";
@@ -40,6 +41,10 @@ export const protectedRoutesAdmin = [
     {
         path: "/subMenuList/:idCha/:tenDanhMuc",
         element: <SubMenuListPage/>
+    },
+    {
+        path: "/manageSystem",
+        element: <ManageSystemPage />
     },
 
 ]

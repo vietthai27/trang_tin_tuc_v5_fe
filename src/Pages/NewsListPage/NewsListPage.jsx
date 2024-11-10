@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import { changePageNum, changeSearch, deleteNewsRequest, getSubMenuRequeset, searchNewsRequest } from './redux';
 import { useNavigate } from 'react-router-dom';
+import { changeTab } from '../../Component/Sidebar/reducer';
 
 function NewsListPage() {
 
@@ -71,11 +72,12 @@ function NewsListPage() {
                             <StyledTableCell align="center">Tên bài báo</StyledTableCell>
                             <StyledTableCell align="center">Tác giả</StyledTableCell>
                             <StyledTableCell align="center">Lượt xem</StyledTableCell>
-                            <StyledTableCell align="center">Thao tác</StyledTableCell>
+                            <StyledTableCell align="center"> <Button color='primary' variant='contained' startIcon={<AddIcon />} onClick={() => {
+                                    naviage("/manageSystem");
+                                    dispatch(changeTab('3-add'))
+                                }}>Thêm</Button></StyledTableCell>
                             <StyledTableCell align="center">
-                                <Button color='primary' variant='contained' startIcon={<AddIcon />} onClick={() => {
-                                    naviage("/addNewsPaperList")
-                                }}>Thêm</Button>
+                               
                             </StyledTableCell>
                         </TableRow>
                     </TableHead>
@@ -87,7 +89,8 @@ function NewsListPage() {
                                 <StyledTableCell align="center">{row.luotXem}</StyledTableCell>
                                 <StyledTableCell align="center">
                                     <Button startIcon={<EditIcon />} color='warning' variant='contained' onClick={() => {
-                                        naviage("/editNewsPaperList/" + row.id)
+                                        naviage("/manageSystem");
+                                        dispatch(changeTab('3-edit-' + row.id))
                                     }}>Sửa</Button>
                                 </StyledTableCell>
                                 <StyledTableCell align="center">

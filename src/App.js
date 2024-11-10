@@ -11,6 +11,7 @@ import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
 import Loading from './Component/Loading/Loading'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './Component/Footer/Footer';
+import 'rsuite/dist/rsuite-no-reset.min.css';
 
 function App() {
 
@@ -33,10 +34,21 @@ function App() {
         <Header />
       </div>
       <div className="app-body">
-        <div className='app-component'>
-          <Routes>
+        <Routes>
+          {
+            routes.map((element, index) => {
+              return (
+                <Route
+                  path={element.path}
+                  element={element.element}
+                  key={index}
+                />
+              )
+            })
+          }
+          <Route element={<ProtectedRoute role={"ADMIN"} />}>
             {
-              routes.map((element, index) => {
+              protectedRoutesAdmin.map((element, index) => {
                 return (
                   <Route
                     path={element.path}
@@ -46,34 +58,23 @@ function App() {
                 )
               })
             }
-            <Route element={<ProtectedRoute role={"ADMIN"} />}>
-              {
-                protectedRoutesAdmin.map((element, index) => {
-                  return (
-                    <Route
-                      path={element.path}
-                      element={element.element}
-                      key={index}
-                    />
-                  )
-                })
-              }
-            </Route>
-            <Route element={<ProtectedRoute role={"MODER"} />}>
-              {
-                protectedRoutesModer.map((element, index) => {
-                  return (
-                    <Route
-                      path={element.path}
-                      element={element.element}
-                      key={index}
-                    />
-                  )
-                })
-              }
-            </Route>
-          </Routes>
-        </div>
+          </Route>
+          <Route element={<ProtectedRoute role={"MODER"} />}>
+            {
+              protectedRoutesModer.map((element, index) => {
+                return (
+                  <Route
+                    path={element.path}
+                    element={element.element}
+                    key={index}
+                  />
+                )
+              })
+            }
+          </Route>
+        </Routes>
+      </div>
+      <div className='app-footer'>
         <Footer />
       </div>
       <ToastContainer />

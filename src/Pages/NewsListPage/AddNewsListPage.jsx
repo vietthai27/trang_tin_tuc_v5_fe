@@ -56,7 +56,7 @@ const AddNewsListPage = () => {
     const handelAddBaiBao = () => {
         dispatch(addNewsRequest({addParam:addBaiBaoParam,searchParam:newsSearchParams}))
         //dispatch(searchNewsRequest(newsSearchParams))
-        navigate("/newsPaperList")
+        navigate("/manageSystem")
     }
 
     return (
@@ -71,7 +71,7 @@ const AddNewsListPage = () => {
                 }} variant="outlined" placeholder={"Kéo ảnh Thumnail vào đây"} />
             </div>
 
-            <div style={{ width: '50%', margin: 'auto' }}>
+            <div style={{ width: '800px', margin: 'auto' }}>
                 <TextField fullWidth onChange={(e) => {
                     dispatch(changeTieuDe(e.target.value))
                 }} variant="outlined" label={"Nhập tiêu đề bài báo"} />
@@ -116,7 +116,6 @@ const AddNewsListPage = () => {
             </div>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'center', margin: '20px', gap:'20px' }}>
                 <Button startIcon={<AddIcon />} onClick={() => { handelAddBaiBao() }} variant='contained'>Thêm bài báo</Button>
-                <Button endIcon={<ArrowForwardIosIcon />} onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
             </div>
 
         </div>

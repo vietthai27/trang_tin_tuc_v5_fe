@@ -67,7 +67,7 @@ function UserManageList() {
 
     const handleOpenUserList = () => {
         setAnchorEl(null);
-        navigate("/userList")
+        navigate("/manageSystem")
     };
 
     const handleOpenMenuList = () => {
@@ -151,20 +151,11 @@ function UserManageList() {
                 open={open}
                 onClose={handleClose}
             >
-                {hasAdmin ? <MenuItem onClick={handleOpenUserList} disableRipple>
+                {hasModer || hasAdmin ? <MenuItem onClick={handleOpenUserList} disableRipple>
                     <SupervisedUserCircleIcon />
-                    Quản lý người dùng
+                    Quản lý hệ thống
                 </MenuItem> : null}
 
-                {hasAdmin ? <MenuItem onClick={handleOpenMenuList} disableRipple>
-                    <ListIcon />
-                    Quản lý danh mục bài báo
-                </MenuItem> : null}
-
-                {hasModer ? <MenuItem onClick={handleOpenNewsList} disableRipple>
-                    <NewspaperIcon />
-                    Quản lý bài báo
-                </MenuItem> : null}
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={() => handelChangePass()} disableRipple>
                     <PasswordIcon />

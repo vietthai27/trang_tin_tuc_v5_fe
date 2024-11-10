@@ -13,6 +13,7 @@ function MenuBaiBao() {
     const danhMucBaiBao = useSelector(state => state.menu.danhMucBaiBao)
     const navigate = useNavigate()
 
+
     useEffect(() => {
         dispatch(getMenuDataAction())
     }, [dispatch])
@@ -32,8 +33,8 @@ function MenuBaiBao() {
                                     item.danhMucCon.map((child) => (
                                         <MenuItem className='menu-item-child'
                                             onClick={() => {
-                                                //popupState.close
-                                                navigate(`/newsBySubmenu/${child.id}/${child.tenDanhMucCon}`)
+                                                popupState.close();
+                                                navigate(`/newsBySubmenu/${child.id}/${child.tenDanhMucCon}`);
                                             }}
                                         >
                                             {child.tenDanhMucCon}

@@ -9,11 +9,13 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-const EditNewsListPage = () => {
+const EditNewsListPage = ({idBaiBao}) => {
 
     const editor = useRef(null);
 
-    const { id } = useParams()
+
+
+    // const { id } = useParams()
 
     const data = useSelector(state => state.newsDetail.newsDetail)
 
@@ -29,7 +31,7 @@ const EditNewsListPage = () => {
     const subMenu = useSelector(state => state.newsList.subMenu)
 
     useEffect(() => {
-        dispatch(newsDetailRequest(id))
+        dispatch(newsDetailRequest(idBaiBao))
     }, [])
 
     useEffect(() => {
@@ -61,7 +63,7 @@ const EditNewsListPage = () => {
     const handelEditBaiBao = () => {
         dispatch(editNewsRequest({ editParam: editBaiBaoParam, searchParams: newsSearchParams }))
         //dispatch(searchNewsRequest(newsSearchParams))
-        navigate("/newsPaperList")
+        navigate("/manageSystem")
     }
 
     return (
@@ -78,7 +80,7 @@ const EditNewsListPage = () => {
                 }} variant="outlined" placeholder={"Kéo ảnh Thumnail vào đây"} value={data.thumbnail} />
             </div>
 
-            <div style={{ width: '50%', margin: 'auto' }}>
+            <div style={{ width: '800px', margin: 'auto' }}>
                 <TextField fullWidth onChange={(e) => {
                     dispatch(changeTieuDeEdit(e.target.value))
                 }} variant="outlined" label={"Nhập tiêu đề bài báo"} value={data.tieuDe} />
@@ -126,7 +128,6 @@ const EditNewsListPage = () => {
             </div>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'center', margin: '20px', gap: '20px' }}>
                 <Button startIcon={<EditIcon />} onClick={() => { handelEditBaiBao() }} variant='contained'>Sửa bài báo</Button>
-                <Button endIcon={<ArrowForwardIosIcon />} onClick={() => { navigate("/newsPaperList") }} color='error' variant='contained'>Quay về</Button>
             </div>
 
         </div>

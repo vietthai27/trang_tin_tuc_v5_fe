@@ -12,6 +12,7 @@ import newsListReducer from './Pages/NewsListPage/redux';
 import newsDetailReducer from './Pages/NewsDetailPage/redux';
 import weatherReducer from './Component/Weather/redux';
 import premierLeaugeReducer from './Component/PremierLeauge/redux';
+import  sideBarReducer  from './Component/Sidebar/reducer';
 
 
 const initialState = {
@@ -82,4 +83,5 @@ export const rootReducer = combineSlices({
     newsDetail: newsDetailReducer,
     weather: weatherReducer,
     premierLeauge: premierLeaugeReducer,
+    sideBar: sideBarReducer
 })

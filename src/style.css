@@ -9,30 +9,35 @@ p {
 }
 
 .app-header {
-  position: absolute;
+  position: fixed;
   top: 0;
-  height: 70px;
+  height: 60px;
   width: 100%;
-
+  z-index: 100;
 }
 
 .app-body {
+  margin-top: 60px;
+  height: calc(100vh - 300px);
+  overflow: hidden;
+}
+
+.app-footer {
   position: fixed;
-  top: 72px;
-  height: calc(100vh - 70px);
+  bottom: 0;
+  height: 240px;
   width: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
+  z-index: 100;
+  
 }
 
 .home_page-row1 {
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.header {
-  height: 70px;
+.header-container {
   background-color: white;
   justify-content: flex-start;
   width: 100%;
@@ -41,9 +46,9 @@ p {
 }
 
 .page-logo {
-  height: 67px;
-  width: 210px;
-  padding: 0 20px;
+  height: 60px;
+  width: 155px;
+  margin: 0px 55px;
   cursor: pointer;
 }
 
@@ -61,12 +66,12 @@ p {
 }
 
 .user-list-page {
-  margin-top: 40px;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .menu-container {
@@ -75,11 +80,9 @@ p {
   display: flex;
   justify-content: center;
   gap: 20px;
-  height: 100%;
 }
 
 .menu-item {
-  height: 100%;
   color: #000 !important;
   font-size: 18px !important;
   font-weight: 700 !important;
@@ -93,8 +96,9 @@ p {
 }
 
 .news-list-modify-container {
-  width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-grow: 1;
 }
 
 .news-list-modify-container h1 {
@@ -105,7 +109,7 @@ p {
 
 .news-list-modify-flex {
   align-items: center;
-  width: 50%;
+  width: 800px;
   gap: 20px;
   margin: 20px auto;
   justify-content: space-between;
@@ -171,16 +175,14 @@ p {
 }
 
 .footer-container {
-  margin-top: 40px;
   border-top: 2px solid #4FFFB8;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
 }
 
-.footer-map {
-  border-radius: 20px;
+.footer-page-tab-right {
+  flex-grow: 1;
 }
+
 
 .footer-info {
   font-size: 15px;
@@ -319,13 +321,64 @@ p {
   width: 500px;
   height: 500px;
   overflow: hidden;
-  transition: 1s ease-in-out;
 }
 
-.premire-leauge-container:hover {
-  width: 700px;
-  overflow: scroll;
-  overflow-x: hidden;
+.manage-system-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-container {
+  border-right: 2px solid #4FFFB8;
+}
+
+.footer-page-logo {
+  display: flex;
+  background-color: #33A476;
+  justify-content: flex-end;
+}
+
+.footer-page-logo-img {
+  background-color: white;
+  height: 50px;
+  padding: 0px 23px;
+}
+
+.footer-info-container {
+  height: 170px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 20px;
+}
+
+.footer-page-copyright {
+  background-color: #B9C1C3;
+  height: 20px;
+  text-align: center;
+}
+
+.statistic-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.statistic-tab {
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 5px 7px 2px grey;
+}
+
+.statistic-tab-ribbon {
+  height: 5px;
+  width: 100%;
+  border-bottom-left-radius:5px ;
+  border-bottom-right-radius:5px ;
+}
+
+.report-container{
+  padding: 40px;
 }
 
 /* ---------------------Loading-Start--------------------------------- */
@@ -343,7 +396,7 @@ p {
   z-index: 10000;
 }
 
-/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div>
 .loader {
   position: absolute;
   top: 30%;
@@ -357,12 +410,36 @@ p {
   mask: var(--_m);
   mask-composite: subtract;
   animation: l3 1s infinite linear;
-}
+} */
 
-@keyframes l3 {
-  to {
-    transform: rotate(1turn)
-  }
+/* HTML: <div class="loader"></div> */
+.loader {
+  position: absolute;
+  top: 30%;
+  left: 49%;
+  width: 55px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #25b09b;
+  animation: l15 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: l15 2s infinite;
+}
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+@keyframes l15{ 
+  100%{transform: rotate(1turn)}
 }
 
 /* ---------------------Loading-End--------------------------------- */

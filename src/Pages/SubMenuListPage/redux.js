@@ -7,7 +7,8 @@ const initialState = {
     pageSize: 5,
     search: '',
     listSubMenuItem:'',
-    itemId:0
+    itemId:0,
+    subMenuTitle:''
 }
 
 const subMenuListSlice = createSlice({
@@ -62,6 +63,9 @@ const subMenuListSlice = createSlice({
         },
         chageItemId:(state, action) => {
             state.itemId = action.payload
+        },
+        changeSubMenuTitle:(state,action) => {
+            state.subMenuTitle = action.payload
         }
     }
 })
@@ -82,7 +86,8 @@ editSubMenuListRequest,
 editSubMenuListSuccess,
 getSubMenuListFail,
 getSubMenuListRequest,
-getSubMenuListSuccess
+getSubMenuListSuccess,
+changeSubMenuTitle
 } = subMenuListSlice.actions
 
 const subMenuListReducer = subMenuListSlice.reducer

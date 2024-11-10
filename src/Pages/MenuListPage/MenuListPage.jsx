@@ -101,12 +101,12 @@ const MenuListPage = () => {
                     <TableHead>
                         <TableRow>
                             <StyledTableCell align="center">Tên danh mục</StyledTableCell>
-                            <StyledTableCell align="center"></StyledTableCell>
-                            <StyledTableCell align="center"></StyledTableCell>
-                            <StyledTableCell align="center">
-                                <Button color='primary' variant='contained' startIcon={<AddIcon />} onClick={() => {
+                            {/* <StyledTableCell align="center"></StyledTableCell> */}
+                            <StyledTableCell align="center">  <Button color='primary' variant='contained' startIcon={<AddIcon />} onClick={() => {
                                     handleOpenAdd()
-                                }}>Thêm</Button>
+                                }}>Thêm</Button></StyledTableCell>
+                            <StyledTableCell align="center">
+                              
                             </StyledTableCell>
                         </TableRow>
                     </TableHead>
@@ -114,11 +114,11 @@ const MenuListPage = () => {
                         {menuListData.map((row) => (
                             <StyledTableRow hover key={row.tenDanhMuc}>
                                 <StyledTableCell align="center">{row.tenDanhMuc}</StyledTableCell>
-                                <StyledTableCell align="center">
+                                {/* <StyledTableCell align="center">
                                     <Button startIcon={<MenuOpenIcon />} color='success' variant='contained' onClick={() => {
                                         navigate(`/subMenuList/${row.id}/${row.tenDanhMuc}`)
                                     }}>Danh mục con</Button>
-                                </StyledTableCell>
+                                </StyledTableCell> */}
                                 <StyledTableCell align="center">
                                     <Button startIcon={<EditIcon />} color='warning' variant='contained' onClick={() => {
                                         dispatch(changeMenuItem(row.tenDanhMuc)); dispatch(chageItemId(row.id)); handleOpenEdit()
