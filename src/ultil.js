@@ -3,7 +3,7 @@ import axios from "axios";
 // Render hosting-----------------------------------------------
 // export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 // Local hosting------------------------------------------------
-export const host = 'http://3.107.187.197:8080'
+export const host = 'https://thai27webdev.io.vn'
 // network hosting______________________________________________
 //export const host = 'http://192.168.0.86:8080'
 // AWS hosting-----------------------------------------------
