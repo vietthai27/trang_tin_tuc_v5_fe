@@ -158,6 +158,9 @@ p {
 }
 
 .news-detail-container {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   width: 800px;
   margin: auto;
   padding: 20px;

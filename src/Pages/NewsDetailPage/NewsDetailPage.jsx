@@ -77,7 +77,7 @@ function NewsDetailPage() {
             </div>
 
             {parse(data.noiDung)}
-            <div className="news-detail-view" ref={targetRef}>view: {view}</div>
+            {/* <div className="news-detail-view" ref={targetRef}>view: {view}</div> */}
         </div>
     );
 }
