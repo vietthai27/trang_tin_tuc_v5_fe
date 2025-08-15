@@ -7,7 +7,7 @@ import { host } from "./ultil";
 
 export default function Notifications() {
   useEffect(() => {
-    const socketFactory = () => new SockJS( host + "/ws");
+    const socketFactory = () => new SockJS("https://trang-tin-tuc-v5-be.onrender.com/ws");
 
     const client = new Client({
       webSocketFactory: socketFactory,
