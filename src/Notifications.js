@@ -3,10 +3,11 @@ import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { host } from "./ultil";
 
 export default function Notifications() {
   useEffect(() => {
-    const socketFactory = () => new SockJS("http://localhost:8080/ws");
+    const socketFactory = () => new SockJS( host + "/ws");
 
     const client = new Client({
       webSocketFactory: socketFactory,
