@@ -12,6 +12,7 @@ import Loading from './Component/Loading/Loading'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './Component/Footer/Footer';
 import 'rsuite/dist/rsuite-no-reset.min.css';
+import Notifications from './Notifications';
 
 function App() {
 
@@ -78,6 +79,7 @@ function App() {
         <Footer />
       </div>
       <ToastContainer />
+      <Notifications />
       {loadingCount === 0 ? null : <Loading />}
     </div >
   );
