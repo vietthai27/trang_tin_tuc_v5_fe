@@ -1,6 +1,7 @@
 import { toast } from "react-toastify"
 
-export const host = 'http://localhost:8080'
+// export const host = 'http://localhost:8080'
+export const host = 'https://chiatien-be.onrender.com'
 export const apiBank = '/bank'
 export const apiUser = '/user'
 export const apiAccount = '/bank-account'
