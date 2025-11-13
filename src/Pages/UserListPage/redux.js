@@ -5,7 +5,8 @@ const initialState = {
     userListDataPaging: [],
     pageNum: 1,
     pageSize: 5,
-    search: ''
+    search: '',
+
 }
 
 const addHasModerRole = (userListData) => {
@@ -22,7 +23,7 @@ const userListSlice = createSlice({
         getAllUserRequest: () => { },
         getAllUserSuccess: (state, action) => {
             state.userListDataPaging = action.payload
-            const userList = addHasModerRole(action.payload.content)
+            const userList = addHasModerRole(action.payload.data.content)
             state.userListData = userList
         },
         changeSearch: (state, action) => {
@@ -35,7 +36,7 @@ const userListSlice = createSlice({
         searchUserRequest: () => { },
         searchUserSuccess: (state, action) => {
             state.userListDataPaging = action.payload
-            const userList = addHasModerRole(action.payload.content)
+            const userList = addHasModerRole(action.payload.data.content)
             state.userListData = userList
         },
         searchUserFail: () => { },
@@ -48,6 +49,8 @@ const userListSlice = createSlice({
         deleteUserRequest: () => { },
         deleteUserSuccess: () => {  },
         deleteUserFail: () => { },
+       
+
     }
 })
 

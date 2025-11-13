@@ -3,6 +3,7 @@ import { endLoading, setLoginState, startLoading } from "../../rootReducer";
 import { userForgetPassApi, userResetPassApi } from "./api";
 import { userForgetPassFail, userForgetPassSuccess, userResetPassFail, userResetPassSuccess } from "./reducer";
 import { closemodalResetpass, openModalLogin } from "../UserManage/reducer";
+import { notify } from "../../ultil";
 
 function* workUserForgetPass({ payload }) {
     try {
@@ -11,6 +12,7 @@ function* workUserForgetPass({ payload }) {
         yield put(endLoading())
         yield put(userForgetPassSuccess(response))
         yield put(openModalLogin())
+        notify(response.data.status, response.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(userForgetPassFail(e))
@@ -30,6 +32,7 @@ function* workUserResetPass({ payload }) {
         yield put(closemodalResetpass())
         yield put(setLoginState(false))
         yield put(openModalLogin())
+        notify(response.data.status, response.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(userResetPassFail(e))

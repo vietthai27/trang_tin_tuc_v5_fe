@@ -1,18 +1,14 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import menuSaga from "./Component/Menu/saga";
 import userLoginSaga from "./Component/UserLogin/saga";
 import userSignupSaga from "./Component/UserSignup/saga";
 import userChangePassSaga from "./Component/UserForgetPass/saga";
 import userListSaga from "./Pages/UserListPage/saga";
 import { checkUserSessionFail, checkUserSessionRequest, checkUserSessionSuccess } from "./rootReducer";
-import { checkUserSessionApi } from "./ultil";
+import { checkUserSessionApi } from "./rootApi";
 import { toast } from "react-toastify";
-import menuListSaga from "./Pages/MenuListPage/saga";
-import subMenuListSaga from "./Pages/SubMenuListPage/saga";
-import newsListSaga from "./Pages/NewsListPage/saga";
-import newsDetailSaga from "./Pages/NewsDetailPage/saga";
-import weatherSaga from "./Component/Weather/saga";
-import premierLeaugeSaga from "./Component/PremierLeauge/saja";
+import bankListSaga from "./Pages/BankListPage/saga";
+import accountListSaga from "./Pages/AccountPage/saga";
+import billListSaga from "./Pages/BillPage/saga"
 
 function* checkUserSessionWorker({ payload }) {
     try {
@@ -34,16 +30,12 @@ function* appSaga() {
 export default function* rootSaga() {
     yield all([
         appSaga(),
-        menuSaga(),
         userLoginSaga(),
         userSignupSaga(),
         userChangePassSaga(),
         userListSaga(),
-        menuListSaga(),
-        subMenuListSaga(),
-        newsListSaga(),
-        newsDetailSaga(),
-        weatherSaga(),
-        premierLeaugeSaga()
+        bankListSaga(),
+        accountListSaga(),
+        billListSaga()
     ]);
 }

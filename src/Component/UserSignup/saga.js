@@ -3,6 +3,7 @@ import { userSignupRequestApi, userSignupValidateApi } from "./api"
 import { setUserSignupValidate, userSignupRequestFail, userSignupRequestSuccess, userSignupValidateFail, userSignupValidateSuccess } from "./reducer"
 import { endLoading, startLoading } from "../../rootReducer"
 import { closemodalSignup, openModalLogin } from "../UserManage/reducer"
+import { notify } from "../../ultil"
 
 function* workUserSignupValidate({ payload }) {
     try {
@@ -12,6 +13,7 @@ function* workUserSignupValidate({ payload }) {
         yield put(userSignupValidateSuccess(response))
         yield put(openModalLogin())
         yield put(endLoading())
+        notify(response.data.status, response.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(userSignupValidateFail(e))
@@ -30,6 +32,7 @@ function* workUserSignupRequest({ payload }) {
         yield put(endLoading())
         yield put(closemodalSignup())
         yield put(setUserSignupValidate(true))
+        notify(response.data.status, response.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(userSignupRequestFail(e))

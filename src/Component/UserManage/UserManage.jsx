@@ -1,5 +1,4 @@
 import { Button, Modal } from '@mui/material';
-import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserLogin from '../UserLogin/UserLogin';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +6,8 @@ import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import { closeModalLogin, closemodalForgetpass, closemodalResetpass, closemodalSignup, openModalLogin } from './reducer';
 import UserManageList from '../UserManageList/UserManageList';
-import UserSignupModal from '../UserSignup/UserSignupModal';import UserResetPass from '../UserForgetPass/UserResetPass';
+import UserSignupModal from '../UserSignup/UserSignupModal';
+import UserResetPass from '../UserForgetPass/UserResetPass';
 
 function UserManage() {
 

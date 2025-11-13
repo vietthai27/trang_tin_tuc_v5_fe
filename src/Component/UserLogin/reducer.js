@@ -19,8 +19,8 @@ const userLoginSlice = createSlice({
         },
         userLoginRequest: (state) => {
         },
-        userLoginSuccess: (state, action) => {
-            localStorage.setItem("token", action.payload.data)
+        userLoginSuccess: (state, action) => {    
+            localStorage.setItem("token", action.payload.data.data)
         },
         userLoginFail: (state) => {
         },

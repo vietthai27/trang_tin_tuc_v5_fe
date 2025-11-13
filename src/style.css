@@ -18,7 +18,6 @@ p {
 
 .app-body {
   margin-top: 60px;
-  height: calc(100vh - 300px);
   overflow: hidden;
 }
 
@@ -28,13 +27,7 @@ p {
   height: 240px;
   width: 100%;
   z-index: 100;
-  
-}
 
-.home_page-row1 {
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-around;
 }
 
 .header-container {
@@ -45,16 +38,30 @@ p {
   border-bottom: 2px solid aquamarine;
 }
 
-.page-logo {
-  height: 60px;
-  width: 155px;
-  margin: 0px 55px;
-  cursor: pointer;
+.logo-container {
+  align-items: center;
+  width: 50%;
+  display: flex;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 25px;
+  color: aquamarine;
+  text-shadow: 2px 2px 2px #2e7579;
 }
 
 .user_manage {
+  width: 50%;
   display: flex;
   margin-left: auto;
+}
+
+.page-logo {
+  padding: 10px 0;
+  height: 60px;
+  margin: 0px 10px;
+  cursor: pointer;
 }
 
 .user_login {
@@ -62,7 +69,7 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 25px;
+  padding-right: 10px;
 }
 
 .user-list-page {
@@ -376,11 +383,11 @@ p {
 .statistic-tab-ribbon {
   height: 5px;
   width: 100%;
-  border-bottom-left-radius:5px ;
-  border-bottom-right-radius:5px ;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.report-container{
+.report-container {
   padding: 40px;
 }
 
@@ -428,8 +435,9 @@ p {
   border-right-color: #25b09b;
   animation: l15 1s infinite linear;
 }
+
 .loader::before,
-.loader::after {    
+.loader::after {
   content: "";
   grid-area: 1/1;
   margin: 2px;
@@ -437,12 +445,16 @@ p {
   border-radius: 50%;
   animation: l15 2s infinite;
 }
+
 .loader::after {
   margin: 8px;
   animation-duration: 3s;
 }
-@keyframes l15{ 
-  100%{transform: rotate(1turn)}
+
+@keyframes l15 {
+  100% {
+    transform: rotate(1turn)
+  }
 }
 
 /* ---------------------Loading-End--------------------------------- */

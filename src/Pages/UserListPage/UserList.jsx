@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePageNum, changeSearch, deleteModerRoleRequest, deleteUserRequest, searchUserRequest, setModerRoleRequest } from './redux';
 import { Button, IconButton, InputBase, Pagination, Paper, Stack, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
@@ -27,7 +27,7 @@ function UserList() {
             pageNum: pageNum,
             pageSize: pageSize
         }))
-    }, [pageNum])
+    }, [pageNum, pageSize])
 
     const handleChangePage = (event, newPage) => {
         dispatch(changePageNum(newPage))
@@ -43,7 +43,7 @@ function UserList() {
             <h1>Quản lý người dùng</h1>
             <Paper
                 component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '80%' }}
             >
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
@@ -58,14 +58,14 @@ function UserList() {
                     <SearchIcon />
                 </IconButton>
             </Paper>
-            <TableContainer sx={{ maxWidth: "700px", height:"378px" }} component={Paper}>
+            <TableContainer sx={{ width: '95%' }} component={Paper}>
                 <Table aria-label="customized table">
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell align="center">Tên người dùng</StyledTableCell>
+                            <StyledTableCell align="center">User</StyledTableCell>
                             <StyledTableCell align="center">Email</StyledTableCell>
-                            <StyledTableCell align="center">Quyền MODER</StyledTableCell>
-                            <StyledTableCell align="center">Thao tác</StyledTableCell>
+                            <StyledTableCell align="center">MODER</StyledTableCell>
+                            <StyledTableCell align="center"></StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -75,27 +75,27 @@ function UserList() {
                                 <StyledTableCell align="center">{row.email}</StyledTableCell>
                                 <StyledTableCell align="center">{
                                     row.hasModerRole === true ?
-                                        <Button startIcon={<PersonAddDisabledIcon/>} color='error' variant='contained' onClick={() => {
+                                        <Button startIcon={<PersonAddDisabledIcon />} color='error' variant='contained' onClick={() => {
                                             dispatch(deleteModerRoleRequest({
                                                 id: row.id,
                                                 pageNum: pageNum,
                                                 pageSize: pageSize,
                                                 search: search
                                             }))
-                                        }}>Hủy quyền</Button> :
-                                        <Button startIcon={<PersonAddIcon/>} color='primary' variant='contained' onClick={() => {
+                                        }}>Hủy</Button> :
+                                        <Button startIcon={<PersonAddIcon />} color='primary' variant='contained' onClick={() => {
                                             dispatch(setModerRoleRequest({
                                                 id: row.id,
                                                 pageNum: pageNum,
                                                 pageSize: pageSize,
                                                 search: search
                                             }))
-                                        }}>Đặt quyền</Button>
+                                        }}>Đặt</Button>
                                 }
                                 </StyledTableCell>
                                 <StyledTableCell align="center">
                                     <Button
-                                    startIcon={<DeleteIcon/>}
+                                        startIcon={<DeleteIcon />}
                                         variant='contained'
                                         color='error'
                                         onClick={() => {

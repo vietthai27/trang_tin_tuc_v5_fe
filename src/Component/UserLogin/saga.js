@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { endLoading, setLoginState, setUsername, startLoading } from "../../rootReducer";
 import { closeModalLogin } from "../UserManage/reducer";
 import { userLoginApi } from "./api";
+import { notify } from "../../ultil";
 
 function* workUserLogin({ payload }) {
     try {
@@ -14,7 +15,7 @@ function* workUserLogin({ payload }) {
         yield put(userLoginSuccess(response))
         yield put(setLoginState(true))
         yield put(closeModalLogin())
-        toast.success("Đăng nhập thành công")
+        notify(response.data.status, response.data.message)
     } catch (e) {
         yield put(endLoading())
         toast.warn(e.response.data.message);
@@ -24,7 +25,6 @@ function* workUserLogin({ payload }) {
 
 function* userLoginSaga() {
     yield takeLatest('userLogin/userLoginRequest', workUserLogin)
-
 }
 
 export default userLoginSaga

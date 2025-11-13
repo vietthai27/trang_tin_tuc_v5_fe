@@ -2,7 +2,7 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import { deleteModerRoleApi, deleteUserApi, searchUserApi, setModerRoleApi } from "./api";
 import { endLoading, startLoading } from "../../rootReducer";
 import { deleteModerRoleFail, deleteModerRoleRequest, deleteModerRoleSuccess, deleteUserFail, deleteUserRequest, deleteUserSuccess, getAllUserSuccess, searchUserFail, searchUserRequest, searchUserSuccess, setModerRoleFail, setModerRoleRequest, setModerRoleSuccess } from "./redux";
-import { toast } from "react-toastify";
+import { notify } from "../../ultil";
 
 
 function* searchUserWorker({ payload }) {
@@ -24,7 +24,7 @@ function* searchUserWatcher() {
 function* setUserModerWorker({ payload }) {
     try {
         yield put(startLoading())
-        yield call(setModerRoleApi, payload.id)
+        const resSet = yield call(setModerRoleApi, payload.id)
         yield put(setModerRoleSuccess())
         const res = yield call(searchUserApi, {
             search: payload.search,
@@ -33,8 +33,7 @@ function* setUserModerWorker({ payload }) {
         })
         yield put(getAllUserSuccess(res.data))
         yield put(endLoading())
-        toast.success("Đặt quyền MODER thành công")
-
+        notify(resSet.data.status, resSet.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(setModerRoleFail())
@@ -48,7 +47,7 @@ function* setUserModerWatcher() {
 function* deleteUserModerWorker({ payload }) {
     try {
         yield put(startLoading())
-        yield call(deleteModerRoleApi, payload.id)
+        const resSet = yield call(deleteModerRoleApi, payload.id)
         yield put(deleteModerRoleSuccess())
         const res = yield call(searchUserApi, {
             search: payload.search,
@@ -57,7 +56,7 @@ function* deleteUserModerWorker({ payload }) {
         })
         yield put(getAllUserSuccess(res.data))
         yield put(endLoading())
-        toast.success("Hủy quyền MODER thành công")
+        notify(resSet.data.status, resSet.data.message)
 
     } catch (e) {
         yield put(endLoading())
@@ -72,7 +71,7 @@ function* deleteUserModerWatcher() {
 function* deleteUserWorker({ payload }) {
     try {
         yield put(startLoading())
-        yield call(deleteUserApi, payload.id)
+        const resSet = yield call(deleteUserApi, payload.id)
         yield put(deleteUserSuccess())
         const res = yield call(searchUserApi, {
             search: payload.search,
@@ -81,7 +80,7 @@ function* deleteUserWorker({ payload }) {
         })
         yield put(getAllUserSuccess(res.data))
         yield put(endLoading())
-        toast.success("Xóa người dùng thành công")
+        notify(resSet.data.status, resSet.data.message)
     } catch (e) {
         yield put(endLoading())
         yield put(deleteUserFail())

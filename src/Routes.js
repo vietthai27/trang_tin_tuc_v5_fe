@@ -1,66 +1,23 @@
-import HomePage from "./Pages/HomePage/HomePage";
-import ManageSystemPage from "./Pages/ManageSystemPage/ManageSystemPage";
-import MenuListPage from "./Pages/MenuListPage/MenuListPage";
-import NewsDetailPage from "./Pages/NewsDetailPage/NewsDetailPage";
-import AddNewsListPage from "./Pages/NewsListPage/AddNewsListPage";
-import EditNewsListPage from "./Pages/NewsListPage/EditNewsListPage";
-import NewsListPage from "./Pages/NewsListPage/NewsListPage";
-import NewsSubMenuPage from "./Pages/NewsListPage/NewsSubMenuPage";
+import AccountPage from "./Pages/AccountPage/AccountPage";
+import BillPage from "./Pages/BillPage/BillPage";
 import NotAuthorizePage from "./Pages/NotAuthorizePage/NotAuthorizePage";
-import SubMenuListPage from "./Pages/SubMenuListPage/SubMenuListPage";
-import UserList from "./Pages/UserListPage/UserList";
 
 export const routes = [
     {
         path: "/",
-        element: <HomePage />
+        element: <AccountPage />
     },
     {
         path: "/notAuthorize",
         element: <NotAuthorizePage />
     },
     {
-        path: "/newsDetail/:id",
-        element: <NewsDetailPage />
+        path: "/account-list",
+        element: <AccountPage />
     },
     {
-        path: "/newsBySubmenu/:id/:subMenu",
-        element: <NewsSubMenuPage />
+        path: "/bill",
+        element: <BillPage />
     }
 ]
 
-export const protectedRoutesAdmin = [
-    {
-        path: "/userList",
-        element: <UserList />
-    },
-    {
-        path: "/menuList",
-        element: <MenuListPage />
-    },
-    {
-        path: "/subMenuList/:idCha/:tenDanhMuc",
-        element: <SubMenuListPage/>
-    },
-    {
-        path: "/manageSystem",
-        element: <ManageSystemPage />
-    },
-
-]
-
-export const protectedRoutesModer = [
-
-    {
-        path: "/newsPaperList",
-        element: <NewsListPage/>
-    },
-    {
-        path: "/addNewsPaperList",
-        element: <AddNewsListPage/>
-    },
-    {
-        path: "/editNewsPaperList/:id",
-        element: <EditNewsListPage/>
-    },
-]

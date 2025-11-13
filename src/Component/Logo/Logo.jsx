@@ -6,11 +6,14 @@ function Logo() {
     const navigate = useNavigate()
 
     return (
-        <img
-            onClick={() => navigate("/")}
-            className='page-logo'
-            alt='page-logo'
-            src='/page-logo.png' />
+        <div className='logo-container'>
+            <img
+                onClick={() => navigate("/")}
+                className='page-logo'
+                alt='page-logo'
+                src='/logo-icon.png' /> 
+            <h3 className='logo-text'>Chia tiền</h3>
+        </div>
     );
 }
 
