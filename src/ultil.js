@@ -1,7 +1,6 @@
 import { toast } from "react-toastify"
 
-// export const host = 'http://localhost:8080'
-export const host = 'https://7b5aa91ff025.ngrok-free.app'
+export const host = 'https://chiatien.fly.dev'
 export const apiBank = '/bank'
 export const apiUser = '/user'
 export const apiAccount = '/bank-account'
