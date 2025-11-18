@@ -7,7 +7,8 @@ const initialState = {
         password: '',
         retypePassword: '',
         email: '',
-        validateCode: ''
+        validateCode: '',
+        fullName:''
     },
     userSignupValidate: false
 }
@@ -16,6 +17,9 @@ const userSignupSlice = createSlice({
     name: 'userSignup',
     initialState,
     reducers: {
+        changeFullNameSignup: (state, action) => {
+            state.userDataSignup.fullName = action.payload
+        },
         changeUsernameSignup: (state, action) => {
             state.userDataSignup.username = action.payload
         },
@@ -67,7 +71,8 @@ export const {
     userSignupRequestSuccess,
     userSignupRequestFail,
     setUserSignupValidate,
-    changeValidateCodeSignup
+    changeValidateCodeSignup,
+    changeFullNameSignup
 } = userSignupSlice.actions
 
 export default userSignupReducer

@@ -40,19 +40,19 @@ p {
 
 .logo-container {
   align-items: center;
-  width: 50%;
+  width: 30%;
   display: flex;
 }
 
 .logo-text {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 15px;
   color: aquamarine;
   text-shadow: 2px 2px 2px #2e7579;
 }
 
 .user_manage {
-  width: 50%;
+  width: 70%;
   display: flex;
   margin-left: auto;
 }
@@ -426,7 +426,7 @@ p {
 .loader {
   position: absolute;
   top: 30%;
-  left: 49%;
+  left: 45%;
   width: 55px;
   aspect-ratio: 1;
   display: grid;

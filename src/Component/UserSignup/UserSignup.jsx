@@ -3,7 +3,7 @@ import { boxStyleLogin } from '../../StyleConfig';
 import { Box, Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux'
 import { openModalLogin } from '../UserManage/reducer';
-import { changeEmailSignup, changePasswordSignup, changeRetypePasswordSignup, changeUsernameSignup } from './reducer';
+import { changeEmailSignup, changeFullNameSignup, changePasswordSignup, changeRetypePasswordSignup, changeUsernameSignup } from './reducer';
 import { toast } from 'react-toastify';
 import validator from 'validator';
 import { userSignupRequestAction } from './action';
@@ -25,6 +25,10 @@ function UserSignup() {
       toast.warn("Chưa nhập tên người dùng")
     } else if (userDataSignup.username.length < 4) {
       toast.warn("Tên người dùng phải có ít nhất 4 kí tự")
+    } else if (userDataSignup.fullName === "" || userDataSignup.fullName === null) {
+      toast.warn("Chưa nhập họ và tên")
+    } else if (userDataSignup.fullName.length < 4) {
+      toast.warn("Họ và tên phải có ít nhất 4 kí tự")
     } else if (userDataSignup.email === "" || userDataSignup.email === null) {
       toast.warn("Chưa nhập email")
     } else if (!validator.isEmail(userDataSignup.email)) {
@@ -51,6 +55,13 @@ function UserSignup() {
         type="text"
         variant="standard"
         onChange={(e) => { dispatch(changeUsernameSignup(e.target.value)) }}
+      />
+       <TextField
+        className='input'
+        label="Họ và tên"
+        type="text"
+        variant="standard"
+        onChange={(e) => { dispatch(changeFullNameSignup(e.target.value)) }}
       />
       <TextField
         className='input'

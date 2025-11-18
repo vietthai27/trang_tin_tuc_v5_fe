@@ -102,7 +102,8 @@ function UserManageList() {
                 disableElevation
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
-                startIcon={<AccountCircleIcon />}>
+                startIcon={<AccountCircleIcon />}
+            >
                 <p className='greeting'>Xin chào {currentUsername}</p>
             </Button>
             <StyledMenu
