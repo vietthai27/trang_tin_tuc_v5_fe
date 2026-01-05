@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // Render hosting-----------------------------------------------
-export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
+// export const host = 'https://trang-tin-tuc-v5-be.onrender.com'
 // Local hosting------------------------------------------------
 // export const host = 'https://thai27webdev.io.vn'
 // network hosting______________________________________________
-// export const host = 'http://localhost:8080'
+export const host = 'http://localhost:8080'
 // AWS hosting-----------------------------------------------
 // export const host = 'http://ec2-3-107-187-197.ap-southeast-2.compute.amazonaws.com:8080'
 
@@ -28,7 +28,7 @@ export const getNextAndPreviousFourYears = () => {
     const currentYear = new Date().getFullYear();
     const yearsArray = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
         const startYear = currentYear + 1 - i;
         const endYear = currentYear - i;
         yearsArray.push(`${endYear}-${startYear}`);

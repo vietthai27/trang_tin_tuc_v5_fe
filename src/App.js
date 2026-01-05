@@ -12,7 +12,7 @@ import Loading from './Component/Loading/Loading'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './Component/Footer/Footer';
 import 'rsuite/dist/rsuite-no-reset.min.css';
-import Notifications from './Notifications';
+import SseComponent from './Component/Sse/SseComponent';
 
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
       <div className="app-header">
         <Header />
       </div>
-      <div className="app-body">
+      {/* <div className="app-body">
         <Routes>
           {
             routes.map((element, index) => {
@@ -77,9 +77,9 @@ function App() {
       </div>
       <div className='app-footer'>
         <Footer />
-      </div>
+      </div> */}
       <ToastContainer />
-      <Notifications />
+      <SseComponent/>
       {loadingCount === 0 ? null : <Loading />}
     </div >
   );
