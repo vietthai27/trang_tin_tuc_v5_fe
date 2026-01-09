@@ -1,14 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    search:'',
+    search: '',
     pageNum: 0,
     pageSize: 10,
-    userList:[]
+    managementList: [],
+    roleList: [],
+    modalAdd: false,
+    modalEdit: false,
+    managementById: {}
 }
 
-const userPageSlice = createSlice({
-    name: 'userPage',
+const managementPageSlice = createSlice({
+    name: 'managementPage',
     initialState,
     reducers: {
         changeSearch: (state, action) => {
@@ -20,29 +24,63 @@ const userPageSlice = createSlice({
         changePageSize: (state, action) => {
             state.pageSize = action.payload
         },
-        getUserListRequest: () => {},
-        getUserListSuccess: (state, action) => {
-            state.userList = action.payload
+        getManagementListRequest: () => { },
+        getManagementListSuccess: (state, action) => {
+            state.managementList = action.payload
         },
-        getUserListFail: () => {},
-        changeModerRoleRequest: () => {},
-        changeModerRoleSuccess: () => {},
-        changeModerRoleFail: () => {}
+        getManagementListFail: () => { },
+        getRoleListRequest: () => { },
+        getRoleListSuccess: (state, action) => {
+            state.roleList = action.payload
+        },
+        getRoleListFail: () => { },
+        addManagementRequest: () => { },
+        addManagementSuccess: () => { },
+        addManagementFail: () => { },
+        editManagementRequest: () => { },
+        editManagementSuccess: () => { },
+        editManagementFail: () => { },
+        getIdManagementRequest: () => { },
+        getIdManagementSuccess: (state, action) => { state.managementById = action.payload },
+        getIdManagementFail: () => { },
+        openModalAdd: (state) => { state.modalAdd = true },
+        closeModalAdd: (state) => { state.modalAdd = false },
+        openModalEdit: (state) => { state.modalEdit = true },
+        closeModalEdit: (state) => { state.modalEdit = false },
+        deleteManagementRequest: () => { },
+        deleteManagementSuccess: () => { },
+        deleteManagementFail: () => { },
     }
 })
 
-const userPageReducer = userPageSlice.reducer
+const managementPageReducer = managementPageSlice.reducer
 
 export const {
-   changePageNum,
-   changePageSize,
-   changeSearch,
-   getUserListFail,
-   getUserListRequest,
-   getUserListSuccess,
-   changeModerRoleFail,
-   changeModerRoleRequest,
-   changeModerRoleSuccess
-} = userPageSlice.actions
+    changePageNum,
+    changePageSize,
+    changeSearch,
+    getManagementListRequest,
+    getManagementListSuccess,
+    getManagementListFail,
+    getRoleListFail,
+    getRoleListRequest,
+    getRoleListSuccess,
+    addManagementFail,
+    addManagementRequest,
+    addManagementSuccess,
+    closeModalAdd,
+    closeModalEdit,
+    openModalAdd,
+    openModalEdit,
+    editManagementFail,
+    editManagementRequest,
+    editManagementSuccess,
+    getIdManagementFail,
+    getIdManagementRequest,
+    getIdManagementSuccess,
+    deleteManagementFail,
+    deleteManagementRequest,
+    deleteManagementSuccess
+} = managementPageSlice.actions
 
-export default userPageReducer
+export default managementPageReducer

@@ -3,6 +3,7 @@ import userLoginSaga from "../Components/UserLogin/saga";
 import userSignupSaga from "../Components/UserSignup/saga";
 import userChangePassSaga from "../Components/UserForgetPass/saga";
 import userListSaga from "../Pages/UserPage/saga";
+import managementSaga from "../Pages/ManagementPage/saga"
 import { checkUserSessionRequest, checkUserSessionSuccess } from "./rootReducer";
 import headerSaga from "../Components/Header/saga";
 import { checkUserSessionApi } from "./ultil";
@@ -26,6 +27,7 @@ export default function* rootSaga() {
         userSignupSaga(),
         userChangePassSaga(),
         headerSaga(),
-        userListSaga()
+        userListSaga(),
+        managementSaga()
     ]);
 }
