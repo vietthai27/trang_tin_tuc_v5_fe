@@ -6,6 +6,7 @@ import { openmodalForgetpass, openmodalSignup } from '../Header/reducer';
 import { changePassword, changeUsername, userLoginRequest } from './reducer';
 import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { checkUserSessionRequest } from '../../App/rootReducer';
 
 function UserLogin() {
 
@@ -21,7 +22,7 @@ function UserLogin() {
         } else if (userData.password === "" || userData.password === null) {
             toast.warn("Chưa nhập mật khẩu")
         } else {
-            dispatch(userLoginRequest(userData))
+            dispatch(userLoginRequest(userData))          
         }
     }
 

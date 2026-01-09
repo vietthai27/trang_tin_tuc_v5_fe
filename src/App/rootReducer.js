@@ -5,6 +5,7 @@ import { combineSlices, createSlice } from "@reduxjs/toolkit";
 import userSignupReducer from '../Components/UserSignup/reducer';
 import { userForgetPassReducer } from '../Components/UserForgetPass/reducer';
 import headerReducer from '../Components/Header/reducer';
+import userPageReducer from '../Pages/UserPage/reducer'
 
 const initialState = {
     loginState: false,
@@ -66,5 +67,6 @@ export const rootReducer = combineSlices({
     userLogin: userLoginReducer,
     userSignup: userSignupReducer,
     userForgetPass: userForgetPassReducer,
-    header: headerReducer
+    header: headerReducer,
+    userPage: userPageReducer
 })

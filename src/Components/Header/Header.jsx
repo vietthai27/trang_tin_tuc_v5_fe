@@ -28,6 +28,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import LogoutIcon from '@mui/icons-material/Logout';
 import GoogleIcon from '../GoogleIcon/GoogleIcon';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
 
@@ -76,8 +77,11 @@ function Header() {
         localStorage.removeItem('token')
         dispatch(setLoginState(false))
         dispatch(resetManagementList())
+        navigate("/")
         toast.success('Đăng xuất thành công')
     }
+
+    const navigate = useNavigate()
 
     return (
         <AppBar position="static">
@@ -85,10 +89,9 @@ function Header() {
                 <Toolbar disableGutters>
                     <NewspaperIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
+                        onClick={() => {navigate("/")}}
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -98,7 +101,7 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        Trang tin tức
+                        PAGE
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -137,10 +140,10 @@ function Header() {
                     </Box>
                     <NewspaperIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
+                    onClick={() => {navigate("/")}}l
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                        componenlt="a"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -151,7 +154,7 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        Trang tin tức
+                        PAGE
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {categoryList.map((page) => (
@@ -189,7 +192,7 @@ function Header() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {managementList.map((page) => (
-                                    <MenuItem key={page.id}>
+                                    <MenuItem key={page.id} onClick={() => {navigate(page.path)}}>
                                         <ListItemIcon>
                                             <GoogleIcon name={page.icon} />
                                         </ListItemIcon>

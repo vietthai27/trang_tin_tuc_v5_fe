@@ -3,13 +3,16 @@ import { userLoginFail, userLoginRequest, userLoginSuccess } from "./reducer";
 import { toast } from "react-toastify";
 import { closeModalLogin } from "../Header/reducer";
 import { userLoginApi } from "./api";
-import { endLoading, setLoginState, setUsername, startLoading } from "../../App/rootReducer";
+import { checkUserSessionSuccess, endLoading, setLoginState, setUsername, startLoading } from "../../App/rootReducer";
+import { checkUserSessionApi } from "../../App/ultil";
 
 function* workUserLogin({ payload }) {
     try {
         yield put(startLoading())
         const response = yield call(userLoginApi, payload)
         yield put(userLoginSuccess(response.data.data.token))
+        const res = yield call(checkUserSessionApi, response.data.data.token)
+        yield put(checkUserSessionSuccess(res.data.data))
         yield put(setLoginState(true))
         yield put(setUsername(payload.username))
         yield put(closeModalLogin())

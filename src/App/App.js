@@ -7,8 +7,10 @@ import { checkUserSessionRequest, setLoginState } from './rootReducer';
 import Header from '../Components/Header/Header';
 import Loading from '../Components/Loading/Loading'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'rsuite/dist/rsuite-no-reset.min.css';
 import { Box } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+import { protectedRoutes, publicRoutes } from './Routes';
+import ProtectedRoute from '../Components/ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -28,8 +30,21 @@ function App() {
   return (
     <Box>
       <Header />
+      <Routes>
+        {publicRoutes.map(r => (
+          <Route key={r.path} path={r.path} element={r.element} />
+        ))}
+        {protectedRoutes.map(r => (
+          <Route
+            key={r.path}
+            element={<ProtectedRoute allowedRoles={r.roles} />}
+          >
+            <Route path={r.path} element={r.element} />
+          </Route>
+        ))}
+      </Routes>
       <ToastContainer />
-      {loadingCount === 0 ? null : <Loading />}
+      {/* {loadingCount === 0 ? null : <Loading />} */}
     </Box >
   );
 }

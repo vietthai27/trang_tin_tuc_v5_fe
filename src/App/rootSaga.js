@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import userLoginSaga from "../Components/UserLogin/saga";
 import userSignupSaga from "../Components/UserSignup/saga";
 import userChangePassSaga from "../Components/UserForgetPass/saga";
+import userListSaga from "../Pages/UserPage/saga";
 import { checkUserSessionRequest, checkUserSessionSuccess } from "./rootReducer";
 import headerSaga from "../Components/Header/saga";
 import { checkUserSessionApi } from "./ultil";
@@ -24,6 +25,7 @@ export default function* rootSaga() {
         userLoginSaga(),
         userSignupSaga(),
         userChangePassSaga(),
-        headerSaga()
+        headerSaga(),
+        userListSaga()
     ]);
 }
