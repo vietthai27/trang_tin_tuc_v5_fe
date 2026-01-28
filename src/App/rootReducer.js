@@ -7,6 +7,11 @@ import { userForgetPassReducer } from '../Components/UserForgetPass/reducer';
 import headerReducer from '../Components/Header/reducer';
 import userPageReducer from '../Pages/UserPage/reducer';
 import managementPageReducer from '../Pages/ManagementPage/reducer';
+import categoryPageReducer from '../Pages/CategoryPage/reducer';
+import subCategoryPageReducer from '../Pages/SubCategoryPage/reducer';
+import categoryNewPageReducer from '../Pages/CategoryNewsPage/reducer';
+import uploadImageReducer from '../Components/ImageUploadWithPreview/reducer';
+import newsManagePageReducer from '../Pages/NewsManagePage/reducer';
 
 const initialState = {
     loginState: false,
@@ -70,5 +75,10 @@ export const rootReducer = combineSlices({
     userForgetPass: userForgetPassReducer,
     header: headerReducer,
     userPage: userPageReducer,
-    managementPage: managementPageReducer
+    managementPage: managementPageReducer,
+    categoryPage: categoryPageReducer,
+    subCategoryPage: subCategoryPageReducer,
+    categoryNewsPage: categoryNewPageReducer,
+    uploadImage: uploadImageReducer,
+    newsManagePage: newsManagePageReducer
 })

@@ -130,7 +130,7 @@ function* getIdManagementWatcher() {
     yield takeLatest(getIdManagementRequest, getIdManagementWorker)
 }
 
-export default function* userListSaga() {
+export default function* managementSaga() {
     yield all([
         getManagementListWatcher(),
         getRoleListWatcher(),

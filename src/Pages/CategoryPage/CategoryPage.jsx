@@ -1,8 +1,6 @@
 import {
     Box,
     Button,
-    Checkbox,
-    Modal,
     Paper,
     Table,
     TableBody,
@@ -10,50 +8,48 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    TextField,
-    Typography
+    TextField
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addManagementRequest, changePageNum, changeSearch, closeModalAdd, closeModalEdit, deleteManagementRequest, editManagementRequest, getIdManagementRequest, getManagementListRequest, getRoleListRequest, openModalAdd, openModalEdit } from "./reducer";
+import { addCategoryRequest, changePageNum, changeSearch, closeModalAdd, closeModalEdit, deleteCategoryRequest, editCategoryRequest, getIdCategoryRequest, getCategoryListRequest, openModalAdd} from "./reducer";
 import Paging from "../../Components/Paging/Paging";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddManagementModal from "./AddManagementModal";
-import EditManagementModal from "./EditManagementModal";
+import AddCategoryModal from "./AddCategoryModal";
+import EditCategoryModal from "./EditCategoryModal";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { useNavigate } from "react-router-dom";
+import { changeCategoryName } from "../SubCategoryPage/reducer";
 
-export default function ManagementPage() {
+export default function CategoryPage() {
 
     const dispatch = useDispatch();
 
     const {
-        managementList,
+        categoryList,
         search,
         pageNum,
         pageSize,
-        roleList,
         modalAdd,
         modalEdit,
-        managementById
-    } = useSelector(state => state.managementPage);
+        categoryById
+    } = useSelector(state => state.categoryPage);
 
-    const totalPages = managementList?.totalPages || 0;
+    const totalPages = categoryList?.totalPages || 0;
 
     // local state cho ô input (tránh gọi API liên tục)
     const [searchInput, setSearchInput] = useState(search);
 
     // gọi API khi page/search/pageSize đổi
     useEffect(() => {
-        dispatch(getManagementListRequest({
+        dispatch(getCategoryListRequest({
             search,
             pageNum,
             pageSize
         }));
     }, [dispatch, search, pageNum, pageSize]);
 
-    useEffect(() => {
-        dispatch(getRoleListRequest())
-    }, [])
 
     // click Search
     const handleSearch = () => {
@@ -67,7 +63,13 @@ export default function ManagementPage() {
     };
 
     const handelOpenEdit = (id) => {
-        dispatch(getIdManagementRequest(id))
+        dispatch(getIdCategoryRequest(id))
+    }
+
+    const navigate = useNavigate()
+
+    const handelOpenSubCategory = (id) => {
+        navigate('/sub-menu-page/' + id)
     }
 
     return (
@@ -101,7 +103,6 @@ export default function ManagementPage() {
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell>Tên</TableCell>
-                            <TableCell>Role</TableCell>
                             <TableCell>
                                 <Button
                                     variant="contained"
@@ -115,14 +116,11 @@ export default function ManagementPage() {
                     </TableHead>
 
                     <TableBody>
-                        {managementList?.content?.length > 0 ? (
-                            managementList.content.map(row => (
+                        {categoryList?.content?.length > 0 ? (
+                            categoryList.content.map(row => (
                                 <TableRow key={row.id}>
                                     <TableCell>{row.id}</TableCell>
-                                    <TableCell>{row.name}</TableCell>
-                                    <TableCell>{row.rolesManage.map(role => (
-                                        <Typography>{role.roleName}</Typography>
-                                    ))}</TableCell>
+                                    <TableCell>{row.name}</TableCell>                           
                                     <TableCell>
                                         <Box
                                             display="flex"
@@ -130,8 +128,9 @@ export default function ManagementPage() {
                                             alignItems="center"
                                             justifyContent="space-between"
                                         >
+                                            <FormatListBulletedIcon onClick={() => { handelOpenSubCategory(row.id) }} />
                                             <EditIcon onClick={() => { handelOpenEdit(row.id) }} sx={{ color: 'green' }} />
-                                            <DeleteIcon onClick={() => { dispatch(deleteManagementRequest(row.id)) }} sx={{ color: 'red' }} />
+                                            <DeleteIcon onClick={() => { dispatch(deleteCategoryRequest(row.id)) }} sx={{ color: 'red' }} />
                                         </Box>
                                     </TableCell>
                                 </TableRow>
@@ -155,25 +154,23 @@ export default function ManagementPage() {
                     onPageChange={handlePageChange}
                 />
             </Box>
-            <AddManagementModal
+            <AddCategoryModal
                 open={modalAdd}
                 onClose={() => dispatch(closeModalAdd())}
-                roleList={roleList}
                 onSubmit={(payload) =>
-                    dispatch(addManagementRequest({
+                    dispatch(addCategoryRequest({
                         ...payload,
                         listParams: { search, pageNum, pageSize }
                     }))
                 }
             />
 
-            <EditManagementModal
+            <EditCategoryModal
                 open={modalEdit}
                 onClose={() => dispatch(closeModalEdit())}
-                roleList={roleList}
-                data={managementById}
+                data={categoryById}
                 onSubmit={(payload) =>
-                    dispatch(editManagementRequest({
+                    dispatch(editCategoryRequest({
                         ...payload,
                         listParams: { search, pageNum, pageSize }
                     }))

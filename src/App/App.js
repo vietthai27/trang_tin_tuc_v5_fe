@@ -44,7 +44,7 @@ function App() {
         ))}
       </Routes>
       <ToastContainer />
-      {/* {loadingCount === 0 ? null : <Loading />} */}
+      {loadingCount === 0 ? null : <Loading />}
     </Box >
   );
 }

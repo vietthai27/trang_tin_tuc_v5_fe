@@ -1,11 +1,14 @@
-// import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 
-// function Loading() {
-//     return (
-//         <Box className="loading-container">
-//             <CircularProgress className="loading-circle"/>
-//         </Box>
-//     );
-// }
+function Loading() {
+    return (
+        <Box className="loading-container">
+            <Box className="loading-box">
+                <div className="loader"></div>
+            </Box>
 
-// export default Loading;
+        </Box>
+    );
+}
+
+export default Loading;

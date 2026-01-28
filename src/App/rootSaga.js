@@ -6,6 +6,11 @@ import userListSaga from "../Pages/UserPage/saga";
 import managementSaga from "../Pages/ManagementPage/saga"
 import { checkUserSessionRequest, checkUserSessionSuccess } from "./rootReducer";
 import headerSaga from "../Components/Header/saga";
+import categorySaga from "../Pages/CategoryPage/saga"
+import subCategorySaga from "../Pages/SubCategoryPage/saga";
+import categoryNewsSaga from "../Pages/CategoryNewsPage/saga";
+import uploadImageSaga from "../Components/ImageUploadWithPreview/saga";
+import newsSaga from "../Pages/NewsManagePage/saga";
 import { checkUserSessionApi } from "./ultil";
 
 function* checkUserSessionWorker({ payload }) {
@@ -28,6 +33,11 @@ export default function* rootSaga() {
         userChangePassSaga(),
         headerSaga(),
         userListSaga(),
-        managementSaga()
+        managementSaga(),
+        categorySaga(),
+        subCategorySaga(),
+        categoryNewsSaga(),
+        uploadImageSaga(),
+        newsSaga()
     ]);
 }

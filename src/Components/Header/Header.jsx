@@ -83,6 +83,10 @@ function Header() {
 
     const navigate = useNavigate()
 
+    const handleNavigatePage = (id) => {
+        navigate("/category-news/" + id)
+    }
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -101,7 +105,7 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        PAGE
+                        Trang Tin Tức
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -132,7 +136,7 @@ function Header() {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {categoryList.map((page) => (
-                                <MenuItem key={page.id} >
+                                <MenuItem onClick={() => {handleNavigatePage(page.id)}} key={page.id} >
                                     <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                                 </MenuItem>
                             ))}
@@ -154,13 +158,14 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        PAGE
+                        Trang Tin Tức
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {categoryList.map((page) => (
                             <Button
                                 key={page.id}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
+                                onClick={() => {handleNavigatePage(page.id)}}
                             >
                                 {page.name}
                             </Button>

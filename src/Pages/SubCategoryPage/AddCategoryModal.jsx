@@ -1,21 +1,21 @@
-import { Box, Button, Checkbox, Modal, TextField, Typography } from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function AddManagementModal({
+export default function AddSubCategoryModal({
   open,
   onClose,
-  roleList,
   onSubmit
 }) {
   const [name, setName] = useState("");
-  const [roleIds, setRoleIds] = useState([]);
 
   useEffect(() => {
     if (open) {
       setName("");
-      setRoleIds([]);
     }
   }, [open]);
+
+  const { id } = useParams();
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -33,28 +33,12 @@ export default function AddManagementModal({
           sx={{ mb: 2 }}
         />
 
-        {roleList.map(role => (
-          <Box key={role.id} display="flex" alignItems="center">
-            <Checkbox
-              checked={roleIds.includes(role.id)}
-              onChange={(e) =>
-                setRoleIds(prev =>
-                  e.target.checked
-                    ? [...prev, role.id]
-                    : prev.filter(id => id !== role.id)
-                )
-              }
-            />
-            <Typography>{role.roleName}</Typography>
-          </Box>
-        ))}
-
         <Box mt={2} display="flex" justifyContent="flex-end" gap={1}>
           <Button onClick={onClose}>Hủy</Button>
           <Button
             variant="contained"
             disabled={!name.trim()}
-            onClick={() => onSubmit({ management: { name }, roleIds })}
+            onClick={() => onSubmit({ idCategory: {id}, subCategory: { name } })}
           >
             Thêm
           </Button>

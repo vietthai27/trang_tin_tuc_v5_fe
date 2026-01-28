@@ -1,27 +1,25 @@
 import { Box, Button, Checkbox, Modal, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function AddManagementModal({
+export default function EditCategoryModal({
   open,
   onClose,
-  roleList,
+  data,
   onSubmit
 }) {
   const [name, setName] = useState("");
-  const [roleIds, setRoleIds] = useState([]);
 
   useEffect(() => {
-    if (open) {
-      setName("");
-      setRoleIds([]);
+    if (open && data) {
+      setName(data.name);
     }
-  }, [open]);
+  }, [open, data]);
 
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={{ width: 350, p: 3, bgcolor: "background.paper", borderRadius: 2, mx: "auto", mt: "10%" }}>
         <Typography variant="h6" mb={2} textAlign="center">
-          Thêm màn quản lý
+          Sửa màn quản lý
         </Typography>
 
         <TextField
@@ -33,30 +31,18 @@ export default function AddManagementModal({
           sx={{ mb: 2 }}
         />
 
-        {roleList.map(role => (
-          <Box key={role.id} display="flex" alignItems="center">
-            <Checkbox
-              checked={roleIds.includes(role.id)}
-              onChange={(e) =>
-                setRoleIds(prev =>
-                  e.target.checked
-                    ? [...prev, role.id]
-                    : prev.filter(id => id !== role.id)
-                )
-              }
-            />
-            <Typography>{role.roleName}</Typography>
-          </Box>
-        ))}
-
         <Box mt={2} display="flex" justifyContent="flex-end" gap={1}>
           <Button onClick={onClose}>Hủy</Button>
           <Button
             variant="contained"
-            disabled={!name.trim()}
-            onClick={() => onSubmit({ management: { name }, roleIds })}
+            onClick={() =>
+              onSubmit({
+                id: data.id,
+                category: { name }
+              })
+            }
           >
-            Thêm
+            Sửa
           </Button>
         </Box>
       </Box>
