@@ -81,11 +81,11 @@ export default function SubCategoryPage() {
                 display="flex"
                 gap={1}
                 alignItems="center"
-                justifyContent="space-between"
+                justifyContent="flex-start"
             >
                 <TextField
                     size="small"
-                    label="Nhập tên quản lý"
+                    label="Nhập tên"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
@@ -109,18 +109,16 @@ export default function SubCategoryPage() {
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell>Tên</TableCell>
-                            <TableCell>
+                            <TableCell align="right">
+                                
+                            </TableCell>
+                            <TableCell align="right">
                                 <Button
                                     variant="contained"
                                     color="warning"
                                     onClick={() => { dispatch(openModalAdd()) }}
                                 >
                                     Thêm
-                                </Button>
-                            </TableCell>
-                            <TableCell>
-                                <Button variant="outlined" onClick={() => navigate(-1)}>
-                                    Trở về
                                 </Button>
                             </TableCell>
                         </TableRow>

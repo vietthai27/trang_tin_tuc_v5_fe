@@ -91,22 +91,24 @@ function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <NewspaperIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        onClick={() => {navigate("/")}}
-                        variant="h6"
-                        noWrap
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Trang Tin Tức
-                    </Typography>
+                   
+                        <NewspaperIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <Typography
+                            onClick={() => { navigate("/") }}
+                            variant="h6"
+                            noWrap
+                            sx={{
+                                mr: 5,
+                                display: { xs: 'none', md: 'flex' },
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            TRANG TIN TỨC
+                        </Typography>
+                    
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -136,7 +138,7 @@ function Header() {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {categoryList.map((page) => (
-                                <MenuItem onClick={() => {handleNavigatePage(page.id)}} key={page.id} >
+                                <MenuItem onClick={() => { handleNavigatePage(page.id) }} key={page.id} >
                                     <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                                 </MenuItem>
                             ))}
@@ -144,7 +146,7 @@ function Header() {
                     </Box>
                     <NewspaperIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
-                    onClick={() => {navigate("/")}}l
+                        onClick={() => { navigate("/") }} l
                         variant="h5"
                         noWrap
                         componenlt="a"
@@ -158,14 +160,14 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        Trang Tin Tức
+                        TRANG TIN TỨC
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {categoryList.map((page) => (
                             <Button
                                 key={page.id}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
-                                onClick={() => {handleNavigatePage(page.id)}}
+                                onClick={() => { handleNavigatePage(page.id) }}
                             >
                                 {page.name}
                             </Button>
@@ -197,7 +199,7 @@ function Header() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {managementList.map((page) => (
-                                    <MenuItem key={page.id} onClick={() => {navigate(page.path)}}>
+                                    <MenuItem key={page.id} onClick={() => { navigate(page.path) }}>
                                         <ListItemIcon>
                                             <GoogleIcon name={page.icon} />
                                         </ListItemIcon>

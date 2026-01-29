@@ -17,6 +17,7 @@ import { getSubCategoryListRequest } from "../CategoryNewsPage/reducer";
 import ImageUploadWithPreview from "../../Components/ImageUploadWithPreview/ImageWithUploadPreview";
 import { addNewsRequest, resetAdd } from "./reducer";
 import { useNavigate } from "react-router-dom";
+import { resetImages } from "../../Components/ImageUploadWithPreview/reducer";
 
 export default function NewsManageAdd() {
     const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export default function NewsManageAdd() {
     } = useSelector(state => state.newsManagePage);
 
     useEffect(() => {
+        dispatch(resetImages())
         dispatch(getCategoryDataRequest());
     }, [dispatch]);
 
@@ -144,7 +146,10 @@ export default function NewsManageAdd() {
                         onBlur={(newContent) => setContent(newContent)}
                         config={{
                             readonly: false,
-                            height: 400,
+                            height: "auto",
+                            minHeight: 200,
+                            autofocus: false,
+                            autoHeight: true,
                             placeholder: "Nhập nội dung bài báo...",
                             toolbarAdaptive: false
                         }}

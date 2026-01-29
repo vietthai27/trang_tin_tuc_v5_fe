@@ -9,13 +9,14 @@
 
 .loading-box{
   padding-top: 30px;
-  margin: 45%
+  margin: 30px 45%
 }
 
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 50px;
-  padding: 8px;
+  margin: auto;
+  width: 45px;
+  padding: 5px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: #25b09b;

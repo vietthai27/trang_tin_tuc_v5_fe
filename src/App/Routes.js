@@ -2,6 +2,7 @@ import CategoryNewsPage from "../Pages/CategoryNewsPage/CategoryNewsPage";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import HomePage from "../Pages/HomePage/HomePage";
 import ManagementPage from "../Pages/ManagementPage/ManagementPage";
+import NewsDetailPage from "../Pages/NewsDetailPage/NewsDetailPage";
 import NewsManageAdd from "../Pages/NewsManagePage/NewsManageAdd";
 import NewsManageEdit from "../Pages/NewsManagePage/NewsManageEdit";
 import NewsManageList from "../Pages/NewsManagePage/NewsManageList";
@@ -16,6 +17,10 @@ export const publicRoutes = [
     {
         path: "/category-news/:id",
         element: <CategoryNewsPage />
+    },
+    {
+        path: "/news-detail/:id",
+        element: <NewsDetailPage/>
     }
 ]
 

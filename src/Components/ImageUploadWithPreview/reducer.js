@@ -1,3 +1,4 @@
+import { stepButtonClasses } from "@mui/material";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -24,6 +25,7 @@ const uploadImageSlice = createSlice({
         getImagesById: (state, action) => {
             state.images = action.payload
         },
+        resetImages: (state) => { state.images = [] }
 
     }
 })
@@ -38,7 +40,8 @@ export const {
     deleteImageRequest,
     deleteImageSuccess,
     changeUploading,
-    getImagesById
+    getImagesById,
+    resetImages
 } = uploadImageSlice.actions
 
 export default uploadImageReducer

@@ -78,11 +78,11 @@ export default function ManagementPage() {
                 display="flex"
                 gap={1}
                 alignItems="center"
-                justifyContent="space-between"
+                justifyContent="flex-start"
             >
                 <TextField
                     size="small"
-                    label="Nhập tên quản lý"
+                    label="Nhập tên"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
@@ -102,7 +102,7 @@ export default function ManagementPage() {
                             <TableCell>ID</TableCell>
                             <TableCell>Tên</TableCell>
                             <TableCell>Role</TableCell>
-                            <TableCell>
+                            <TableCell align="right">
                                 <Button
                                     variant="contained"
                                     color="warning"

@@ -12,6 +12,8 @@ import subCategoryPageReducer from '../Pages/SubCategoryPage/reducer';
 import categoryNewPageReducer from '../Pages/CategoryNewsPage/reducer';
 import uploadImageReducer from '../Components/ImageUploadWithPreview/reducer';
 import newsManagePageReducer from '../Pages/NewsManagePage/reducer';
+import latestNewsReducer from '../Components/NewsSlider/reducer';
+import newsDetailReducer from '../Pages/NewsDetailPage/reducer';
 
 const initialState = {
     loginState: false,
@@ -80,5 +82,7 @@ export const rootReducer = combineSlices({
     subCategoryPage: subCategoryPageReducer,
     categoryNewsPage: categoryNewPageReducer,
     uploadImage: uploadImageReducer,
-    newsManagePage: newsManagePageReducer
+    newsManagePage: newsManagePageReducer,
+    latestNews: latestNewsReducer,
+    newsDetail: newsDetailReducer
 })

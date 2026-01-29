@@ -193,7 +193,10 @@ export default function NewsManageEdit() {
                         onBlur={(newContent) => setContent(newContent)}
                         config={{
                             readonly: false,
-                            height: 400,
+                            height: "auto",
+                            minHeight: 200,
+                            autofocus: false,
+                            autoHeight: true,
                             placeholder: "Nhập nội dung bài báo...",
                             toolbarAdaptive: false
                         }}

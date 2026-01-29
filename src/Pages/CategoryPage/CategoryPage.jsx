@@ -80,11 +80,11 @@ export default function CategoryPage() {
                 display="flex"
                 gap={1}
                 alignItems="center"
-                justifyContent="space-between"
+                justifyContent="flex-start"
             >
                 <TextField
                     size="small"
-                    label="Nhập tên quản lý"
+                    label="Nhập tên"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
@@ -103,7 +103,7 @@ export default function CategoryPage() {
                         <TableRow>
                             <TableCell>ID</TableCell>
                             <TableCell>Tên</TableCell>
-                            <TableCell>
+                            <TableCell align="right">
                                 <Button
                                     variant="contained"
                                     color="warning"

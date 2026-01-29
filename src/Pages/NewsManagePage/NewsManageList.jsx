@@ -51,7 +51,7 @@ export default function NewsManageList() {
                             <TableCell>Tên</TableCell>
                             <TableCell>Ngày tạo</TableCell>
                             <TableCell>Tác giả</TableCell>
-                            <TableCell>
+                            <TableCell align="right">
                                 <Button
                                     variant="contained"
                                     color="warning"
