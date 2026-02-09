@@ -33,7 +33,7 @@ function NewsSlider() {
             fade
         >
             {listLatestNews.map((e) => (
-                <Carousel.Item onClick={() => {navigate("/news-detail/" + e.id)}}>
+                <Carousel.Item key={e.id} onClick={() => {navigate("/news-detail/" + e.id)}}>
                     <SliderImage imageSrc={e.thumbnail} />
                     <Carousel.Caption>
                         <Box

@@ -14,6 +14,8 @@ import uploadImageReducer from '../Components/ImageUploadWithPreview/reducer';
 import newsManagePageReducer from '../Pages/NewsManagePage/reducer';
 import latestNewsReducer from '../Components/NewsSlider/reducer';
 import newsDetailReducer from '../Pages/NewsDetailPage/reducer';
+import footballTableReducer from '../Components/FootballTable/reducer';
+import weatherReducer from '../Components/Weather/reducer';
 
 const initialState = {
     loginState: false,
@@ -84,5 +86,7 @@ export const rootReducer = combineSlices({
     uploadImage: uploadImageReducer,
     newsManagePage: newsManagePageReducer,
     latestNews: latestNewsReducer,
-    newsDetail: newsDetailReducer
+    newsDetail: newsDetailReducer,
+    footballTable: footballTableReducer,
+    weather: weatherReducer
 })

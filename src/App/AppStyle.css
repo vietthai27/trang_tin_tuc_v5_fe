@@ -38,3 +38,29 @@ html {
 body {
   font-family: Roboto, Arial, sans-serif;
 }
+
+/* JoditEditor image responsive styles */
+.jodit-container img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+.jodit-container figure {
+  width: 100% !important;
+  margin: 20px 0 !important;
+}
+
+.jodit-container figure img {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.jodit-container {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

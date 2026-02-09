@@ -187,20 +187,45 @@ export default function NewsManageEdit() {
                         Nội dung bài viết
                     </Typography>
 
-                    <JoditEditor
-                        ref={editorRef}
-                        value={content}
-                        onBlur={(newContent) => setContent(newContent)}
-                        config={{
-                            readonly: false,
-                            height: "auto",
-                            minHeight: 200,
-                            autofocus: false,
-                            autoHeight: true,
-                            placeholder: "Nhập nội dung bài báo...",
-                            toolbarAdaptive: false
+                    <Box
+                        sx={{
+                            "& .jodit-container": {
+                                "& img": {
+                                    maxWidth: "100% !important",
+                                    width: "100% !important",
+                                    height: "auto !important",
+                                    display: "block !important",
+                                    objectFit: "contain !important",
+                                },
+                                "& figure": {
+                                    width: "100% !important",
+                                    "& img": {
+                                        maxWidth: "100% !important",
+                                        width: "100% !important",
+                                        height: "auto !important",
+                                        display: "block !important",
+                                    },
+                                },
+                                wordWrap: "break-word",
+                                overflowWrap: "break-word",
+                            },
                         }}
-                    />
+                    >
+                        <JoditEditor
+                            ref={editorRef}
+                            value={content}
+                            onBlur={(newContent) => setContent(newContent)}
+                            config={{
+                                readonly: false,
+                                height: "auto",
+                                minHeight: 200,
+                                autofocus: false,
+                                autoHeight: true,
+                                placeholder: "Nhập nội dung bài báo...",
+                                toolbarAdaptive: false,
+                            }}
+                        />
+                    </Box>
                 </Box>
 
                 {/* Submit */}

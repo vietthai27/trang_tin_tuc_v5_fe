@@ -13,6 +13,8 @@ import uploadImageSaga from "../Components/ImageUploadWithPreview/saga";
 import newsSaga from "../Pages/NewsManagePage/saga";
 import getLatestNewsSaga from "../Components/NewsSlider/saga";
 import getNewsDetailSaga from "../Pages/NewsDetailPage/saga";
+import footballTableSaga from "../Components/FootballTable/saga";
+import weatherSaga from "../Components/Weather/saga";
 import { checkUserSessionApi } from "./ultil";
 
 function* checkUserSessionWorker({ payload }) {
@@ -42,6 +44,8 @@ export default function* rootSaga() {
         uploadImageSaga(),
         newsSaga(),
         getLatestNewsSaga(),
-        getNewsDetailSaga()
+        getNewsDetailSaga(),
+        footballTableSaga(),
+        weatherSaga()
     ]);
 }

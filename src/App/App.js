@@ -35,7 +35,7 @@ function App() {
           width: '100%',
           maxWidth: { xs: '100%', sm: '600px', md: '800px' },
           mx: 'auto',
-          px: { xs: 0, sm: 2, md: 4, lg: 6 }
+          px: { xs: 2, sm: 2, md: 4, lg: 6 }
         }}
       >
         <Routes>

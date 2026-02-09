@@ -110,14 +110,22 @@ function Header() {
                         </Typography>
                     
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ 
+                        flexGrow: 0, 
+                        display: { xs: 'flex', md: 'none' },
+                        width: { xs: '48px', md: 'auto' },
+                        justifyContent: 'flex-start'
+                    }}>
                         <IconButton
-                            size="large"
+                            size="medium"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
                             color="inherit"
+                            sx={{ 
+                                padding: { xs: '8px', md: '12px' }
+                            }}
                         >
                             <MenuIcon />
                         </IconButton>
@@ -144,12 +152,12 @@ function Header() {
                             ))}
                         </Menu>
                     </Box>
-                    <NewspaperIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    {/* <NewspaperIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                     <Typography
-                        onClick={() => { navigate("/") }} l
+                        onClick={() => { navigate("/") }}
                         variant="h5"
                         noWrap
-                        componenlt="a"
+                        component="a"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -158,6 +166,7 @@ function Header() {
                             fontWeight: 700,
                             color: 'inherit',
                             textDecoration: 'none',
+                            justifyContent: 'center',
                         }}
                     >
                         TRANG TIN TỨC
@@ -175,7 +184,12 @@ function Header() {
                     </Box>
 
                     {/* ----- */}
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ 
+                        flexGrow: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start'
+                    }}>
                         {loginState ? (<Box>
                             <Tooltip title="Mở menu">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -238,6 +252,18 @@ function Header() {
                                 color="inherit"
                                 onClick={() => dispatch(openModalLogin())}
                                 startIcon={<AccountCircleIcon />}
+                                size="small"
+                                sx={{
+                                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                                    padding: { xs: '4px 8px', sm: '6px 16px' },
+                                    minWidth: { xs: 'auto', sm: '64px' },
+                                    '& .MuiButton-startIcon': {
+                                        marginRight: { xs: '4px', sm: '8px' },
+                                        '& svg': {
+                                            fontSize: { xs: '1rem', sm: '1.25rem' }
+                                        }
+                                    }
+                                }}
                             >
                                 Đăng nhập
                             </Button>
