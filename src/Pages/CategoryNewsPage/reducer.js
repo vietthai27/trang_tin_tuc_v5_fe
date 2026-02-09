@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     subCategoryList: [],
-    categoryName: ''
+    newsByCategoryList: [],
+    categoryName: '',
+    search: '',
+    pageNum: 0,
+    pageSize: 10,
 }
 
 const categoryNewPageSlice = createSlice({
@@ -14,7 +18,21 @@ const categoryNewPageSlice = createSlice({
             state.subCategoryList = action.payload
         },
         getSubCategoryListFail: () => { },
-        changeCategoryName: (state, action) => {state.categoryName = action.payload}
+        getNewsBySubCategoryRequest: () => { },
+        getNewsBySubCategorySuccess: (state, action) => {
+            state.newsByCategoryList = action.payload
+        },
+        getNewsBySubCategoryFail: () => { },
+        changeCategoryName: (state, action) => { state.categoryName = action.payload },
+        changeSearch: (state, action) => {
+            state.search = action.payload
+        },
+        changePageNum: (state, action) => {
+            state.pageNum = action.payload
+        },
+        changePageSize: (state, action) => {
+            state.pageSize = action.payload
+        },
     }
 })
 
@@ -24,7 +42,13 @@ export const {
     getSubCategoryListRequest,
     getSubCategoryListSuccess,
     getSubCategoryListFail,
-    changeCategoryName
+    changeCategoryName,
+    getNewsBySubCategoryFail,
+    getNewsBySubCategoryRequest,
+    getNewsBySubCategorySuccess,
+    changePageNum,
+    changePageSize,
+    changeSearch
 } = categoryNewPageSlice.actions
 
 export default categoryNewPageReducer

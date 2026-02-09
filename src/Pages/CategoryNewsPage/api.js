@@ -1,11 +1,11 @@
 import axios from "axios"
-import { apiSubCategory, host } from "../../App/ultil"
+import { apiNews, apiSubCategory, host } from "../../App/ultil"
 
-// export const searchCategoryApi = async (searchData) => {
-//      return await axios.get(host + apiCategory + `/search?search=${searchData.search}&pageNum=${searchData.pageNum}&pageSize=${searchData.pageSize}`, {
-//           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-//      })
-// }
+export const getNewsBySubCategoty = async (searchData) => {
+     return await axios.get(  
+          host + apiNews + `/permit/get-news-by-sub-category?title=${searchData.search}&categoryId=${searchData.categoryId}&pageNum=${searchData.pageNum}&pageSize=${searchData.pageSize}`
+     )
+}
 
 export const getSubCategoryByIdApi = async (payload) => {
      return await axios.get(host + apiSubCategory + `/permit/by-category/${payload.id}`)

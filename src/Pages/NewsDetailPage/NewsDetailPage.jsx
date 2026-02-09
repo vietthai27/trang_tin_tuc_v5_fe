@@ -53,24 +53,40 @@ export default function NewsDetailPage() {
                 sx={{
                     "& img": {
                         maxWidth: "100%",
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
                         borderRadius: 2,
                         marginTop: 2,
                         marginBottom: 2,
+                        objectFit: "contain",
                     },
                     "& p": {
                         fontSize: "18px",
                         lineHeight: 1.8,
                         marginBottom: 2,
+                        wordWrap: "break-word",
+                        overflowWrap: "break-word",
                     },
                     "& figure": {
                         textAlign: "center",
                         margin: "20px 0",
+                        width: "100%",
+                        "& img": {
+                            width: "100%",
+                            maxWidth: "100%",
+                            height: "auto",
+                            display: "block",
+                        },
                     },
                     "& figcaption": {
                         fontSize: "14px",
                         color: "gray",
                         fontStyle: "italic",
                     },
+                    wordWrap: "break-word",
+                    overflowWrap: "break-word",
+                    overflow: "hidden",
                 }}
                 dangerouslySetInnerHTML={{ __html: newsDetail.content }}
             />

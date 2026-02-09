@@ -30,19 +30,28 @@ function App() {
   return (
     <Box>
       <Header />
-      <Routes>
-        {publicRoutes.map(r => (
-          <Route key={r.path} path={r.path} element={r.element} />
-        ))}
-        {protectedRoutes.map(r => (
-          <Route
-            key={r.path}
-            element={<ProtectedRoute allowedRoles={r.roles} />}
-          >
-            <Route path={r.path} element={r.element} />
-          </Route>
-        ))}
-      </Routes>
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: { xs: '100%', sm: '600px', md: '800px' },
+          mx: 'auto',
+          px: { xs: 0, sm: 2, md: 4, lg: 6 }
+        }}
+      >
+        <Routes>
+          {publicRoutes.map(r => (
+            <Route key={r.path} path={r.path} element={r.element} />
+          ))}
+          {protectedRoutes.map(r => (
+            <Route
+              key={r.path}
+              element={<ProtectedRoute allowedRoles={r.roles} />}
+            >
+              <Route path={r.path} element={r.element} />
+            </Route>
+          ))}
+        </Routes>
+      </Box>
       <ToastContainer />
       {loadingCount === 0 ? null : <Loading />}
     </Box >
