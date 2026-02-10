@@ -95,6 +95,7 @@ export default function NewsDetailPage() {
                         width: "100%",
                         borderRadius: 2,
                         my: 2,
+                        height: 'auto'
                     },
                     "& p": {
                         fontSize: "18px",
