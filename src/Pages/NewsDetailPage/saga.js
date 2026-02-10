@@ -39,10 +39,10 @@ function* getNewsDetailWorker({ payload }) {
         yield put(getNewsDetailSuccess(res.data.data));
         const resLikeCount = yield call(getLikeCount, payload)
         yield put(getLikeCountSuccess(resLikeCount.data.data))
-        const resIsLike = yield call(getLikeByUser, payload)
-        yield put(setLikeStatus(resIsLike.data.data))
         const resComment = yield call(getCommentsByNews, payload)
         yield put(getCommentsSuccess(resComment.data.data))
+        const resIsLike = yield call(getLikeByUser, payload)
+        yield put(setLikeStatus(resIsLike.data.data))
     } catch (e) {
         yield put(getNewsDetailFail());
     } finally {
