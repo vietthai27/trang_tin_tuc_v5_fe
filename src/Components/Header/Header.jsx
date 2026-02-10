@@ -21,7 +21,7 @@ import UserSignup from '../UserSignup/UserSignup';
 import UserForgetPass from '../UserForgetPass/UserForgetPass';
 import UserSignupModal from '../UserSignup/UserSignupModal';
 import UserResetPass from '../UserForgetPass/UserResetPass';
-import { setLoginState } from '../../App/rootReducer';
+import { setLoginState, setUsername } from '../../App/rootReducer';
 import { toast } from 'react-toastify';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -77,6 +77,7 @@ function Header() {
         localStorage.removeItem('token')
         dispatch(setLoginState(false))
         dispatch(resetManagementList())
+        dispatch(setUsername(''))
         navigate("/")
         toast.success('Đăng xuất thành công')
     }
